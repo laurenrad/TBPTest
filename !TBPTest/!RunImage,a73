@@ -37,6 +37,7 @@ import actionbuttonwin
 import displayfieldwin
 import draggablewin
 import optionbuttonwin
+import sliderwin
 
 # Constants
 EV_MENU_QUIT = 0x100 # Event for quitting from the iconbar menu
