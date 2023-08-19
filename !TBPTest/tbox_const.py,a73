@@ -142,3 +142,13 @@ EvRadioButtonSetState        = 0xC04
 EvRadioButtonGetState        = 0xC05
 EvRadioButtonSetFont         = 0xC06
 
+# StringSet test events
+EvStringSetSetAvailable      = 0xD00
+EvStringSetSetSelectedText   = 0xD01
+EvStringSetGetSelectedText   = 0xD02
+EvStringSetSetSelectedIndex  = 0xD03
+EvStringSetGetSelectedIndex  = 0xD04
+EvStringSetSetAllowable      = 0xD05
+EvStringSetGetAlphaNum       = 0xD06
+EvStringSetGetPopUp          = 0xD07
+EvStringSetSetFont           = 0xD08
