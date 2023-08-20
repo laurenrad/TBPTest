@@ -54,9 +54,6 @@ try:
 		## Methods for testing slider ops
 		def slider_set_value(self):
 			try:
-				v = int(self.g_input.value)
-				Reporter.print(repr(int(v)))
-				Reporter.print(repr(type(v)))
 				self.g_slider.value = int(self.g_input.value)
 			except ValueError as e:
 				self.g_output.value = "Err: int value expected"
