@@ -30,6 +30,7 @@ from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.writablefield import WritableField
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from tbox_const import *
+from tbox_common import TestMenu
 try:
 	# This isn't in upstream yet so if we don't have this module, simply don't do any of this!
 	from riscos_toolbox.gadgets.numberrange import NumberRange	
@@ -105,7 +106,7 @@ try:
 		def NumRangeValueChanged(self,event,id_block,poll_block):
 			self.g_output.value = "Number range value changed."
 
-	class NumRangeMenu(Menu):
+	class NumRangeMenu(Menu,TestMenu):
 		template = "NumRngeMenu"
 	
 		## NumberRange event handlers
@@ -113,71 +114,85 @@ try:
 		def NumRangeSetValue(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_set_value()
+			self.menu_tick(id_block.self.component)
 		
 		@toolbox_handler(EvNumRangeGetValue)
 		def NumRangeGetValue(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_get_value()
+			self.menu_tick(id_block.self.component)
 		
 		@toolbox_handler(EvNumRangeSetLowerBound)
 		def NumRangeSetLowerBound(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_set_lower_bound()
+			self.menu_tick(id_block.self.component)
 	
 		@toolbox_handler(EvNumRangeGetLowerBound)
 		def NumRangeGetLowerBound(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_get_lower_bound()
+			self.menu_tick(id_block.self.component)
 		
 		@toolbox_handler(EvNumRangeSetUpperBound)
 		def NumRangeSetUpperBound(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_set_upper_bound()
+			self.menu_tick(id_block.self.component)
 		
 		@toolbox_handler(EvNumRangeGetUpperBound)
 		def NumRangeGetUpperBound(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_get_upper_bound()
+			self.menu_tick(id_block.self.component)
 		
 		@toolbox_handler(EvNumRangeSetStepSize)
 		def NumRangeSetStepSize(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_set_step_size()
+			self.menu_tick(id_block.self.component)
 		
 		@toolbox_handler(EvNumRangeGetStepSize)
 		def NumRangeGetStepSize(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_get_step_size()
+			self.menu_tick(id_block.self.component)
 		
 		@toolbox_handler(EvNumRangeSetPrecision)
 		def NumRangeSetPrecision(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_set_precision()
+			self.menu_tick(id_block.self.component)
 		
 		@toolbox_handler(EvNumRangeGetPrecision)
 		def NumRangeGetPrecision(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_get_precision()
+			self.menu_tick(id_block.self.component)
 		
 		@toolbox_handler(EvNumRangeGetNumeric)
 		def NumRangeGetNumeric(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_get_numeric()
+			self.menu_tick(id_block.self.component)
 		
 		@toolbox_handler(EvNumRangeGetLeftAdj)
 		def NumRangeGetValue(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_get_left_adj()
+			self.menu_tick(id_block.self.component)
 		
 		@toolbox_handler(EvNumRangeGetRightAdj)
 		def NumRangeGetRightAdj(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_get_right_adj()
+			self.menu_tick(id_block.self.component)
 		
 		@toolbox_handler(EvNumRangeGetSlider)
 		def NumRangeGetSlider(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_get_slider()
+			self.menu_tick(id_block.self.component)
 
 except ModuleNotFoundError as e:
 	Reporter.print("No NumberRange object in riscos_toolbox")

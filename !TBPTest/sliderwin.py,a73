@@ -28,6 +28,7 @@ from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.writablefield import WritableField
 from tbox_const import *
+from tbox_common import TestMenu
 
 try:
 	from riscos_toolbox.gadgets.slider import Slider, SliderValueChangedEvent
@@ -96,7 +97,7 @@ try:
 		def SliderValueChanged(self,event,id_block,poll_block):
 			self.g_output.value = "Slider value change: "+repr(poll_block.new_value)
 		
-	class SliderMenu(Menu):
+	class SliderMenu(Menu,TestMenu):
 		template = "SliderMenu"
 		
 		## Slider event handlers
@@ -104,50 +105,60 @@ try:
 		def SliderSetValue(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.slider_set_value()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvSliderGetValue)
 		def SliderGetValue(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.slider_get_value()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvSliderSetLowerBound)
 		def SliderSetLowerBound(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.slider_set_lower_bound()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvSliderGetLowerBound)
 		def SliderGetLowerBound(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.slider_get_lower_bound()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvSliderSetUpperBound)
 		def SliderSetUpperBound(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.slider_set_upper_bound()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvSliderGetUpperBound)
 		def SliderGetUpperBound(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.slider_get_upper_bound()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvSliderSetStepSize)
 		def SliderSetStepSize(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.slider_set_step_size()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvSliderGetStepSize)
 		def SliderGetStepSize(self,event,id_block,poll_block):
 			window = toolbox_get_object(id_block.ancestor.id)
 			window.slider.get_step_size()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvSliderSetColour)
 		def SliderSetColour(self,event,id_block,poll_block):
 			pass # TBD
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvSliderGetColour)
 		def SliderGetColour(self,event,id_block,poll_block):
 			window = toolbox_get_object(id_block.ancestor.id)
 			window.slider.get_colour()
+			self.menu_tick(id_block.self.component)
 	
 except ModuleNotFoundError as e:
 	Reporter.print("No Draggable object in riscos_toolbox")

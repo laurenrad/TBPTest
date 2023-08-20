@@ -28,6 +28,7 @@ from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.writablefield import WritableField
 from tbox_const import *
+from tbox_common import TestMenu
 try:
 	from riscos_toolbox.gadgets.stringset import StringSet
 	from riscos_toolbox.gadgets.stringset import StringSetValueChangedEvent
@@ -102,7 +103,7 @@ else:
 		def _stringset_about_to_be_shown(self,event,id_block,poll_block):
 			self.g_output.value = "About to be shown"
 		
-	class StringSetMenu(Menu):
+	class StringSetMenu(Menu,TestMenu):
 		template = "StrSetMenu"
 		
 		# Event handlers
@@ -110,43 +111,52 @@ else:
 		def _stringset_set_available(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.stringset_set_available()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvStringSetSetSelectedText)
 		def _stringset_set_selected_text(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.stringset_set_selected_text()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvStringSetGetSelectedText)
 		def _stringset_get_selected_text(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.stringset_get_selected_text()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvStringSetSetSelectedIndex)
 		def _stringset_set_selected_index(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.stringset_set_selected_index()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvStringSetGetSelectedIndex)
 		def _stringset_get_selected_index(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.stringset_get_selected_index()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvStringSetSetAllowable)
 		def _stringset_set_allowable(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.stringset_set_allowable()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvStringSetGetAlphaNum)
 		def _stringset_get_alphanum(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.stringset_get_alphanum()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvStringSetGetPopUp)
 		def _stringset_get_popup(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.stringset_get_popup()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvStringSetSetFont)
 		def _stringset_set_font(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.stringset_set_font()
+			self.menu_tick(id_block.self.component)

@@ -22,6 +22,7 @@
 
 from reporter import Reporter
 from tbox_const import *
+from tbox_common import TestMenu
 import riscos_toolbox as toolbox
 
 from riscos_toolbox.objects.menu import Menu
@@ -53,7 +54,7 @@ class DisplayFieldWindow(Window):
 	def displayfield_get_value(self):
 		self.g_output.value = self.g_displayfield.value
 		
-class DisplayFieldMenu(Menu):
+class DisplayFieldMenu(Menu,TestMenu):
 	template = "DispFldMenu"
 	
 	## DisplayField event handlers
@@ -61,8 +62,11 @@ class DisplayFieldMenu(Menu):
 	def DisplayFieldSetValue(self,event,id_block,poll_block):
 		window = toolbox.get_object(id_block.ancestor.id)
 		window.displayfield_set_value()
+		self.menu_tick(id_block.self.component)
 		
 	@toolbox_handler(EvDisplayFieldGetValue)
 	def DisplayFieldGetValue(self,event,id_block,poll_block):
 		window = toolbox.get_object(id_block.ancestor.id)
 		window.displayfield_get_value()
+		self.menu_tick(id_block.self.component)
+		

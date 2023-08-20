@@ -28,6 +28,7 @@ from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.writablefield import WritableField
 from tbox_const import *
+from tbox_common import TestMenu
 try:
 	from riscos_toolbox.gadgets.draggable import Draggable
 	from riscos_toolbox.gadgets.draggable import DraggableDragStartedEvent
@@ -86,7 +87,7 @@ try:
 	def DraggableDragEnded(self,event,id_block,poll_block):
 		self.g_output.value = f"Drag ended: window={poll_block.window_handle} icon={poll_block.icon_handle} x={poll_block.x} y={poll_block.y}"
 
-	class DrgableMenu(Menu):
+	class DrgableMenu(Menu,TestMenu):
 		template = "DrgableMenu"
 	
 		## Draggable Event handlers
@@ -100,35 +101,37 @@ try:
 		# Draggable Set Text
 		@toolbox_handler(EvDraggableSetText)
 		def DraggableSetText(self,event,id_block,poll_block):
-			Reporter.print("DrgableMenu DraggableSetText")
-			Reporter.print(repr(id_block.parent.id))
-			Reporter.print(repr(id_block.ancestor.id))
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.draggable_set_text()
+			self.menu_tick(id_block.self.component)
 		
 		# Draggable Get Sprite
 		@toolbox_handler(EvDraggableGetSprite)
 		def DraggableGetSprite(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.draggable_get_sprite()
+			self.menu_tick(id_block.self.component)
 		
 		# Draggable Set Sprite
 		@toolbox_handler(EvDraggableSetSprite)
 		def DraggableSetSprite(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.draggable_set_sprite()
+			self.menu_tick(id_block.self.component)
 		
 		# Draggable Get State
 		@toolbox_handler(EvDraggableGetState)
 		def DraggableGetState(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.draggable_get_state()
+			self.menu_tick(id_block.self.component)
 		
 		# Draggable Set State
 		@toolbox_handler(EvDraggableSetState)
 		def DraggableSetState(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.draggable_set_state()
+			self.menu_tick(id_block.self.component)
 		
 			
 except ModuleNotFoundError as e:

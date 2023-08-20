@@ -20,6 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import swi
+
 from reporter import Reporter
 import riscos_toolbox as toolbox
 from riscos_toolbox.events import toolbox_handler
@@ -28,6 +30,7 @@ from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.writablefield import WritableField
 from tbox_const import *
+from tbox_common import *
 try:
 	from riscos_toolbox.gadgets.textarea import TextArea
 except ModuleNotFoundError as e:
@@ -140,83 +143,99 @@ else:
 				self.g_output1.value = "err: Input1=int"
 				
 		def textarea_get_cursor_pos(self):
-			self.g_output1.value = repr(self.g_textarea.cursor)		
-		
-	class TextAreaMenu(Menu):
+			self.g_output1.value = repr(self.g_textarea.cursor)
+					
+	class TextAreaMenu(Menu,TestMenu):
 		template = "TxtAreaMenu"
 		
 		# Menu event handlers
 		@toolbox_handler(EvTextAreaGetState)
 		def _textarea_get_state(self,event,id_block,poll_block):
-			window = toolbox.get_object(id_block.ancestor.id)
-			window.textarea_get_state()
+			window = toolbox.get_object(id_block.ancestor.id)			
+			window.textarea_get_state()			
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvTextAreaSetState)
 		def _textarea_set_state(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.textarea_set_state()
+			self.menu_tick(id_block.self.component)
+			
 			
 		@toolbox_handler(EvTextAreaSetText)
 		def _textarea_set_text(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.textarea_set_text()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvTextAreaGetText)
 		def _textarea_get_text(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.textarea_get_text()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvTextAreaInsertText)
 		def _textarea_insert_text(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.textarea_insert_text()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvTextAreaReplaceText)
 		def _textarea_replace_text(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.textarea_replace_text()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvTextAreaGetSelection)
 		def _textarea_get_selection(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.textarea_get_selection()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvTextAreaSetSelection)
 		def _textarea_set_selection(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.textarea_set_selection()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvTextAreaGetSelectionPoints)
 		def _textarea_get_selection_points(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.textarea_get_selection_points()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvTextAreaSetSelectionPoints)
 		def _textarea_set_selection_points(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.textarea_set_selection_points()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvTextAreaSetFont)
 		def _textarea_set_font(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.textarea_set_font()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvTextAreaSetColour)
 		def _textarea_set_colour(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.textarea_set_colour()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvTextAreaGetColour)
 		def _textarea_get_colour(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.textarea_get_colour()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvTextAreaSetCursorPos)
 		def _textarea_set_cursor_pos(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.textarea_set_cursor_pos()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvTextAreaGetCursorPos)
 		def _textarea_get_cursor_pos(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.textarea_get_cursor_pos()
+			self.menu_tick(id_block.self.component)

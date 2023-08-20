@@ -29,6 +29,7 @@ from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.writablefield import WritableField
 from riscos_toolbox.gadgets.scrolllist import ScrollList, ScrollListSelectionEvent
 from tbox_const import *
+from tbox_common import TestMenu
 
 # Gadget constants
 G_SCROLLLIST = 0x01
@@ -104,7 +105,7 @@ class ScrollListWindow(Window):
 		s= f"Selection: item={poll_block.item}, flags={poll_block.sel_flags}"
 		self.g_output.value = s
 	
-class ScrollListMenu(Menu):
+class ScrollListMenu(Menu,TestMenu):
 	template = "ScrlLstMenu"
 	
 	# Menu event handlers
@@ -112,38 +113,46 @@ class ScrollListMenu(Menu):
 	def _scrolllist_set_state(self,event,id_block,poll_block):
 		window = toolbox.get_object(id_block.ancestor.id)
 		window.scrolllist_set_state()
+		self.menu_tick(id_block.self.component)
 		
 	@toolbox_handler(EvScrollListGetState)
 	def _scrolllist_get_state(self,event,id_block,poll_block):
 		window = toolbox.get_object(id_block.ancestor.id)
 		window.scrolllist_get_state()
+		self.menu_tick(id_block.self.component)
 		
 	@toolbox_handler(EvScrollListAddItem)
 	def _scrolllist_add_item(self,event,id_block,poll_block):
 		window = toolbox.get_object(id_block.ancestor.id)
 		window.scrolllist_add_item()
+		self.menu_tick(id_block.self.component)
 		
 	@toolbox_handler(EvScrollListDeleteItems)
 	def _scrolllist_delete_items(self,event,id_block,poll_block):
 		window = toolbox.get_object(id_block.ancestor.id)
 		window.scrolllist_delete_items()
+		self.menu_tick(id_block.self.component)
 		
 	@toolbox_handler(EvScrollListGetSelected)
 	def _scrolllist_get_selected(self,event,id_block,poll_block):
 		window = toolbox.get_object(id_block.ancestor.id)
 		window.scrolllist_get_selected()
+		self.menu_tick(id_block.self.component)
 		
 	@toolbox_handler(EvScrollListMakeVisible)
 	def _scrolllist_make_visible(self,event,id_block,poll_block):
 		window = toolbox.get_object(id_block.ancestor.id)
 		window.scrolllist_make_visible()
+		self.menu_tick(id_block.self.component)
 		
 	@toolbox_handler(EvScrollListSetMultisel)
 	def _scrolllist_set_multisel(self,event,id_block,poll_block):
 		window = toolbox.get_object(id_block.ancestor.id)
 		window.scrolllist_set_multisel()
+		self.menu_tick(id_block.self.component)
 		
 	@toolbox_handler(EvScrollListGetMultisel)
 	def _scrolllist_get_multisel(self,event,id_block,poll_block):
 		window = toolbox.get_object(id_block.ancestor.id)
 		window.scrolllist_get_multisel()
+		self.menu_tick(id_block.self.component)

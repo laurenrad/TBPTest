@@ -28,6 +28,7 @@ from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.writablefield import WritableField
 from tbox_const import *
+from tbox_common import TestMenu
 try:
 	from riscos_toolbox.gadgets.radiobutton import RadioButton, RadioButtonStateChangedEvent
 	
@@ -95,7 +96,7 @@ try:
 			self.g_output.value = s
 		
 		
-	class RadioButtonMenu(Menu):
+	class RadioButtonMenu(Menu,TestMenu):
 		template = "RadioMenu"
 		
 		# RadioButton Event handlers
@@ -103,36 +104,43 @@ try:
 		def RadioButtonSetLabel(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.radiobutton_set_label()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvRadioButtonGetLabel)
 		def RadioButtonGetLabel(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.radiobutton_get_label()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvRadioButtonSetEvent)
 		def RadioButtonSetEvent(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.radiobutton_set_event()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvRadioButtonGetEvent)
 		def RadioButtonGetEvent(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.radiobutton_get_event()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvRadioButtonSetState)
 		def RadioButtonSetState(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.radiobutton_set_state()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvRadioButtonGetState)
 		def RadioButtonGetState(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.radiobutton_get_state()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvRadioButtonSetFont)
 		def RadioButtonSetFont(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.radiobutton_set_font()
+			self.menu_tick(id_block.self.component)
 	
 except ModuleNotFoundError as e:
-	Reporter.print("No RadioButton object in riscos_toolbox")
+	Reporter.print("No RadioButton in riscos_toolbox")

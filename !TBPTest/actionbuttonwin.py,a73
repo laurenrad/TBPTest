@@ -22,6 +22,7 @@
 
 from reporter import Reporter
 from tbox_const import *
+from tbox_common import TestMenu
 import riscos_toolbox as toolbox
 
 from riscos_toolbox.objects.menu import Menu
@@ -76,7 +77,7 @@ class ActionButtonWindow(Window):
 	def ActionButtonSelected(self,event,id_block,poll_block):
 		self.g_output.value = "Action button selected."
 
-class ActionButtonMenu(Menu):
+class ActionButtonMenu(Menu,TestMenu):
 	template = "ActBttnMenu"
 	
 	## ActionButton event handlers
@@ -84,23 +85,28 @@ class ActionButtonMenu(Menu):
 	def ActionButtonSetText(self,event,id_block,poll_block):
 		window = toolbox.get_object(id_block.ancestor.id)
 		window.actionbutton_set_text()
+		self.menu_tick(id_block.self.component)
 	
 	@toolbox_handler(EvActionButtonGetText)
 	def ActionButtonGetText(self,event,id_block,poll_block):
 		window = toolbox.get_object(id_block.ancestor.id)
 		window.actionbutton_get_text()
+		self.menu_tick(id_block.self.component)
 	
 	@toolbox_handler(EvActionButtonSetEvent)
 	def ActionButtonSetEvent(self,event,id_block,poll_block):
 		window = toolbox.get_object(id_block.ancestor.id)
-		window.actionbutton_set_event()	
+		window.actionbutton_set_event()
+		self.menu_tick(id_block.self.component)
 	
 	@toolbox_handler(EvActionButtonGetEvent)
 	def ActionButtonGetEvent(self,event,id_block,poll_block):
 		window = toolbox.get_object(id_block.ancestor.id)
 		window.actionbutton_get_event()
+		self.menu_tick(id_block.self.component)
 		
 	@toolbox_handler(EvActionButtonSetClickShow)
 	def ActionButtonSetClickShow(self,event,id_block,poll_block):
 		window = toolbox.get_object(id_block.ancestor.id)
-		window.actionbutton_set_click_show()	
+		window.actionbutton_set_click_show()
+		self.menu_tick(id_block.self.component)	

@@ -23,6 +23,7 @@
 import traceback
 
 from tbox_const import *
+from tbox_common import TestMenu
 from reporter import Reporter
 
 import riscos_toolbox as toolbox
@@ -72,7 +73,7 @@ class WritableWindow(Window):
 	def WritableFieldValueChanged(self,event,id_block,poll_block):
 		self.g_output.value = "Writable field change: "
 			
-class WritableFieldMenu(Menu):
+class WritableFieldMenu(Menu,TestMenu):
 	template = "WritFldMenu"
 	
 	## WritableField event handlers
@@ -80,18 +81,22 @@ class WritableFieldMenu(Menu):
 	def WritableFieldSetText(self,event,id_block,poll_block):
 		window = toolbox.get_object(id_block.ancestor.id)
 		window.writablefield_set_text()
+		self.menu_tick(id_block.self.component)
 	
 	@toolbox_handler(EvWritableFieldGetText)
 	def WritableFieldGetText(self,event,id_block,poll_block):
 		window = toolbox.get_object(id_block.ancestor.id)
 		window.writablefield_get_text()
+		self.menu_tick(id_block.self.component)
 		
 	@toolbox_handler(EvWritableFieldSetAllow)
 	def WritableFieldSetAllow(self,event,id_block,poll_block):
 		window = toolbox.get_object(id_block.ancestor.id)
 		window.writablefield_set_allow()
+		self.menu_tick(id_block.self.component)
 		
 	@toolbox_handler(EvWritableFieldGetAllow)
 	def WritableFieldGetAllow(self,event,id_block,poll_block):
 		window = toolbox.get_object(id_block.ancestor.id)
 		window.writablefield_get_allow()
+		self.menu_tick(id_block.self.component)

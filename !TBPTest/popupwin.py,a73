@@ -28,6 +28,7 @@ from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.writablefield import WritableField
 from tbox_const import *
+from tbox_common import TestMenu
 try:
 	from riscos_toolbox.gadgets.popup import PopUp, PopUpAboutToBeShownEvent
 except ModuleNotFoundError as e:
@@ -64,7 +65,7 @@ else:
 		def _popup_about_to_be_shown(self,event,id_block,poll_block):
 			self.g_output.value = f"AboutToBeShown: {poll_block.menu_id}"
 		
-	class PopUpMenu(Menu):
+	class PopUpMenu(Menu,TestMenu):
 		template = "PopUpMenu"
 		
 		# Event handlers
@@ -72,8 +73,10 @@ else:
 		def _popup_set_menu(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.popup_set_menu()
+			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvPopUpGetMenu)
 		def _popup_get_menu(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.popup_get_menu()
+			self.menu_tick(id_block.self.component)
