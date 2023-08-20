@@ -96,7 +96,7 @@ else:
 		# Event handlers for NumberRange
 		@toolbox_handler(NumberRangeValueChangedEvent)
 		def _numrange_value_changed(self,event,id_block,poll_block):
-			self.g_output.value = "Number range value changed."
+			self.g_output.value = f"Number range value changed: {poll_block.new_value}"
 		
 	class NumberRangeMenu(Menu,TestMenu):
 		template = "NumRngeMenu"
