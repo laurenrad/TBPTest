@@ -20,75 +20,67 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import traceback
-
 from reporter import Reporter
-
 import riscos_toolbox as toolbox
+from riscos_toolbox.events import toolbox_handler
 from riscos_toolbox.objects.menu import Menu
 from riscos_toolbox.objects.window import Window
-from riscos_toolbox.gadgets.writablefield import WritableField
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from tbox_const import *
 from tbox_common import TestMenu
 try:
-	# This isn't in upstream yet so if we don't have this module, simply don't do any of this!
-	from riscos_toolbox.gadgets.numberrange import NumberRange	
-	from riscos_toolbox.events import toolbox_handler, wimp_handler, message_handler
-
-	# Gadget constants
-	G_NUMRANGE         = 0x00
-	G_WRITABLE_INPUT    = 0x02
-	G_WRITABLE_OUTPUT   = 0x03
-
-	class NumRangeWindow(Window):
-		template = "NumRngeWin"
+	from riscos_toolbox.gadgets.numberrange import NumberRange, NumberRangeValueChangedEvent
+except ModuleNotFoundError as e:
+	Reporter.print("No NumberRange in riscos_toolbox")
+else:
 	
+	# Gadget Constants
+	G_NUMRANGE = 0x00
+	G_INPUT = 0x02
+	G_OUTPUT = 0x03
+	
+	class NumberRangeWindow(Window):
+		template = "NumRngeWin"
+		
 		def __init__(self, *args):
 			super().__init__(*args)
-		
+			
 			# Set up gadgets
-			try:
-				self.g_numrange = NumberRange(self,G_NUMRANGE)
-				self.g_input = NumberRange(self,G_WRITABLE_INPUT)
-				self.g_output = WritableField(self,G_WRITABLE_OUTPUT)
-			except Exception as e:
-				Reporter.print(repr(e))
-				with open("<TBPTest$Dir>.Logs.traceback",'w') as fp:
-					traceback.print_exc(file=fp)
-				
-		## Methods for testing NumberRange
-	
+			self.g_numrange = NumberRange(self,G_NUMRANGE)
+			self.g_input = NumberRange(self,G_INPUT)
+			self.g_output = DisplayField(self,G_OUTPUT)
+		
+		# Test ops for numberrange
 		def numrange_set_value(self):
 			self.g_numrange.value = self.g_input.value
 			
 		def numrange_get_value(self):
 			self.g_output.value = repr(self.g_numrange.value)
-		
+			
 		def numrange_set_lower_bound(self):
 			self.g_numrange.lower_bound = self.g_input.value
 			
 		def numrange_get_lower_bound(self):
 			self.g_output.value = repr(self.g_numrange.lower_bound)
-		
+			
 		def numrange_set_upper_bound(self):
 			self.g_numrange.upper_bound = self.g_input.value
 			
 		def numrange_get_upper_bound(self):
 			self.g_output.value = repr(self.g_numrange.upper_bound)
-		
+			
 		def numrange_set_step_size(self):
 			self.g_numrange.step_size = self.g_input.value
 			
 		def numrange_get_step_size(self):
 			self.g_output.value = repr(self.g_numrange.step_size)
-		
+			
 		def numrange_set_precision(self):
 			self.g_numrange.precision = self.g_input.value
 			
 		def numrange_get_precision(self):
 			self.g_output.value = repr(self.g_numrange.precision)
-		
+			
 		def numrange_get_numeric(self):
 			self.g_output.value = repr(self.g_numrange.numeric)
 		
@@ -100,28 +92,28 @@ try:
 		
 		def numrange_get_slider(self):
 			self.g_output.value = repr(self.g_numrange.slider)
-		
+			
 		# Event handlers for NumberRange
-		@toolbox_handler(EvNumRngeValueChanged)
-		def NumRangeValueChanged(self,event,id_block,poll_block):
+		@toolbox_handler(NumberRangeValueChangedEvent)
+		def _numrange_value_changed(self,event,id_block,poll_block):
 			self.g_output.value = "Number range value changed."
-
-	class NumRangeMenu(Menu,TestMenu):
+		
+	class NumberRangeMenu(Menu,TestMenu):
 		template = "NumRngeMenu"
-	
-		## NumberRange event handlers
+		
+		# Event Handlers
 		@toolbox_handler(EvNumRangeSetValue)
-		def NumRangeSetValue(self,event,id_block,poll_block):
+		def _numrange_set_value(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_set_value()
 			self.menu_tick(id_block.self.component)
-		
+			
 		@toolbox_handler(EvNumRangeGetValue)
-		def NumRangeGetValue(self,event,id_block,poll_block):
+		def _numrange_get_value(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_get_value()
 			self.menu_tick(id_block.self.component)
-		
+
 		@toolbox_handler(EvNumRangeSetLowerBound)
 		def NumRangeSetLowerBound(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
@@ -133,7 +125,7 @@ try:
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_get_lower_bound()
 			self.menu_tick(id_block.self.component)
-		
+			
 		@toolbox_handler(EvNumRangeSetUpperBound)
 		def NumRangeSetUpperBound(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
@@ -145,7 +137,7 @@ try:
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_get_upper_bound()
 			self.menu_tick(id_block.self.component)
-		
+			
 		@toolbox_handler(EvNumRangeSetStepSize)
 		def NumRangeSetStepSize(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
@@ -157,7 +149,7 @@ try:
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_get_step_size()
 			self.menu_tick(id_block.self.component)
-		
+			
 		@toolbox_handler(EvNumRangeSetPrecision)
 		def NumRangeSetPrecision(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
@@ -169,7 +161,7 @@ try:
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_get_precision()
 			self.menu_tick(id_block.self.component)
-		
+			
 		@toolbox_handler(EvNumRangeGetNumeric)
 		def NumRangeGetNumeric(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
@@ -193,7 +185,3 @@ try:
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.numrange_get_slider()
 			self.menu_tick(id_block.self.component)
-
-except ModuleNotFoundError as e:
-	Reporter.print("No NumberRange object in riscos_toolbox")
-
