@@ -94,6 +94,13 @@ else:
 				self.g_stringset.set_font(name,width,height)
 	
 		# Event handlers for StringSet
+		@toolbox_handler(StringSetValueChangedEvent)
+		def _stringset_value_changed(self,event,id_block,poll_block):
+			self.g_output.value = "Value changed"
+			
+		@toolbox_handler(StringSetAboutToBeShownEvent)
+		def _stringset_about_to_be_shown(self,event,id_block,poll_block):
+			self.g_output.value = "About to be shown"
 		
 	class StringSetMenu(Menu):
 		template = "StrSetMenu"
