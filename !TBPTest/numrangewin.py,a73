@@ -29,6 +29,7 @@ from riscos_toolbox.objects.menu import Menu
 from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.writablefield import WritableField
 from riscos_toolbox.gadgets.displayfield import DisplayField
+from tbox_const import *
 try:
 	# This isn't in upstream yet so if we don't have this module, simply don't do any of this!
 	from riscos_toolbox.gadgets.numberrange import NumberRange	

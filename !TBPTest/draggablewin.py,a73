@@ -30,6 +30,8 @@ from riscos_toolbox.gadgets.writablefield import WritableField
 from tbox_const import *
 try:
 	from riscos_toolbox.gadgets.draggable import Draggable
+	from riscos_toolbox.gadgets.draggable import DraggableDragStartedEvent
+	from riscos_toolbox.gadgets.draggable import DraggableDragEndedEvent
 
 	# Gadget Constants
 	G_DRAGGABLE = 0x00
