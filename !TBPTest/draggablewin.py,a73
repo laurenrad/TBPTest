@@ -50,42 +50,42 @@ try:
 			self.g_input = WritableField(self,G_INPUT)
 			self.g_output = DisplayField(self,G_OUTPUT)
 		
-	## Methods for testing draggable ops
+		## Methods for testing draggable ops
 	
-	def draggable_get_text(self):
-		self.g_output.value = "Draggable text: " + self.g_draggable.text
+		def draggable_get_text(self):
+			self.g_output.value = "Draggable text: " + self.g_draggable.text
 	
-	def draggable_set_text(self):
-		self.g_draggable.text = self.g_input.value
+		def draggable_set_text(self):
+			self.g_draggable.text = self.g_input.value
 		
-	def draggable_get_sprite(self):
-		self.g_output.value = "Draggable sprite: " + self.g_draggable.sprite
+		def draggable_get_sprite(self):
+			self.g_output.value = "Draggable sprite: " + self.g_draggable.sprite
 
-	def draggable_set_sprite(self):
-		self.g_draggable.sprite = self.g_input.value
+		def draggable_set_sprite(self):
+			self.g_draggable.sprite = self.g_input.value
 					
-	# Output draggable state to display field
-	def draggable_get_state(self):
-		self.g_output.value = "Draggable state: " + repr(self.g_draggable.state)
+		# Output draggable state to display field
+		def draggable_get_state(self):
+			self.g_output.value = "Draggable state: " + repr(self.g_draggable.state)
 		
-	# Set draggable state to whatever is in input field
-	def draggable_set_state(self):
-		try:
-			self.g_draggable.state = int(self.g_input.value)
-		except ValueError as e:
-			self.g_output.value = "Int value expected"
+		# Set draggable state to whatever is in input field
+		def draggable_set_state(self):
+			try:
+				self.g_draggable.state = int(self.g_input.value)
+			except ValueError as e:
+				self.g_output.value = "Int value expected"
 		
-	## Draggable Event handlers 
+		## Draggable Event handlers 
 	
-	# Draggable Drag Started Event
-	@toolbox_handler(DraggableDragStartedEvent)
-	def DraggableDragStarted(self,event,id_block,poll_block):
-		self.g_output.value = "Drag started"
+		# Draggable Drag Started Event
+		@toolbox_handler(DraggableDragStartedEvent)
+		def DraggableDragStarted(self,event,id_block,poll_block):
+			self.g_output.value = "Drag started"
 		
-	# Draggable Drag Ended Event
-	@toolbox_handler(DraggableDragEndedEvent)
-	def DraggableDragEnded(self,event,id_block,poll_block):
-		self.g_output.value = f"Drag ended: window={poll_block.window_handle} icon={poll_block.icon_handle} x={poll_block.x} y={poll_block.y}"
+		# Draggable Drag Ended Event
+		@toolbox_handler(DraggableDragEndedEvent)
+		def DraggableDragEnded(self,event,id_block,poll_block):
+			self.g_output.value = f"Drag ended: window={poll_block.window_handle} icon={poll_block.icon_handle} x={poll_block.x} y={poll_block.y}"
 
 	class DrgableMenu(Menu,TestMenu):
 		template = "DrgableMenu"
@@ -97,6 +97,7 @@ try:
 		def DraggableGetText(self,event,id_block,poll_block):
 			window = toolbox.get_object(id_block.ancestor.id)
 			window.draggable_get_text()
+			self.menu_tick(id_block.self.component)
 		
 		# Draggable Set Text
 		@toolbox_handler(EvDraggableSetText)
