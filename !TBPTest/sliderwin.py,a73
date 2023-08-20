@@ -36,6 +36,7 @@ try:
 	# Gadget constants
 	G_SLIDER = 0x00
 	G_INPUT  = 0x01
+	G_INPUT2 = 0x06
 	G_OUTPUT = 0x02
 	
 	class SliderWindow(Window):
@@ -47,11 +48,15 @@ try:
 			# Set up gadgets
 			self.g_slider = Slider(self,G_SLIDER)
 			self.g_input = WritableField(self,G_INPUT)
-			self.g_output = WritableField(self,G_OUTPUT)
+			self.g_input2 = WritableField(self,G_INPUT2)
+			self.g_output = DisplayField(self,G_OUTPUT)
 			
 		## Methods for testing slider ops
 		def slider_set_value(self):
 			try:
+				v = int(self.g_input.value)
+				Reporter.print(repr(int(v)))
+				Reporter.print(repr(type(v)))
 				self.g_slider.value = int(self.g_input.value)
 			except ValueError as e:
 				self.g_output.value = "Err: int value expected"
@@ -87,10 +92,17 @@ try:
 			self.g_output.value = repr(self.g_slider.step_size)
 			
 		def slider_set_colour(self):
-			pass # placeholder TBD
+			try:
+				fg = int(self.g_input.value)
+				bg = int(self.g_input2.value)
+			except ValueError as e:
+				self.g_output.value = "Err: Input1=int, Input2=int"
+			else:
+				self.g_slider.colour = (fg, bg)
 			
 		def slider_get_colour(self):
-			pass
+			fg, bg = self.g_slider.colour
+			self.g_output.value = f"fg={fg}, bg={bg}"
 		
 		# Event handlers for Slider Events
 		@toolbox_handler(SliderValueChangedEvent)
@@ -145,19 +157,21 @@ try:
 			
 		@toolbox_handler(EvSliderGetStepSize)
 		def SliderGetStepSize(self,event,id_block,poll_block):
-			window = toolbox_get_object(id_block.ancestor.id)
-			window.slider.get_step_size()
+			window = toolbox.get_object(id_block.ancestor.id)
+			window.slider_get_step_size()
 			self.menu_tick(id_block.self.component)
 			
 		@toolbox_handler(EvSliderSetColour)
 		def SliderSetColour(self,event,id_block,poll_block):
-			pass # TBD
+			window = toolbox.get_object(id_block.ancestor.id)
+			window.slider_set_colour()
 			self.menu_tick(id_block.self.component)
+
 			
 		@toolbox_handler(EvSliderGetColour)
 		def SliderGetColour(self,event,id_block,poll_block):
-			window = toolbox_get_object(id_block.ancestor.id)
-			window.slider.get_colour()
+			window = toolbox.get_object(id_block.ancestor.id)
+			window.slider_get_colour()
 			self.menu_tick(id_block.self.component)
 	
 except ModuleNotFoundError as e:

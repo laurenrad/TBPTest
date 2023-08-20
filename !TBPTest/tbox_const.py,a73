@@ -131,7 +131,7 @@ EvSliderSetUpperBound        = 0xB04
 EvSliderGetUpperBound        = 0xB05
 EvSliderSetStepSize          = 0xB06
 EvSliderGetStepSize          = 0xB07
-EvSliderSetColour            = 0xB08 # Not hooked up to anything yet
+EvSliderSetColour            = 0xB08
 EvSliderGetColour            = 0xB09
 
 # RadioButton test events
