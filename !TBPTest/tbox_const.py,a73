@@ -24,20 +24,21 @@
 # The rationale behind having a central module for this is so they don't clash.
 
 # Constants - Events
-EvTextAreaGetState          = 0x200
-EvTextAreaSetState          = 0x201
-EvTextAreaSetText           = 0x202
-EvTextAreaGetText           = 0x203
-EvTextAreaInsertText        = 0x204
-EvTextAreaReplaceText       = 0x205
-EvTextAreaGetSelection      = 0x206
-EvTextAreaSetSelection      = 0x207
-EvTextAreaSetFont           = 0x208
-EvTextAreaSetColour         = 0x209
-EvTextAreaGetColour         = 0x20A
-EvTextAreaSetCursorPos      = 0x20B
-EvTextAreaGetCursorPos      = 0x20C
-EvTestButtonClick           = 0x20D
+EvTextAreaGetState           = 0x200
+EvTextAreaSetState           = 0x201
+EvTextAreaSetText            = 0x202
+EvTextAreaGetText            = 0x203
+EvTextAreaInsertText         = 0x204
+EvTextAreaReplaceText        = 0x205
+EvTextAreaGetSelection       = 0x206
+EvTextAreaSetSelection       = 0x207
+EvTextAreaGetSelectionPoints = 0x208
+EvTextAreaSetSelectionPoints = 0x209 
+EvTextAreaSetFont            = 0x20A
+EvTextAreaSetColour          = 0x20B
+EvTextAreaGetColour          = 0x20C
+EvTextAreaSetCursorPos       = 0x20D
+EvTextAreaGetCursorPos       = 0x20E
 
 # Event Constants
 EvDraggableSetSprite   = 0x300
