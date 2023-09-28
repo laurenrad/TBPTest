@@ -31,93 +31,93 @@ from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.events import toolbox_handler
 
 try:
-	from riscos_toolbox.gadgets.optionbutton import OptionButton, OptionButtonStateChangedEvent
-	
-	# Gadget Constants
-	G_OPTION   = 0x00
-	G_INPUT    = 0x04
-	G_INPUTOPT = 0x03
-	G_OUTPUT   = 0x05
+    from riscos_toolbox.gadgets.optionbutton import OptionButton, OptionButtonStateChangedEvent
+    
+    # Gadget Constants
+    G_OPTION   = 0x00
+    G_INPUT    = 0x04
+    G_INPUTOPT = 0x03
+    G_OUTPUT   = 0x05
 
-	class OptionButtonWindow(Window):
-		template = "OptButtnWin"
-	
-		def __init__(self, *args):
-			super().__init__(*args)
-	
-			self.g_option = OptionButton(self,G_OPTION)
-			self.g_inputopt = OptionButton(self,G_INPUTOPT)
-			self.g_input = WritableField(self,G_INPUT)
-			self.g_output = DisplayField(self,G_OUTPUT)
-	
-		## Methods for testing OptionButton
-		def optbutton_set_label(self):
-			self.g_option.label = self.g_input.value
-		
-		def optbutton_get_label(self):
-			self.g_output.value = self.g_option.label
-		
-		def optbutton_set_event(self):
-			# As in various other places, this is because I don't want to depend on 
-			# NumberRange since it isn't in upstream riscos_toolbox yet
-			try:
-				self.g_option.event = int(self.g_input.value)
-			except ValueError as e:
-				self.g_output.value = "Expected int input"
-		
-		def optbutton_get_event(self):
-			self.g_output.value = repr(self.g_option.event)
-		
-		def optbutton_set_state(self):
-			self.g_option.state = self.g_inputopt.state
-		
-		def optbutton_get_state(self):
-			self.g_output.value = repr(self.g_option.state)
-		
-		## Event handlers for OptionButton
-		@toolbox_handler(OptionButtonStateChangedEvent)
-		def OptButtonStateChanged(self,event,id_block,poll_block):
-			self.g_display.value = "Option state changed: "+repr(poll_block.new_state)
-	
-	class OptionButtonMenu(Menu,TestMenu):
-		template = "OptBttnMenu"
-	
-		## OptionButton event handlers
-		@toolbox_handler(EvOptButtonSetLabel)
-		def OptButtonSetLabel(self,event,id_block,poll_block):
-			window = toolbox.get_object(id_block.ancestor.id)
-			window.optbutton_set_label()
-			self.menu_tick(id_block.self.component)
-		
-		@toolbox_handler(EvOptButtonGetLabel)
-		def OptButtonGetLabel(self,event,id_block,poll_block):
-			window = toolbox.get_object(id_block.ancestor.id)
-			window.optbutton_get_label()
-			self.menu_tick(id_block.self.component)
-		
-		@toolbox_handler(EvOptButtonSetEvent)
-		def OptButtonSetEvent(self,event,id_block,poll_block):
-			window = toolbox.get_object(id_block.ancestor.id)
-			window.optbutton_set_event()
-			self.menu_tick(id_block.self.component)
-		
-		@toolbox_handler(EvOptButtonGetEvent)
-		def OptButtonGetEvent(self,event,id_block,poll_block):
-			window = toolbox.get_object(id_block.ancestor.id)
-			window.optbutton_get_event()
-			self.menu_tick(id_block.self.component)
-		
-		@toolbox_handler(EvOptButtonSetState)
-		def OptButtonSetState(self,event,id_block,poll_block):
-			window = toolbox.get_object(id_block.ancestor.id)
-			window.optbutton_set_state()
-			self.menu_tick(id_block.self.component)
-		
-		@toolbox_handler(EvOptButtonGetState)
-		def OptButtonGetState(self,event,id_block,poll_block):
-			window = toolbox.get_object(id_block.ancestor.id)
-			window.optbutton_get_state()
-			self.menu_tick(id_block.self.component)
-	
+    class OptionButtonWindow(Window):
+        template = "OptButtnWin"
+    
+        def __init__(self, *args):
+            super().__init__(*args)
+    
+            self.g_option = OptionButton(self,G_OPTION)
+            self.g_inputopt = OptionButton(self,G_INPUTOPT)
+            self.g_input = WritableField(self,G_INPUT)
+            self.g_output = DisplayField(self,G_OUTPUT)
+    
+        ## Methods for testing OptionButton
+        def optbutton_set_label(self):
+            self.g_option.label = self.g_input.value
+        
+        def optbutton_get_label(self):
+            self.g_output.value = self.g_option.label
+        
+        def optbutton_set_event(self):
+            # As in various other places, this is because I don't want to depend on 
+            # NumberRange since it isn't in upstream riscos_toolbox yet
+            try:
+                self.g_option.event = int(self.g_input.value)
+            except ValueError as e:
+                self.g_output.value = "Expected int input"
+        
+        def optbutton_get_event(self):
+            self.g_output.value = repr(self.g_option.event)
+        
+        def optbutton_set_state(self):
+            self.g_option.state = self.g_inputopt.state
+        
+        def optbutton_get_state(self):
+            self.g_output.value = repr(self.g_option.state)
+        
+        ## Event handlers for OptionButton
+        @toolbox_handler(OptionButtonStateChangedEvent)
+        def OptButtonStateChanged(self,event,id_block,poll_block):
+            self.g_display.value = "Option state changed: "+repr(poll_block.new_state)
+    
+    class OptionButtonMenu(Menu,TestMenu):
+        template = "OptBttnMenu"
+    
+        ## OptionButton event handlers
+        @toolbox_handler(EvOptButtonSetLabel)
+        def OptButtonSetLabel(self,event,id_block,poll_block):
+            window = toolbox.get_object(id_block.ancestor.id)
+            window.optbutton_set_label()
+            self.menu_tick(id_block.self.component)
+        
+        @toolbox_handler(EvOptButtonGetLabel)
+        def OptButtonGetLabel(self,event,id_block,poll_block):
+            window = toolbox.get_object(id_block.ancestor.id)
+            window.optbutton_get_label()
+            self.menu_tick(id_block.self.component)
+        
+        @toolbox_handler(EvOptButtonSetEvent)
+        def OptButtonSetEvent(self,event,id_block,poll_block):
+            window = toolbox.get_object(id_block.ancestor.id)
+            window.optbutton_set_event()
+            self.menu_tick(id_block.self.component)
+        
+        @toolbox_handler(EvOptButtonGetEvent)
+        def OptButtonGetEvent(self,event,id_block,poll_block):
+            window = toolbox.get_object(id_block.ancestor.id)
+            window.optbutton_get_event()
+            self.menu_tick(id_block.self.component)
+        
+        @toolbox_handler(EvOptButtonSetState)
+        def OptButtonSetState(self,event,id_block,poll_block):
+            window = toolbox.get_object(id_block.ancestor.id)
+            window.optbutton_set_state()
+            self.menu_tick(id_block.self.component)
+        
+        @toolbox_handler(EvOptButtonGetState)
+        def OptButtonGetState(self,event,id_block,poll_block):
+            window = toolbox.get_object(id_block.ancestor.id)
+            window.optbutton_get_state()
+            self.menu_tick(id_block.self.component)
+    
 except ModuleNotFoundError as e:
-	Reporter.print("No OptionButton object in riscos_toolbox")	
+    Reporter.print("No OptionButton object in riscos_toolbox")    
