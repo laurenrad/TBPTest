@@ -44,4 +44,4 @@ RMEnsure PrintDbox 0.03 Error You need PrintDbox 0.10 or later to run !RLook
 
 IconSprites <TBPTest$Dir>.!Sprites
 WimpSlot -Min 32K -Max 32K
-Run <TBPTest$Dir>.!RunImage
+python3 <TBPTest$Dir>.!RunImage
