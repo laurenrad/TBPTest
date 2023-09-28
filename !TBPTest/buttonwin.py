@@ -36,6 +36,8 @@ from riscos_toolbox.events import toolbox_handler
 # Gadget Constants
 G_BUTTON = 0x00
 G_INPUT  = 0x04
+G_INPUT2 = 0x07
+G_INPUT3 = 0x09
 G_OUTPUT = 0x05
 
 class ButtonWindow(Window):
@@ -46,14 +48,19 @@ class ButtonWindow(Window):
         
         self.g_button = Button(self,G_BUTTON)
         self.g_input = WritableField(self,G_INPUT)
+        self.g_input2 = WritableField(self,G_INPUT2)
+        self.g_input3 = WritableField(self,G_INPUT3)
         self.g_output = DisplayField(self,G_OUTPUT)
     
     # Methods for testing Button
     def button_set_flags(self):
-        pass # Not yet implemented
+        try:
+            self.g_button.icon_flags = int(self.g_input.value)
+        except ValueError as e:
+            self.g_output.value = "Int input required"
         
     def button_get_flags(self):
-        pass # Not yet implemented
+        self.g_output.value = "Flags: "+hex(self.g_button.icon_flags)
         
     def button_set_value(self):
         self.g_button.value = self.g_input.value
@@ -68,10 +75,19 @@ class ButtonWindow(Window):
         self.g_output.value = self.g_button.validation
         
     def button_set_font(self):
-        pass # Not yet implemented
+        name = self.g_input.value
+        try:
+            width = int(self.g_input2.value)
+            height = int(self.g_input3.value)
+        except ValueError as e:
+            self.g_output.value = "Int input required"
+        else:
+            #self.g_button.font = (name, width, height) # old property
+            self.g_button.set_font(name,width,height)
         
     def button_get_font(self):
-        pass # Not yet implemented
+        font = self.g_button.font
+        Reporter.print(f"font info: {repr(font)}")
     
         
 class ButtonMenu(Menu,TestMenu):
