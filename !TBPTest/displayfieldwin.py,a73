@@ -37,36 +37,36 @@ G_INPUT        = 0x04
 G_OUTPUT       = 0x05
 
 class DisplayFieldWindow(Window):
-	template = "DspFieldWin"
-	
-	def __init__(self, *args):
-		super().__init__(*args)
-		
-		self.g_displayfield = DisplayField(self,G_DISPLAYFIELD)
-		self.g_input = WritableField(self,G_INPUT)
-		self.g_output = DisplayField(self,G_OUTPUT)
-		
-	# Methods for testing DisplayField
-	
-	def displayfield_set_value(self):
-		self.g_displayfield.value = self.g_input.value
-		
-	def displayfield_get_value(self):
-		self.g_output.value = self.g_displayfield.value
-		
+    template = "DspFieldWin"
+    
+    def __init__(self, *args):
+        super().__init__(*args)
+        
+        self.g_displayfield = DisplayField(self,G_DISPLAYFIELD)
+        self.g_input = WritableField(self,G_INPUT)
+        self.g_output = DisplayField(self,G_OUTPUT)
+        
+    # Methods for testing DisplayField
+    
+    def displayfield_set_value(self):
+        self.g_displayfield.value = self.g_input.value
+        
+    def displayfield_get_value(self):
+        self.g_output.value = self.g_displayfield.value
+        
 class DisplayFieldMenu(Menu,TestMenu):
-	template = "DispFldMenu"
-	
-	## DisplayField event handlers
-	@toolbox_handler(EvDisplayFieldSetValue)
-	def DisplayFieldSetValue(self,event,id_block,poll_block):
-		window = toolbox.get_object(id_block.ancestor.id)
-		window.displayfield_set_value()
-		self.menu_tick(id_block.self.component)
-		
-	@toolbox_handler(EvDisplayFieldGetValue)
-	def DisplayFieldGetValue(self,event,id_block,poll_block):
-		window = toolbox.get_object(id_block.ancestor.id)
-		window.displayfield_get_value()
-		self.menu_tick(id_block.self.component)
-		
+    template = "DispFldMenu"
+    
+    ## DisplayField event handlers
+    @toolbox_handler(EvDisplayFieldSetValue)
+    def DisplayFieldSetValue(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.displayfield_set_value()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvDisplayFieldGetValue)
+    def DisplayFieldGetValue(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.displayfield_get_value()
+        self.menu_tick(id_block.self.component)
+        
