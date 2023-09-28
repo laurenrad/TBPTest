@@ -89,8 +89,6 @@ EvWritableFieldSetText      = 0x700
 EvWritableFieldGetText      = 0x701
 EvWritableFieldSetAllow     = 0x702
 EvWritableFieldGetAllow     = 0x703
-# Writable field events (Raised by Toolbox)
-EvWritableFieldValueChanged = 0x82885
 
 # Action button test events
 EvActionButtonSetText       = 0x800

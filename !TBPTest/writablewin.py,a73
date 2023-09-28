@@ -29,7 +29,7 @@ from reporter import Reporter
 import riscos_toolbox as toolbox
 from riscos_toolbox.objects.menu import Menu
 from riscos_toolbox.objects.window import Window
-from riscos_toolbox.gadgets.writablefield import WritableField
+from riscos_toolbox.gadgets.writablefield import WritableField, WritableFieldValueChangedEvent
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.events import toolbox_handler, wimp_handler, message_handler
 
@@ -69,9 +69,9 @@ class WritableWindow(Window):
 		self.g_output.value = self.g_writable.allowable
 	
 	# Event handlers for WritableField
-	@toolbox_handler(EvWritableFieldValueChanged)
+	@toolbox_handler(WritableFieldValueChangedEvent)
 	def WritableFieldValueChanged(self,event,id_block,poll_block):
-		self.g_output.value = "Writable field change: "
+		self.g_output.value = "Writable field change: "+repr(poll_block.string)
 			
 class WritableFieldMenu(Menu,TestMenu):
 	template = "WritFldMenu"
