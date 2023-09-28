@@ -72,7 +72,7 @@ class ActionButtonWindow(Window):
             self.g_output.value = "Int input required"
         
     def actionbutton_get_event(self):
-        self.g_output.value = repr(self.g_actionbutton.event)
+        self.g_output.value = repr(self.g_actionbutton.click_show)
         
     def actionbutton_set_click_show(self):
         try:
@@ -81,7 +81,7 @@ class ActionButtonWindow(Window):
             self.g_output.value = "Int input required"
         
     def actionbutton_get_click_show(self):
-        self.g_output = repr(self.g_actionbutton.click_show)
+        self.g_output.value = repr(self.g_actionbutton.click_show)
         
     # Event handlers for ActionButton
     @toolbox_handler(EvActionButtonSelected)
