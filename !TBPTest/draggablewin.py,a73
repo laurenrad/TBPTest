@@ -30,110 +30,110 @@ from riscos_toolbox.gadgets.writablefield import WritableField
 from tbox_const import *
 from tbox_common import TestMenu
 try:
-	from riscos_toolbox.gadgets.draggable import Draggable
-	from riscos_toolbox.gadgets.draggable import DraggableDragStartedEvent
-	from riscos_toolbox.gadgets.draggable import DraggableDragEndedEvent
+    from riscos_toolbox.gadgets.draggable import Draggable
+    from riscos_toolbox.gadgets.draggable import DraggableDragStartedEvent
+    from riscos_toolbox.gadgets.draggable import DraggableDragEndedEvent
 
-	# Gadget Constants
-	G_DRAGGABLE = 0x00
-	G_INPUT     = 0x04
-	G_OUTPUT    = 0x05
+    # Gadget Constants
+    G_DRAGGABLE = 0x00
+    G_INPUT     = 0x04
+    G_OUTPUT    = 0x05
 
-	class DraggableWindow(Window):
-		template = "DrggableWin"
-	
-		def __init__(self, *args):
-			super().__init__(*args)
-		
-			# Set up gadgets
-			self.g_draggable = Draggable(self,G_DRAGGABLE)
-			self.g_input = WritableField(self,G_INPUT)
-			self.g_output = DisplayField(self,G_OUTPUT)
-		
-		## Methods for testing draggable ops
-	
-		def draggable_get_text(self):
-			self.g_output.value = "Draggable text: " + self.g_draggable.text
-	
-		def draggable_set_text(self):
-			self.g_draggable.text = self.g_input.value
-		
-		def draggable_get_sprite(self):
-			self.g_output.value = "Draggable sprite: " + self.g_draggable.sprite
+    class DraggableWindow(Window):
+        template = "DrggableWin"
+    
+        def __init__(self, *args):
+            super().__init__(*args)
+        
+            # Set up gadgets
+            self.g_draggable = Draggable(self,G_DRAGGABLE)
+            self.g_input = WritableField(self,G_INPUT)
+            self.g_output = DisplayField(self,G_OUTPUT)
+        
+        ## Methods for testing draggable ops
+    
+        def draggable_get_text(self):
+            self.g_output.value = "Draggable text: " + self.g_draggable.text
+    
+        def draggable_set_text(self):
+            self.g_draggable.text = self.g_input.value
+        
+        def draggable_get_sprite(self):
+            self.g_output.value = "Draggable sprite: " + self.g_draggable.sprite
 
-		def draggable_set_sprite(self):
-			self.g_draggable.sprite = self.g_input.value
-					
-		# Output draggable state to display field
-		def draggable_get_state(self):
-			self.g_output.value = "Draggable state: " + repr(self.g_draggable.state)
-		
-		# Set draggable state to whatever is in input field
-		def draggable_set_state(self):
-			try:
-				self.g_draggable.state = int(self.g_input.value)
-			except ValueError as e:
-				self.g_output.value = "Int value expected"
-		
-		## Draggable Event handlers 
-	
-		# Draggable Drag Started Event
-		@toolbox_handler(DraggableDragStartedEvent)
-		def DraggableDragStarted(self,event,id_block,poll_block):
-			self.g_output.value = "Drag started"
-		
-		# Draggable Drag Ended Event
-		@toolbox_handler(DraggableDragEndedEvent)
-		def DraggableDragEnded(self,event,id_block,poll_block):
-			self.g_output.value = f"Drag ended: window={poll_block.window_handle} icon={poll_block.icon_handle} x={poll_block.x} y={poll_block.y}"
+        def draggable_set_sprite(self):
+            self.g_draggable.sprite = self.g_input.value
+                    
+        # Output draggable state to display field
+        def draggable_get_state(self):
+            self.g_output.value = "Draggable state: " + repr(self.g_draggable.state)
+        
+        # Set draggable state to whatever is in input field
+        def draggable_set_state(self):
+            try:
+                self.g_draggable.state = int(self.g_input.value)
+            except ValueError as e:
+                self.g_output.value = "Int value expected"
+        
+        ## Draggable Event handlers 
+    
+        # Draggable Drag Started Event
+        @toolbox_handler(DraggableDragStartedEvent)
+        def DraggableDragStarted(self,event,id_block,poll_block):
+            self.g_output.value = "Drag started"
+        
+        # Draggable Drag Ended Event
+        @toolbox_handler(DraggableDragEndedEvent)
+        def DraggableDragEnded(self,event,id_block,poll_block):
+            self.g_output.value = f"Drag ended: window={poll_block.window_handle} icon={poll_block.icon_handle} x={poll_block.x} y={poll_block.y}"
 
-	class DrgableMenu(Menu,TestMenu):
-		template = "DrgableMenu"
-	
-		## Draggable Event handlers
-		
-		# Draggable Get Text
-		@toolbox_handler(EvDraggableGetText)
-		def DraggableGetText(self,event,id_block,poll_block):
-			window = toolbox.get_object(id_block.ancestor.id)
-			window.draggable_get_text()
-			self.menu_tick(id_block.self.component)
-		
-		# Draggable Set Text
-		@toolbox_handler(EvDraggableSetText)
-		def DraggableSetText(self,event,id_block,poll_block):
-			window = toolbox.get_object(id_block.ancestor.id)
-			window.draggable_set_text()
-			self.menu_tick(id_block.self.component)
-		
-		# Draggable Get Sprite
-		@toolbox_handler(EvDraggableGetSprite)
-		def DraggableGetSprite(self,event,id_block,poll_block):
-			window = toolbox.get_object(id_block.ancestor.id)
-			window.draggable_get_sprite()
-			self.menu_tick(id_block.self.component)
-		
-		# Draggable Set Sprite
-		@toolbox_handler(EvDraggableSetSprite)
-		def DraggableSetSprite(self,event,id_block,poll_block):
-			window = toolbox.get_object(id_block.ancestor.id)
-			window.draggable_set_sprite()
-			self.menu_tick(id_block.self.component)
-		
-		# Draggable Get State
-		@toolbox_handler(EvDraggableGetState)
-		def DraggableGetState(self,event,id_block,poll_block):
-			window = toolbox.get_object(id_block.ancestor.id)
-			window.draggable_get_state()
-			self.menu_tick(id_block.self.component)
-		
-		# Draggable Set State
-		@toolbox_handler(EvDraggableSetState)
-		def DraggableSetState(self,event,id_block,poll_block):
-			window = toolbox.get_object(id_block.ancestor.id)
-			window.draggable_set_state()
-			self.menu_tick(id_block.self.component)
-		
-			
+    class DrgableMenu(Menu,TestMenu):
+        template = "DrgableMenu"
+    
+        ## Draggable Event handlers
+        
+        # Draggable Get Text
+        @toolbox_handler(EvDraggableGetText)
+        def DraggableGetText(self,event,id_block,poll_block):
+            window = toolbox.get_object(id_block.ancestor.id)
+            window.draggable_get_text()
+            self.menu_tick(id_block.self.component)
+        
+        # Draggable Set Text
+        @toolbox_handler(EvDraggableSetText)
+        def DraggableSetText(self,event,id_block,poll_block):
+            window = toolbox.get_object(id_block.ancestor.id)
+            window.draggable_set_text()
+            self.menu_tick(id_block.self.component)
+        
+        # Draggable Get Sprite
+        @toolbox_handler(EvDraggableGetSprite)
+        def DraggableGetSprite(self,event,id_block,poll_block):
+            window = toolbox.get_object(id_block.ancestor.id)
+            window.draggable_get_sprite()
+            self.menu_tick(id_block.self.component)
+        
+        # Draggable Set Sprite
+        @toolbox_handler(EvDraggableSetSprite)
+        def DraggableSetSprite(self,event,id_block,poll_block):
+            window = toolbox.get_object(id_block.ancestor.id)
+            window.draggable_set_sprite()
+            self.menu_tick(id_block.self.component)
+        
+        # Draggable Get State
+        @toolbox_handler(EvDraggableGetState)
+        def DraggableGetState(self,event,id_block,poll_block):
+            window = toolbox.get_object(id_block.ancestor.id)
+            window.draggable_get_state()
+            self.menu_tick(id_block.self.component)
+        
+        # Draggable Set State
+        @toolbox_handler(EvDraggableSetState)
+        def DraggableSetState(self,event,id_block,poll_block):
+            window = toolbox.get_object(id_block.ancestor.id)
+            window.draggable_set_state()
+            self.menu_tick(id_block.self.component)
+        
+            
 except ModuleNotFoundError as e:
-	Reporter.print("No Draggable object in riscos_toolbox")
+    Reporter.print("No Draggable object in riscos_toolbox")
