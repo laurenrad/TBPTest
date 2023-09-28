@@ -24,5 +24,5 @@ import swi
 
 # A mixin to add a menu tick function, since I don't believe it's in the Menu object?
 class TestMenu():
-	def menu_tick(self, component):
-		swi.swi('Toolbox_ObjectMiscOp','0i0ii',self.id,component,1)
+    def menu_tick(self, component):
+        swi.swi('Toolbox_ObjectMiscOp','0i0ii',self.id,component,1)
