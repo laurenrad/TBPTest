@@ -39,89 +39,89 @@ G_INPUT  = 0x04
 G_OUTPUT = 0x05
 
 class ButtonWindow(Window):
-	template = "ButtonWin"
-	
-	def __init__(self, *args):
-		super().__init__(*args)
-		
-		self.g_button = Button(self,G_BUTTON)
-		self.g_input = WritableField(self,G_INPUT)
-		self.g_output = DisplayField(self,G_OUTPUT)
-	
-	# Methods for testing Button
-	def button_set_flags(self):
-		pass # Not yet implemented
-		
-	def button_get_flags(self):
-		pass # Not yet implemented
-		
-	def button_set_value(self):
-		self.g_button.value = self.g_input.value
-		
-	def button_get_value(self):
-		self.g_output.value = self.g_button.value
-		
-	def button_set_validation(self):
-		self.g_button.validation = self.g_input.value
-		
-	def button_get_validation(self):
-		self.g_output.value = self.g_button.validation
-		
-	def button_set_font(self):
-		pass # Not yet implemented
-		
-	def button_get_font(self):
-		pass # Not yet implemented
-	
-		
+    template = "ButtonWin"
+    
+    def __init__(self, *args):
+        super().__init__(*args)
+        
+        self.g_button = Button(self,G_BUTTON)
+        self.g_input = WritableField(self,G_INPUT)
+        self.g_output = DisplayField(self,G_OUTPUT)
+    
+    # Methods for testing Button
+    def button_set_flags(self):
+        pass # Not yet implemented
+        
+    def button_get_flags(self):
+        pass # Not yet implemented
+        
+    def button_set_value(self):
+        self.g_button.value = self.g_input.value
+        
+    def button_get_value(self):
+        self.g_output.value = self.g_button.value
+        
+    def button_set_validation(self):
+        self.g_button.validation = self.g_input.value
+        
+    def button_get_validation(self):
+        self.g_output.value = self.g_button.validation
+        
+    def button_set_font(self):
+        pass # Not yet implemented
+        
+    def button_get_font(self):
+        pass # Not yet implemented
+    
+        
 class ButtonMenu(Menu,TestMenu):
-	template = "ButtonMenu"
-	
-	## Button event handlers
-	@toolbox_handler(EvButtonSetFlags)
-	def ButtonSetFlags(self,event,id_block,poll_block):
-		window = toolbox.get_object(id_block.ancestor.id)
-		window.button_set_flags()
-		self.menu_tick(id_block.self.component)
-	
-	@toolbox_handler(EvButtonGetFlags)
-	def ButtonGetFlags(self,event,id_block,poll_block):
-		window = toolbox.get_object(id_block.ancestor.id)
-		window.button_get_flags()
-		self.menu_tick(id_block.self.component)
+    template = "ButtonMenu"
+    
+    ## Button event handlers
+    @toolbox_handler(EvButtonSetFlags)
+    def ButtonSetFlags(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.button_set_flags()
+        self.menu_tick(id_block.self.component)
+    
+    @toolbox_handler(EvButtonGetFlags)
+    def ButtonGetFlags(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.button_get_flags()
+        self.menu_tick(id_block.self.component)
 
-	@toolbox_handler(EvButtonSetValue)
-	def ButtonSetValue(self,event,id_block,poll_block):
-		window = toolbox.get_object(id_block.ancestor.id)
-		window.button_set_value()
-		self.menu_tick(id_block.self.component)
-		
-	@toolbox_handler(EvButtonGetValue)
-	def ButtonGetValue(self,event,id_block,poll_block):
-		window = toolbox.get_object(id_block.ancestor.id)
-		window.button_get_value()
-		self.menu_tick(id_block.self.component)
-		
-	@toolbox_handler(EvButtonSetValidation)
-	def ButtonSetValidation(self,event,id_block,poll_block):
-		window = toolbox.get_object(id_block.ancestor.id)
-		window.button_set_validation()
-		self.menu_tick(id_block.self.component)
-		
-	@toolbox_handler(EvButtonGetValidation)
-	def ButtonGetValidation(self,event,id_block,poll_block):
-		window = toolbox.get_object(id_block.ancestor.id)
-		window.button_get_validation()
-		self.menu_tick(id_block.self.component)
-		
-	@toolbox_handler(EvButtonSetFont)
-	def ButtonSetFont(self,event,id_block,poll_block):
-		window = toolbox.get_object(id_block.ancestor.id)
-		window.button_set_font()
-		self.menu_tick(id_block.self.component)
-		
-	@toolbox_handler(EvButtonGetFont)
-	def ButtonGetFont(self,event,id_block,poll_block):
-		window = toolbox.get_object(id_block.ancestor.id)
-		window.button_get_font()
-		self.menu_tick(id_block.self.component)
+    @toolbox_handler(EvButtonSetValue)
+    def ButtonSetValue(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.button_set_value()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvButtonGetValue)
+    def ButtonGetValue(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.button_get_value()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvButtonSetValidation)
+    def ButtonSetValidation(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.button_set_validation()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvButtonGetValidation)
+    def ButtonGetValidation(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.button_get_validation()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvButtonSetFont)
+    def ButtonSetFont(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.button_set_font()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvButtonGetFont)
+    def ButtonGetFont(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.button_get_font()
+        self.menu_tick(id_block.self.component)
