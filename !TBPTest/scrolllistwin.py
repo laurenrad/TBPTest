@@ -35,6 +35,7 @@ from tbox_common import TestMenu
 G_SCROLLLIST = 0x01
 G_INPUT1     = 0x03
 G_INPUT2     = 0x05
+G_INPUT3     = 0x0B
 G_OUTPUT     = 0x08
 
 class ScrollListWindow(Window):
@@ -47,6 +48,7 @@ class ScrollListWindow(Window):
         self.g_scrolllist = ScrollList(self,G_SCROLLLIST)
         self.g_input1 = WritableField(self,G_INPUT1)
         self.g_input2 = WritableField(self,G_INPUT2)
+        self.g_input3 = WritableField(self,G_INPUT3)
         self.g_output = DisplayField(self,G_OUTPUT)
         
     # Test operations for ScrollList
@@ -98,6 +100,44 @@ class ScrollListWindow(Window):
             
     def scrolllist_get_multisel(self):
         self.g_output.value = repr(self.g_scrolllist.multisel)
+        
+    def scrolllist_select_item(self):
+        try:
+            index = int(self.g_input1.value)
+            all = int(self.g_input2.value)
+            send_event = int(self.g_input3.value)
+            self.g_scrolllist.select_item(index,all,send_event)
+        except ValueError as e:
+            self.g_output.value = "Err: Expected ints"
+            
+    def scrolllist_deselect_item(self):
+        try:
+            index = int(self.g_input1.value)
+            all = int(self.g_input2.value)
+            send_event = int(self.g_input3.value)
+            self.g_scrolllist.deselect_item(index,all,send_event)
+        except ValueError as e:
+            self.g_output.value = "Err: Expected ints"
+        
+    def scrolllist_count_items(self):
+        self.g_output.value = repr(self.g_scrolllist.count_items())
+        
+    def scrolllist_set_font(self):
+        name = self.g_input1.value
+        try:
+            width = int(self.g_input2.value)
+            height = int(self.g_input3.value)
+        except ValueError as e:
+            self.g_output.value = "Err: Expected in in Input 2 and 3"
+        else:
+            self.g_scrolllist.set_font(name,width,height)
+            
+    def scrolllist_populate(self):
+        items = ( 'Nashville', 'Seattle', 'El Paso', 'Los Angeles', 'Portland',
+                  'New York', 'Chicago', 'Atlanta', 'San Francisco', 'San Diego',
+                  'Boston', 'Washington D.C.', 'Dallas', 'Houston', 'Denver' )
+        for item in items:
+            self.g_scrolllist.add_item(item,-1)
     
     # Event handlers
     @toolbox_handler(ScrollListSelectionEvent)
@@ -155,4 +195,34 @@ class ScrollListMenu(Menu,TestMenu):
     def _scrolllist_get_multisel(self,event,id_block,poll_block):
         window = toolbox.get_object(id_block.ancestor.id)
         window.scrolllist_get_multisel()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvScrollListCountItems)
+    def _scrolllist_count_items(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.scrolllist_count_items()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvScrollListSelectItem)
+    def _scrolllist_select_item(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.scrolllist_select_item()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvScrollListDeselectItem)
+    def _scrolllist_deselect_item(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.scrolllist_deselect_item()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvScrollListSetFont)
+    def _scrolllist_set_font(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.scrolllist_set_font()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvScrollListPopulate)
+    def _scrolllist_populate(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.scrolllist_populate()
         self.menu_tick(id_block.self.component)
