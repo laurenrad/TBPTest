@@ -21,6 +21,7 @@
 # SOFTWARE.
 
 import traceback
+import swi
 
 from reporter import Reporter
 from tbox_const import *
@@ -83,7 +84,11 @@ class ButtonWindow(Window):
             self.g_output.value = "Int input required"
         else:
             #self.g_button.font = (name, width, height) # old property
-            self.g_button.set_font(name,width,height)    
+            self.g_button.set_font(name,width,height)
+            
+    def button_get_font(self):
+        font_handle = swi.swi('Toolbox_ObjectMiscOp','0iIi;i',self.id,967,self.g_button.id)
+        Reporter.print(f"Got back {font_handle} from GetFont")
         
 class ButtonMenu(Menu,TestMenu):
     template = "ButtonMenu"
@@ -129,4 +134,10 @@ class ButtonMenu(Menu,TestMenu):
     def ButtonSetFont(self,event,id_block,poll_block):
         window = toolbox.get_object(id_block.ancestor.id)
         window.button_set_font()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvButtonGetFont)
+    def ButtonGetFont(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.button_get_font()
         self.menu_tick(id_block.self.component)

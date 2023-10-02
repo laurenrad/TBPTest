@@ -108,6 +108,7 @@ EvButtonGetValue            = 0x903
 EvButtonSetValidation       = 0x904
 EvButtonGetValidation       = 0x905
 EvButtonSetFont             = 0x906
+EvButtonGetFont             = 0x907
 
 # Scroll List test events - these aren't to be implemented yet
 EvScrollListSetState         = 0xA00
