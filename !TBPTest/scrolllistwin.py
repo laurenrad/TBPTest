@@ -101,6 +101,36 @@ class ScrollListWindow(Window):
     def scrolllist_get_multisel(self):
         self.g_output.value = repr(self.g_scrolllist.multisel)
         
+    def scrolllist_set_colour(self):
+        try:
+            fg = int(self.g_input1.value)
+            bg = int(self.g_input2.value)
+        except ValueError as e:
+            self.g_output.value = "Err: Expected int in Input 1+2"
+        else:
+            self.g_scrolllist.colour = (fg,bg)
+        
+    def scrolllist_get_colour(self):
+        fg, bg = self.g_scrolllist.colour
+        self.g_output.value = f"fg={hex(fg)}, bg={hex(bg)}"
+        
+    def scrolllist_set_item_text(self):
+        text = self.g_input2.value
+        try:
+            index = int(self.g_input1.value)
+        except ValueError as e:
+            self.g_output.value = "Err: Expected int in Input 1"
+        else:
+            self.g_scrolllist.set_item_text(index,text)
+            
+    def scrolllist_get_item_text(self):
+        try:
+            index = int(self.g_input1.value)
+        except ValueError as e:
+            self.g_output.value = "Err: Expected int in Input 1"
+        else:
+            self.g_output.value = self.g_scrolllist.get_item_text(index)
+        
     def scrolllist_select_item(self):
         try:
             index = int(self.g_input1.value)
@@ -197,10 +227,34 @@ class ScrollListMenu(Menu,TestMenu):
         window.scrolllist_get_multisel()
         self.menu_tick(id_block.self.component)
         
+    @toolbox_handler(EvScrollListSetColour)
+    def _scrolllist_set_colour(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.scrolllist_set_colour()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvScrollListGetColour)
+    def _scrolllist_get_colour(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.scrolllist_get_colour()
+        self.menu_tick(id_block.self.component)
+        
     @toolbox_handler(EvScrollListCountItems)
     def _scrolllist_count_items(self,event,id_block,poll_block):
         window = toolbox.get_object(id_block.ancestor.id)
         window.scrolllist_count_items()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvScrollListGetItemText)
+    def _scrolllist_get_item_text(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.scrolllist_get_item_text()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvScrollListSetItemText)
+    def _scrolllist_set_item_text(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.scrolllist_set_item_text()
         self.menu_tick(id_block.self.component)
         
     @toolbox_handler(EvScrollListSelectItem)

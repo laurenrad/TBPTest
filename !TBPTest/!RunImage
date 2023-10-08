@@ -44,6 +44,7 @@ import stringsetwin
 import popupwin
 import scrolllistwin
 import textareawin
+import mainwin
 
 # Constants
 EV_MENU_QUIT = 0x100 # Event for quitting from the iconbar menu

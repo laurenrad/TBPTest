@@ -164,3 +164,6 @@ EvStringSetSetFont           = 0xD08
 # PopUp test events
 EvPopUpSetMenu               = 0xE00
 EvPopUpGetMenu               = 0xE01
+
+# Main Window Test EEvents
+EvMainTestButton             = 0xF00
