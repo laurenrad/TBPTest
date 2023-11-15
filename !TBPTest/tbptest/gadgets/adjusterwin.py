@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from reporter import Reporter
+from tbptest.reporter import Reporter
 
 import riscos_toolbox as toolbox
 from riscos_toolbox.objects.menu import Menu

@@ -20,14 +20,16 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from reporter import Reporter
+import ctypes
+import swi
+
+from tbptest.reporter import Reporter
+from tbptest.tbox_const import *
+
 from riscos_toolbox.objects.window import Window
 from riscos_toolbox.events import toolbox_handler
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.events import UserMessage
-import ctypes
-import swi
-from tbox_const import *
 
 class HelpReplyMessage(UserMessage):
     event_id = 0x503

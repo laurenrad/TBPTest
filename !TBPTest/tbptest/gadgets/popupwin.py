@@ -1,4 +1,3 @@
-
 # MIT License
 
 # Copyright (c) 2023 Lauren Rad
@@ -21,15 +20,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from reporter import Reporter
+from tbptest.reporter import Reporter
+from tbptest.tbox_const import *
+from tbptest.tbox_common import TestMenu
+
 import riscos_toolbox as toolbox
 from riscos_toolbox.events import toolbox_handler
 from riscos_toolbox.objects.menu import Menu
 from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.writablefield import WritableField
-from tbox_const import *
-from tbox_common import TestMenu
+
 try:
     from riscos_toolbox.gadgets.popup import PopUp, PopUpAboutToBeShownEvent
 except ModuleNotFoundError as e:

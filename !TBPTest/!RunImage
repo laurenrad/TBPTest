@@ -30,21 +30,21 @@ from riscos_toolbox.application import Application
 from riscos_toolbox.events import toolbox_handler, wimp_handler, message_handler
 import riscos_toolbox.user_messages as Messages
 
-import writablewin
-import numrangewin
-import buttonwin
-import actionbuttonwin
-import displayfieldwin
-import draggablewin
-import optionbuttonwin
-import sliderwin
-import radiobuttonwin
-import adjusterwin
-import stringsetwin
-import popupwin
-import scrolllistwin
-import textareawin
-import mainwin
+import tbptest.gadgets.writablewin as writablewin
+import tbptest.gadgets.numrangewin as numrangewin
+import tbptest.gadgets.buttonwin as buttonwin
+import tbptest.gadgets.actionbuttonwin as actionbuttonwin
+import tbptest.gadgets.displayfieldwin as displayfieldwin
+import tbptest.gadgets.draggablewin as draggablewin
+import tbptest.gadgets.optionbuttonwin as optionbuttonwin
+import tbptest.gadgets.sliderwin as sliderwin
+import tbptest.gadgets.radiobuttonwin as radiobuttonwin
+import tbptest.gadgets.adjusterwin as adjusterwin
+import tbptest.gadgets.stringsetwin as stringsetwin
+import tbptest.gadgets.popupwin as popupwin
+import tbptest.gadgets.scrolllistwin as scrolllistwin
+import tbptest.gadgets.textareawin as textareawin
+import tbptest.mainwin as mainwin
 
 # Constants
 EV_MENU_QUIT = 0x100 # Event for quitting from the iconbar menu

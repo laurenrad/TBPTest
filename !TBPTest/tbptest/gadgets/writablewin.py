@@ -22,9 +22,9 @@
 
 import traceback
 
-from tbox_const import *
-from tbox_common import TestMenu
-from reporter import Reporter
+from tbptest.reporter import Reporter
+from tbptest.tbox_const import *
+from tbptest.tbox_common import TestMenu
 
 import riscos_toolbox as toolbox
 from riscos_toolbox.objects.menu import Menu
