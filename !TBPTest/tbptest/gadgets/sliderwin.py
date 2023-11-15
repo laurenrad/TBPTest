@@ -31,146 +31,141 @@ from riscos_toolbox.objects.menu import Menu
 from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.writablefield import WritableField
+from riscos_toolbox.gadgets.slider import Slider, SliderValueChangedEvent
+    
+# Gadget constants
+G_SLIDER = 0x00
+G_INPUT  = 0x01
+G_INPUT2 = 0x06
+G_OUTPUT = 0x02
 
-try:
-    from riscos_toolbox.gadgets.slider import Slider, SliderValueChangedEvent
+class SliderWindow(Window):
+    template = "SliderWin"
     
-    # Gadget constants
-    G_SLIDER = 0x00
-    G_INPUT  = 0x01
-    G_INPUT2 = 0x06
-    G_OUTPUT = 0x02
+    def __init__(self, *args):
+        super().__init__(*args)
+        
+        # Set up gadgets
+        self.g_slider = Slider(self,G_SLIDER)
+        self.g_input = WritableField(self,G_INPUT)
+        self.g_input2 = WritableField(self,G_INPUT2)
+        self.g_output = DisplayField(self,G_OUTPUT)
+        
+    ## Methods for testing slider ops
+    def slider_set_value(self):
+        try:
+            self.g_slider.value = int(self.g_input.value)
+        except ValueError as e:
+            self.g_output.value = "Err: int value expected"
     
-    class SliderWindow(Window):
-        template = "SliderWin"
+    def slider_get_value(self):
+        self.g_output.value = repr(self.g_slider.value)
         
-        def __init__(self, *args):
-            super().__init__(*args)
+    def slider_set_lower_bound(self):
+        try:
+            self.g_slider.lower_bound = int(self.g_input.value)
+        except ValueError as e:
+            self.g_output.value = "Err: int value expected"
             
-            # Set up gadgets
-            self.g_slider = Slider(self,G_SLIDER)
-            self.g_input = WritableField(self,G_INPUT)
-            self.g_input2 = WritableField(self,G_INPUT2)
-            self.g_output = DisplayField(self,G_OUTPUT)
-            
-        ## Methods for testing slider ops
-        def slider_set_value(self):
-            try:
-                self.g_slider.value = int(self.g_input.value)
-            except ValueError as e:
-                self.g_output.value = "Err: int value expected"
+    def slider_get_lower_bound(self):
+        self.g_output.value = repr(self.g_slider.lower_bound)
         
-        def slider_get_value(self):
-            self.g_output.value = repr(self.g_slider.value)
+    def slider_set_upper_bound(self):
+        try:
+            self.g_slider.upper_bound = int(self.g_input.value)
+        except ValueError as e:
+            self.g_output.value = "Err: int value expected"
             
-        def slider_set_lower_bound(self):
-            try:
-                self.g_slider.lower_bound = int(self.g_input.value)
-            except ValueError as e:
-                self.g_output.value = "Err: int value expected"
-                
-        def slider_get_lower_bound(self):
-            self.g_output.value = repr(self.g_slider.lower_bound)
-            
-        def slider_set_upper_bound(self):
-            try:
-                self.g_slider.upper_bound = int(self.g_input.value)
-            except ValueError as e:
-                self.g_output.value = "Err: int value expected"
-                
-        def slider_get_upper_bound(self):
-            self.g_output.value = repr(self.g_slider.upper_bound)
-            
-        def slider_set_step_size(self):
-            try:
-                self.g_slider.step_size = int(self.g_input.value)
-            except ValueError as e:
-                self.g_output.value = "Err: int value expected"
+    def slider_get_upper_bound(self):
+        self.g_output.value = repr(self.g_slider.upper_bound)
         
-        def slider_get_step_size(self):
-            self.g_output.value = repr(self.g_slider.step_size)
-            
-        def slider_set_colour(self):
-            try:
-                fg = int(self.g_input.value)
-                bg = int(self.g_input2.value)
-            except ValueError as e:
-                self.g_output.value = "Err: Input1=int, Input2=int"
-            else:
-                self.g_slider.colour = (fg, bg)
-            
-        def slider_get_colour(self):
-            fg, bg = self.g_slider.colour
-            self.g_output.value = f"fg={fg}, bg={bg}"
-        
-        # Event handlers for Slider Events
-        @toolbox_handler(SliderValueChangedEvent)
-        def SliderValueChanged(self,event,id_block,poll_block):
-            self.g_output.value = "Slider value change: "+repr(poll_block.new_value)
-        
-    class SliderMenu(Menu,TestMenu):
-        template = "SliderMenu"
-        
-        ## Slider event handlers
-        @toolbox_handler(EvSliderSetValue)
-        def SliderSetValue(self,event,id_block,poll_block):
-            window = toolbox.get_object(id_block.ancestor.id)
-            window.slider_set_value()
-            self.menu_tick(id_block.self.component)
-            
-        @toolbox_handler(EvSliderGetValue)
-        def SliderGetValue(self,event,id_block,poll_block):
-            window = toolbox.get_object(id_block.ancestor.id)
-            window.slider_get_value()
-            self.menu_tick(id_block.self.component)
-            
-        @toolbox_handler(EvSliderSetLowerBound)
-        def SliderSetLowerBound(self,event,id_block,poll_block):
-            window = toolbox.get_object(id_block.ancestor.id)
-            window.slider_set_lower_bound()
-            self.menu_tick(id_block.self.component)
-            
-        @toolbox_handler(EvSliderGetLowerBound)
-        def SliderGetLowerBound(self,event,id_block,poll_block):
-            window = toolbox.get_object(id_block.ancestor.id)
-            window.slider_get_lower_bound()
-            self.menu_tick(id_block.self.component)
-            
-        @toolbox_handler(EvSliderSetUpperBound)
-        def SliderSetUpperBound(self,event,id_block,poll_block):
-            window = toolbox.get_object(id_block.ancestor.id)
-            window.slider_set_upper_bound()
-            self.menu_tick(id_block.self.component)
-            
-        @toolbox_handler(EvSliderGetUpperBound)
-        def SliderGetUpperBound(self,event,id_block,poll_block):
-            window = toolbox.get_object(id_block.ancestor.id)
-            window.slider_get_upper_bound()
-            self.menu_tick(id_block.self.component)
-            
-        @toolbox_handler(EvSliderSetStepSize)
-        def SliderSetStepSize(self,event,id_block,poll_block):
-            window = toolbox.get_object(id_block.ancestor.id)
-            window.slider_set_step_size()
-            self.menu_tick(id_block.self.component)
-            
-        @toolbox_handler(EvSliderGetStepSize)
-        def SliderGetStepSize(self,event,id_block,poll_block):
-            window = toolbox.get_object(id_block.ancestor.id)
-            window.slider_get_step_size()
-            self.menu_tick(id_block.self.component)
-            
-        @toolbox_handler(EvSliderSetColour)
-        def SliderSetColour(self,event,id_block,poll_block):
-            window = toolbox.get_object(id_block.ancestor.id)
-            window.slider_set_colour()
-            self.menu_tick(id_block.self.component)
-            
-        @toolbox_handler(EvSliderGetColour)
-        def SliderGetColour(self,event,id_block,poll_block):
-            window = toolbox.get_object(id_block.ancestor.id)
-            window.slider_get_colour()
-            self.menu_tick(id_block.self.component)
+    def slider_set_step_size(self):
+        try:
+            self.g_slider.step_size = int(self.g_input.value)
+        except ValueError as e:
+            self.g_output.value = "Err: int value expected"
     
-except ModuleNotFoundError as e:
-    Reporter.print("No Draggable object in riscos_toolbox")
+    def slider_get_step_size(self):
+        self.g_output.value = repr(self.g_slider.step_size)
+        
+    def slider_set_colour(self):
+        try:
+            fg = int(self.g_input.value)
+            bg = int(self.g_input2.value)
+        except ValueError as e:
+            self.g_output.value = "Err: Input1=int, Input2=int"
+        else:
+            self.g_slider.colour = (fg, bg)
+        
+    def slider_get_colour(self):
+        fg, bg = self.g_slider.colour
+        self.g_output.value = f"fg={fg}, bg={bg}"
+    
+    # Event handlers for Slider Events
+    @toolbox_handler(SliderValueChangedEvent)
+    def SliderValueChanged(self,event,id_block,poll_block):
+        self.g_output.value = "Slider value change: "+repr(poll_block.new_value)
+    
+class SliderMenu(Menu,TestMenu):
+    template = "SliderMenu"
+    
+    ## Slider event handlers
+    @toolbox_handler(EvSliderSetValue)
+    def SliderSetValue(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.slider_set_value()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvSliderGetValue)
+    def SliderGetValue(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.slider_get_value()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvSliderSetLowerBound)
+    def SliderSetLowerBound(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.slider_set_lower_bound()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvSliderGetLowerBound)
+    def SliderGetLowerBound(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.slider_get_lower_bound()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvSliderSetUpperBound)
+    def SliderSetUpperBound(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.slider_set_upper_bound()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvSliderGetUpperBound)
+    def SliderGetUpperBound(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.slider_get_upper_bound()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvSliderSetStepSize)
+    def SliderSetStepSize(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.slider_set_step_size()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvSliderGetStepSize)
+    def SliderGetStepSize(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.slider_get_step_size()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvSliderSetColour)
+    def SliderSetColour(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.slider_set_colour()
+        self.menu_tick(id_block.self.component)
+        
+    @toolbox_handler(EvSliderGetColour)
+    def SliderGetColour(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.slider_get_colour()
+        self.menu_tick(id_block.self.component)

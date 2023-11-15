@@ -30,55 +30,51 @@ from riscos_toolbox.objects.menu import Menu
 from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.writablefield import WritableField
+from riscos_toolbox.gadgets.popup import PopUp, PopUpAboutToBeShownEvent
 
-try:
-    from riscos_toolbox.gadgets.popup import PopUp, PopUpAboutToBeShownEvent
-except ModuleNotFoundError as e:
-    Reporter.print("No PopUp in risos_toolbox")
-else:
-    # Gadget constants
-    G_POPUP  = 0x01
-    G_INPUT  = 0x02
-    G_OUTPUT = 0x04
+# Gadget constants
+G_POPUP  = 0x01
+G_INPUT  = 0x02
+G_OUTPUT = 0x04
+
+class PopUpWin(Window):
+    template = "PopUpWin"
     
-    class PopUpWin(Window):
-        template = "PopUpWin"
+    def __init__(self, *args):
+        super().__init__(*args)
         
-        def __init__(self, *args):
-            super().__init__(*args)
-            
-            # Set up gadgets
-            self.g_popup = PopUp(self,G_POPUP)
-            self.g_input = WritableField(self,G_INPUT)
-            self.g_output = DisplayField(self,G_OUTPUT)
-            
-        # Methods for testing PopUp
-        def popup_set_menu(self):
-            try:
-                self.g_popup.menu = int(self.g_input.value)
-            except ValueError as e:
-                self.g_output.value = "Err: int input expected"
+        # Set up gadgets
+        self.g_popup = PopUp(self,G_POPUP)
+        self.g_input = WritableField(self,G_INPUT)
+        self.g_output = DisplayField(self,G_OUTPUT)
         
-        def popup_get_menu(self):
-            self.g_output.value = repr(self.g_popup.menu)
+    # Methods for testing PopUp
+    def popup_set_menu(self):
+        try:
+            self.g_popup.menu = int(self.g_input.value)
+        except ValueError as e:
+            self.g_output.value = "Err: int input expected"
+    
+    def popup_get_menu(self):
+        self.g_output.value = repr(self.g_popup.menu)
+    
+    # Event handlers for PopUp
+    @toolbox_handler(PopUpAboutToBeShownEvent)
+    def _popup_about_to_be_shown(self,event,id_block,poll_block):
+        self.g_output.value = f"AboutToBeShown: {poll_block.menu_id}"
+    
+class PopUpMenu(Menu,TestMenu):
+    template = "PopUpMenu"
+    
+    # Event handlers
+    @toolbox_handler(EvPopUpSetMenu)
+    def _popup_set_menu(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.popup_set_menu()
+        self.menu_tick(id_block.self.component)
         
-        # Event handlers for PopUp
-        @toolbox_handler(PopUpAboutToBeShownEvent)
-        def _popup_about_to_be_shown(self,event,id_block,poll_block):
-            self.g_output.value = f"AboutToBeShown: {poll_block.menu_id}"
-        
-    class PopUpMenu(Menu,TestMenu):
-        template = "PopUpMenu"
-        
-        # Event handlers
-        @toolbox_handler(EvPopUpSetMenu)
-        def _popup_set_menu(self,event,id_block,poll_block):
-            window = toolbox.get_object(id_block.ancestor.id)
-            window.popup_set_menu()
-            self.menu_tick(id_block.self.component)
-            
-        @toolbox_handler(EvPopUpGetMenu)
-        def _popup_get_menu(self,event,id_block,poll_block):
-            window = toolbox.get_object(id_block.ancestor.id)
-            window.popup_get_menu()
-            self.menu_tick(id_block.self.component)
+    @toolbox_handler(EvPopUpGetMenu)
+    def _popup_get_menu(self,event,id_block,poll_block):
+        window = toolbox.get_object(id_block.ancestor.id)
+        window.popup_get_menu()
+        self.menu_tick(id_block.self.component)
