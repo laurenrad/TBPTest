@@ -79,7 +79,7 @@ class NumberRangeWindow(Window):
         self.g_output.value = repr(self.g_numrange.precision)
         
     def numrange_get_numeric(self):
-        self.g_output.value = repr(self.g_numrange.numeric)
+        self.g_output.value = repr(self.g_numrange.numerical_field)
     
     def numrange_get_left_adj(self):
         self.g_output.value = repr(self.g_numrange.left_adjuster)
