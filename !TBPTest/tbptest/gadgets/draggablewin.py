@@ -84,7 +84,12 @@ class DraggableWindow(Window):
     # Draggable Drag Ended Event
     @toolbox_handler(DraggableDragEndedEvent)
     def DraggableDragEnded(self,event,id_block,poll_block):
-        self.g_output.value = f"Drag ended: window={poll_block.window_handle} icon={poll_block.icon_handle} x={poll_block.x} y={poll_block.y}"
+        Reporter.print(f"Drag ended.")
+        Reporter.print(f"Window handle: {poll_block.window_handle}")
+        Reporter.print(f"Icon handle: {poll_block.icon_handle}")
+        Reporter.print(f"Window id: {poll_block.window_id}")
+        Reporter.print(f"Component id: {poll_block.component_id}")
+        self.g_output.value = f"Drag ended: window={hex(poll_block.window_handle)} icon={hex(poll_block.icon_handle)} x={poll_block.x} y={poll_block.y}"
 
 class DrgableMenu(Menu,TestMenu):
     template = "DrgableMenu"
