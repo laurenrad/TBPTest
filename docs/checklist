@@ -1,0 +1,32 @@
+Progress checklist for new version 19-Nov-23
+
+Objects:
+	colourdbox
+	colourmenu
+	dcs
+	fileinfo
+	fontdbox
+	fontmenu
+	iconbar
+	menu
+	printdbox
+	proginfo
+	quit
+	saveas
+	scale
+	window
+Gadgets:
+	actionbutton
+	adjuster
+	button
+	displayfield
+	draggable
+	numberrange
+	optionbutton
+	popup
+	radiobutton
+	scrolllist
+	slider
+	stringset
+	textarea
+	writablefield

@@ -45,6 +45,7 @@ import tbptest.gadgets.popupwin as popupwin
 import tbptest.gadgets.scrolllistwin as scrolllistwin
 import tbptest.gadgets.textareawin as textareawin
 import tbptest.objects.menuwin as menuwin
+import tbptest.objects.fontwin as fontwin
 import tbptest.mainwin as mainwin
 
 # Constants
