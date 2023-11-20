@@ -44,9 +44,14 @@ import tbptest.gadgets.stringsetwin as stringsetwin
 import tbptest.gadgets.popupwin as popupwin
 import tbptest.gadgets.scrolllistwin as scrolllistwin
 import tbptest.gadgets.textareawin as textareawin
-import tbptest.objects.menuwin as menuwin
-import tbptest.objects.fontwin as fontwin
 import tbptest.mainwin as mainwin
+import tbptest.objects.colourwin
+import tbptest.objects.fontwin
+import tbptest.objects.iconbarwin
+import tbptest.objects.menuwin
+import tbptest.objects.proginfowin
+
+
 
 # Constants
 EV_MENU_QUIT = 0x100 # Event for quitting from the iconbar menu

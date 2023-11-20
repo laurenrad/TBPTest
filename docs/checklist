@@ -1,16 +1,16 @@
 Progress checklist for new version 19-Nov-23
 
 Objects:
-	colourdbox
-	colourmenu
-	dcs
+	colourdbox: Skel
+	colourmenu: Skel
+	dcs: Skel
 	fileinfo
-	fontdbox
-	fontmenu
-	iconbar
-	menu
-	printdbox
-	proginfo
+	fontdbox: Done
+	fontmenu: Done
+	iconbar: Skel
+	menu: Incomplete
+	printdbox: Skel
+	proginfo: Skel
 	quit
 	saveas
 	scale

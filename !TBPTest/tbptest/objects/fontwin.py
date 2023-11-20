@@ -37,12 +37,6 @@ from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.writablefield import WritableField
 from riscos_toolbox.events import toolbox_handler
 
-#class TestFontMenu(FontMenu):
-#    template = "FontMenu"
-    
-#class TestFontDbox(FontDbox):
-#    template = "FontDbox"
-
 class FontWindow(Window):
     template = "FontWin"
     
