@@ -117,6 +117,8 @@ class FontWindow(Window):
             self.set_btn.faded = False
             self.get_btn.faded = False
         
+        return True
+        
     @toolbox_handler(ActionButtonSelectedEvent)
     def actionbutton_selected(self,event,id_block,poll_block):
         if id_block.self.id != self.id:
