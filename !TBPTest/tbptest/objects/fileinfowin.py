@@ -50,12 +50,102 @@ class FileInfoWindow(Window):
     G_SET            = 0x0F
     G_RESULT         = 0x11
     G_TEXTAREA       = 0x01
+    G_HIDE           = 0x14
     
     def __init__(self, *args):
         super().__init__(*args)
-        self.fileinfo = toolbox.create_object("FileInfo")
-        self.output_text = TextArea(self,FontWindow.G_TEXTAREA)
-        self.output_display = DisplayField(self,FontWindow.G_RESULT)
-        self.input_int = NumberRange(self,FontWindow.G_INT_INPUT)
-        self.input_str = WritableField(self,FontWindow.G_STR_INPUT)
-        self.current_test = FontWindow.G_RADIO_DBOX_WINID # currently selected test - set default
+        self.fileinfo = toolbox.create_object("FileInfo",FileInfo)
+        self.output_text = TextArea(self,FileInfoWindow.G_TEXTAREA)
+        self.output_display = DisplayField(self,FileInfoWindow.G_RESULT)
+        self.input_int = NumberRange(self,FileInfoWindow.G_INT_INPUT)
+        self.input_str = WritableField(self,FileInfoWindow.G_STR_INPUT)
+        self.current_test = FileInfoWindow.G_RADIO_WINID # currently selected test - set default
+        self.get_btn = ActionButton(self,FileInfoWindow.G_GET)
+        self.set_btn = ActionButton(self,FileInfoWindow.G_SET)
+        
+        self.get_btn.faded = False
+        self.set_btn.faded = True
+        
+    @toolbox_handler(RadioButtonStateChangedEvent)
+    def radiobutton_changed(self,event,id_block,poll_block):
+        if id_block.self.id != self.id:
+            return False
+            
+        self.current_test = id_block.self.component
+        
+        # Fade and unfade some elements depending on what is selected
+        if self.current_test == FileInfoWindow.G_RADIO_WINID:
+            self.set_btn.faded = True
+            self.get_btn.faded = False
+        else:
+            self.set_btn.faded = False
+            self.get_btn.faded = False
+            
+        return True
+        
+    @toolbox_handler(ActionButtonSelectedEvent)
+    def actionbutton_selected(self,event,id_block,poll_block):
+        if id_block.self.id != self.id:
+            return False
+            
+        if id_block.self.component == FileInfoWindow.G_GET:
+            if self.current_test == FileInfoWindow.G_RADIO_WINID:
+                Reporter.print("test: fileinfo: get winid")
+                self.output_display.value = repr(self.fileinfo.window_id)
+            elif self.current_test == FileInfoWindow.G_RADIO_MODIFIED:
+                Reporter.print("test: fileinfo: get modified")
+                self.output_display.value = repr(self.fileinfo.modified)
+            elif self.current_test == FileInfoWindow.G_RADIO_FILETYPE:
+                Reporter.print("test: fileinfo: get filetype")
+                self.output_display.value = hex(self.fileinfo.file_type)
+            elif self.current_test == FileInfoWindow.G_RADIO_FILENAME:
+                Reporter.print("test: fileinfo: get filename")
+                self.output_display.value = self.fileinfo.file_name
+            elif self.current_test == FileInfoWindow.G_RADIO_FILESIZE:
+                Reporter.print("test: fileinfo: get filesize")
+                self.output_display.value = repr(self.fileinfo.file_size)
+            elif self.current_test == FileInfoWindow.G_RADIO_DATE:
+                Reporter.print("test: fileinfo: get date")
+                self.output_display.value = repr(self.fileinfo.date)
+            elif self.current_test == FileInfoWindow.G_RADIO_TITLE:
+                Reporter.print("test: fileinfo: get title")
+                self.output_display.value = self.fileinfo.title
+            else:
+                Reporter.print("FileInfo window: unknown test")
+        elif id_block.self.component == FileInfoWindow.G_SET:
+            if self.current_test == FileInfoWindow.G_RADIO_MODIFIED:
+                Reporter.print("test: fileinfo: set modified")
+                self.fileinfo.modified = self.input_int.value
+            elif self.current_test == FileInfoWindow.G_RADIO_FILETYPE:
+                Reporter.print("test: fileinfo: set filetype")
+                self.fileinfo.file_type = self.input_int.value
+            elif self.current_test == FileInfoWindow.G_RADIO_FILENAME:
+                Reporter.print("test: fileinfo: set filename")
+                self.fileinfo.file_name = self.input_str.value
+            elif self.current_test == FileInfoWindow.G_RADIO_FILESIZE:
+                Reporter.print("test: fileinfo: set filesize")
+                self.fileinfo.file_size = self.input_int.value
+            elif self.current_test == FileInfoWindow.G_RADIO_DATE:
+                Reporter.print("test: fileinfo: set date")
+                self.fileinfo.date = self.input_int.value
+            elif self.current_test == FileInfoWindow.G_RADIO_TITLE:
+                Reporter.print("test: fileinfo: set title")
+                self.fileinfo.title = self.input_str.value
+            else:
+                Reporter.print("FileInfo window: unknown test")
+        elif id_block.self.component == FileInfoWindow.G_HIDE:
+            self.fileinfo.hide()
+        else:
+            return False
+            
+        return True
+    
+    @toolbox_handler(AboutToBeShownEvent)
+    def fileinfo_onshow(self,event,id_block,poll_block):
+        Reporter.print("FileInfo: about to show")
+        self.output_text.insert(-1,"FileInfo AboutToBeShownEvent |")
+        
+    @toolbox_handler(DialogueCompletedEvent)
+    def fileinfo_completed(self,event,id_block,poll_block):
+        Reporter.print("FileInfo: completed")
+        self.output_text.insert(-1,"FileInfo DialogueCompletedEvent |")

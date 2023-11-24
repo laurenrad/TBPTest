@@ -50,7 +50,7 @@ import tbptest.objects.fontwin
 import tbptest.objects.iconbarwin
 import tbptest.objects.menuwin
 import tbptest.objects.proginfowin
-import tbptest.objects.fileinfo2
+import tbptest.objects.fileinfowin
 
 
 
