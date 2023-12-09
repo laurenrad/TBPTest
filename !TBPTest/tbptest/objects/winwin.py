@@ -60,8 +60,8 @@ class WinWindow(Window):
     G_TEXTAREA          = 0x08
     G_MENU1_ID          = 0x2B
     G_MENU2_ID          = 0x2C
-    G_HTBAR_ID          = 0x2F
-    G_VTBAR_ID          = 0x30
+    G_HTBAR_ID          = 0x30
+    G_VTBAR_ID          = 0x2F
     
     def __init__(self, *args):
         super().__init__(*args)
@@ -141,6 +141,8 @@ class WinWindow(Window):
                 itl = self.win.get_toolbar_id(Window.InternalTopLeftToolbar)
                 ebl = self.win.get_toolbar_id(Window.ExternalBottomLeftToolbar)
                 etl = self.win.get_toolbar_id(Window.ExternalTopLeftToolbar)
+                #all = self.win.get_toolbar_id(0xF)
+                #Reporter.print(f"all tbars={all}")
                 self.result.value = f"ibl={ibl} itl={itl} ebl={ebl} etl={etl}"                   
             else:
                 Reporter.print("test: window: unknown get test")
@@ -189,6 +191,8 @@ class WinWindow(Window):
                     elif self.input_int1.value == 3: # etl
                         self.win.set_toolbar_id(Window.ExternalTopLeftToolbar,
                                                 int(self.input_str.value))
+                    elif self.input_int1.value == 4: # Test invalid toolbar parameter
+                        pass
                     else:
                         self.result.value = "int1: 0=ibl, 1=itl, 2=ebl, 3=etl" 
                 except ValueError as e:
