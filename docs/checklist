@@ -14,7 +14,7 @@ Objects:
 	quit
 	saveas
 	scale
-	window
+	window: Done
 Gadgets:
 	actionbutton
 	adjuster
