@@ -101,11 +101,8 @@ class WinWindow(Window):
         
     @toolbox_handler(ActionButtonSelectedEvent)
     def actionbutton_selected(self,event,id_block,poll_block):
-        Reporter.print("actionbuttonselected event")
         if id_block.self.id != self.id:
-            return False
-            
-        Reporter.print("handling")
+            return False            
             
         if id_block.self.component == WinWindow.G_SHOW:
             Reporter.print("showing test window")

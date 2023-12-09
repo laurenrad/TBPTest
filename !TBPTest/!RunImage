@@ -51,6 +51,7 @@ import tbptest.objects.iconbarwin
 import tbptest.objects.menuwin
 import tbptest.objects.proginfowin
 import tbptest.objects.fileinfowin
+import tbptest.objects.quitwin
 import tbptest.objects.winwin
 
 # Constants
