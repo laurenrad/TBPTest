@@ -11,9 +11,9 @@ Objects:
 	menu: Incomplete
 	printdbox: Skel
 	proginfo: Done
-	quit
+	quit: Done
 	saveas
-	scale
+	scale: Skel
 	window: Done
 Gadgets:
 	actionbutton

@@ -52,6 +52,7 @@ import tbptest.objects.menuwin
 import tbptest.objects.proginfowin
 import tbptest.objects.fileinfowin
 import tbptest.objects.quitwin
+import tbptest.objects.scalewin
 import tbptest.objects.winwin
 
 # Constants
