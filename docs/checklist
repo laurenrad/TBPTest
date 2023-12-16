@@ -7,7 +7,7 @@ Objects:
 	fileinfo: Done
 	fontdbox: Done
 	fontmenu: Done
-	iconbar: Skel
+	iconbar: Done - but create common test objects and events before proceeding
 	menu: Incomplete
 	printdbox: Skel
 	proginfo: Done
