@@ -43,7 +43,6 @@ class IconbarWindow(Window):
     G_TEXTAREA          = 0x08
     G_RESULT            = 0x09
     G_INPUT_STR         = 0x0A
-    G_INPUT_INT         = 0x0B
     G_RADIO_ICON_HANDLE = 0x11
     G_RADIO_MENU_ID     = 0x12
     G_RADIO_SEL_EVENT   = 0x13
@@ -59,7 +58,6 @@ class IconbarWindow(Window):
         self.iconbar = toolbox.create_object("Iconbar")
         self.result = DisplayField(self,IconbarWindow.G_RESULT)
         self.textarea = TextArea(self,IconbarWindow.G_TEXTAREA)
-        self.input_int = NumberRange(self,IconbarWindow.G_INPUT_INT)
         self.input_str = WritableField(self,IconbarWindow.G_INPUT_STR)
         self.showhide = ActionButton(self,IconbarWindow.G_SHOW)
         self.selected_test = IconbarWindow.G_RADIO_ICON_HANDLE
@@ -112,15 +110,30 @@ class IconbarWindow(Window):
                 Reporter.print("test: iconbar: unknown get test")
         elif id_block.self.component == IconbarWindow.G_SET:
             if self.selected_test == IconbarWindow.G_RADIO_MENU_ID:
-                self.iconbar.menu_id = self.input_int.value
+                try:
+                    self.iconbar.menu_id = int(self.input_str.value)
+                except ValueError:
+                    self.result.value = "Expected integer input."
             elif self.selected_test == IconbarWindow.G_RADIO_SEL_EVENT:
-                self.iconbar.select_event = self.input_int.value
+                try:
+                    self.iconbar.select_event = int(self.input_str.value)
+                except ValueError:
+                    self.result.value = "Expected integer input."
             elif self.selected_test == IconbarWindow.G_RADIO_ADJ_EVENT:
-                self.iconbar.adjust_event = self.input_int.value
+                try:
+                    self.iconbar.adjust_event = int(self.input_str.value)
+                except ValueError:
+                    self.result.value = "Expected integer input."
             elif self.selected_test == IconbarWindow.G_RADIO_SEL_OBJ:
-                self.iconbar.show_select_id = self.input_int.value
+                try:
+                    self.iconbar.show_select_id = int(self.input_str.value)
+                except ValueError:
+                    self.result.value = "Expected integer input."
             elif self.selected_test == IconbarWindow.G_RADIO_ADJ_OBJ:
-                self.iconbar.show_adjust_id = self.input_int.value
+                try:
+                    self.iconbar.show_adjust_id = int(self.input_str.value)
+                except ValueError:
+                    self.result.value = "Expected integer input."
             elif self.selected_test == IconbarWindow.G_RADIO_HELP_MSG:
                 self.iconbar.help_message = self.input_str.value
             elif self.selected_test == IconbarWindow.G_RADIO_TEXT:
