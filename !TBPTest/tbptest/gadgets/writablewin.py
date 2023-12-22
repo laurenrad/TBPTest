@@ -23,32 +23,32 @@
 import traceback
 
 from tbptest.reporter import Reporter
-from tbptest.tbox_const import *
 from tbptest.tbox_common import TestMenu
 
 import riscos_toolbox as toolbox
-from riscos_toolbox.objects.menu import Menu
+from riscos_toolbox.objects.menu import Menu, SelectionEvent
 from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.writablefield import WritableField, WritableFieldValueChangedEvent
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.events import toolbox_handler, wimp_handler, message_handler
 
-# some constants
-# Gadgets
-G_WRITABLE_TEST  = 0x00
-G_WRITABLE_INPUT = 0x01
-G_DISPLAY_OUTPUT = 0x02
-
 class WritableWindow(Window):
 	template = "WritableWin"
+	
+	# Gadget constants
+	G_WRITABLE = 0x00
+	G_INPUT1   = 0x01
+	G_INPUT2   = 0x06
+	G_OUTPUT   = 0x02
 	
 	def __init__(self, *args):
 		super().__init__(*args)
 		
 		try:
-			self.g_writable = WritableField(self,G_WRITABLE_TEST)
-			self.g_input = WritableField(self,G_WRITABLE_INPUT)
-			self.g_output = DisplayField(self,G_DISPLAY_OUTPUT)
+			self.g_writable = WritableField(self,WritableWindow.G_WRITABLE)
+			self.g_input1 = WritableField(self,WritableWindow.G_INPUT1)
+			self.g_input2 = WritableField(self,WritableWindow.G_INPUT2)
+			self.g_output = DisplayField(self,WritableWindow.G_OUTPUT)
 			
 		except Exception as e:
 			Reporter.print(repr(e))
@@ -57,16 +57,25 @@ class WritableWindow(Window):
 		
 	# Methods for testing WritableField
 	def writablefield_set_text(self):
-		self.g_writable.value = self.g_input.value
+            self.g_writable.value = self.g_input1.value
 		
 	def writablefield_get_text(self):
-		self.g_output.value = self.g_writable.value
+	    self.g_output.value = self.g_writable.value
 		
 	def writablefield_set_allow(self):
-		self.g_writable.allowable = self.g_input.value
+            self.g_writable.allowable = self.g_input1.value
 		
 	def writablefield_get_allow(self):
-		self.g_output.value = self.g_writable.allowable
+            self.g_output.value = self.g_writable.allowable
+		
+	def writablefield_set_font(self):
+	    try:
+	        name = self.g_input1.value
+	        size = int(self.g_input2.value)
+	    except ValueError:
+	        self.g_output.value = "Input1=name, Input2=size"
+	    else:
+	        self.g_writable.set_font(name=name,size=size)
 	
 	# Event handlers for WritableField
 	@toolbox_handler(WritableFieldValueChangedEvent)
@@ -76,27 +85,33 @@ class WritableWindow(Window):
 class WritableFieldMenu(Menu,TestMenu):
 	template = "WritFldMenu"
 	
-	## WritableField event handlers
-	@toolbox_handler(EvWritableFieldSetText)
-	def WritableFieldSetText(self,event,id_block,poll_block):
-		window = toolbox.get_object(id_block.ancestor.id)
-		window.writablefield_set_text()
-		self.menu_tick(id_block.self.component)
-	
-	@toolbox_handler(EvWritableFieldGetText)
-	def WritableFieldGetText(self,event,id_block,poll_block):
-		window = toolbox.get_object(id_block.ancestor.id)
-		window.writablefield_get_text()
-		self.menu_tick(id_block.self.component)
+	# Constants for menu entries
+	SET_TEXT = 0x00
+	GET_TEXT = 0x01
+	SET_FONT = 0x04
+	SET_ALLOWABLE = 0x02
+	GET_ALLOWABLE = 0x03
 		
-	@toolbox_handler(EvWritableFieldSetAllow)
-	def WritableFieldSetAllow(self,event,id_block,poll_block):
-		window = toolbox.get_object(id_block.ancestor.id)
-		window.writablefield_set_allow()
-		self.menu_tick(id_block.self.component)
-		
-	@toolbox_handler(EvWritableFieldGetAllow)
-	def WritableFieldGetAllow(self,event,id_block,poll_block):
-		window = toolbox.get_object(id_block.ancestor.id)
-		window.writablefield_get_allow()
-		self.menu_tick(id_block.self.component)
+	@toolbox_handler(SelectionEvent)
+	def menu_selected(self,event,id_block,poll_block):
+	    if id_block.self.id != self.id:
+	        return False
+	        
+	    window = toolbox.get_object(id_block.parent.id)
+	    self.menu_tick(id_block.self.component)
+	    
+	    if id_block.self.component == WritableFieldMenu.SET_TEXT:
+	        window.writablefield_set_text()
+	    elif id_block.self.component == WritableFieldMenu.GET_TEXT:
+	        window.writablefield_get_text()
+	    elif id_block.self.component == WritableFieldMenu.SET_FONT:
+	        window.writablefield_set_font()
+	    elif id_block.self.component == WritableFieldMenu.SET_ALLOWABLE:
+	        window.writablefield_set_allow()
+	    # This method isn't implemented in the Toolbox, but it is in riscos-toolbox,
+	    # hence the inclusion here. An issue is open on riscos-toolbox for this.
+	    # But yes, this will throw an error if called.
+	    elif id_block.self.component == WritableFieldMenu.GET_ALLOWABLE:
+	        window.writablefield_get_allow()
+	    
+	    return True
