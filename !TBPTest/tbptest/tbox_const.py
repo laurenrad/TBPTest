@@ -72,15 +72,6 @@ EvSliderGetStepSize          = 0xB07
 EvSliderSetColour            = 0xB08
 EvSliderGetColour            = 0xB09
 
-# RadioButton test events
-EvRadioButtonSetLabel        = 0xC00
-EvRadioButtonGetLabel        = 0xC01
-EvRadioButtonSetEvent        = 0xC02
-EvRadioButtonGetEvent        = 0xC03
-EvRadioButtonSetState        = 0xC04
-EvRadioButtonGetState        = 0xC05
-EvRadioButtonSetFont         = 0xC06
-
 # StringSet test events
 EvStringSetSetAvailable      = 0xD00
 EvStringSetSetSelectedText   = 0xD01

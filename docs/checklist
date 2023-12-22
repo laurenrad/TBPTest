@@ -24,7 +24,7 @@ Gadgets:
 	numberrange: Done
 	optionbutton: Done
 	popup: Done
-	radiobutton
+	radiobutton: Done
 	scrolllist: Done
 	slider
 	stringset
