@@ -68,16 +68,6 @@ EvNumRangeGetSlider         = 0x40D
 # Number range events (Raised by Toolbox)
 EvNumRngeValueChanged       = 0x8288D
 
-# Option button test events
-EvOptButtonSetLabel         = 0x500
-EvOptButtonGetLabel         = 0x501
-EvOptButtonSetEvent         = 0x502
-EvOptButtonGetEvent         = 0x503
-EvOptButtonSetState         = 0x504
-EvOptButtonGetState         = 0x505
-# Option button events (Raised by Toolbox)
-EvOptButtonStateChanged     = 0x82882
-
 ## Here are the events for the gadgets which already existed before I worked on it
 
 # Action button test events

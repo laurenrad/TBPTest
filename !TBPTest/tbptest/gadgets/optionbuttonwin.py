@@ -21,11 +21,10 @@
 # SOFTWARE.
 
 from tbptest.reporter import Reporter
-from tbptest.tbox_const import *
 from tbptest.tbox_common import TestMenu
 
 import riscos_toolbox as toolbox
-from riscos_toolbox.objects.menu import Menu
+from riscos_toolbox.objects.menu import Menu, SelectionEvent
 from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.writablefield import WritableField
 from riscos_toolbox.gadgets.displayfield import DisplayField
@@ -75,45 +74,47 @@ class OptionButtonWindow(Window):
     
     ## Event handlers for OptionButton
     @toolbox_handler(OptionButtonStateChangedEvent)
-    def OptButtonStateChanged(self,event,id_block,poll_block):
-        self.g_display.value = "Option state changed: "+repr(poll_block.new_state)
+    def optbutton_state_changed(self,event,id_block,poll_block):
+        msg = "Option state changed: "+repr(poll_block.new_state)
+        if poll_block.on:
+            msg += " on"
+        if poll_block.off:
+            msg += " off"
+            
+        self.g_output.value = msg
+            
 
 class OptionButtonMenu(Menu,TestMenu):
     template = "OptBttnMenu"
-
-    ## OptionButton event handlers
-    @toolbox_handler(EvOptButtonSetLabel)
-    def OptButtonSetLabel(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.optbutton_set_label()
-        self.menu_tick(id_block.self.component)
     
-    @toolbox_handler(EvOptButtonGetLabel)
-    def OptButtonGetLabel(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.optbutton_get_label()
-        self.menu_tick(id_block.self.component)
+    # Constants for menu entries
+    ENTRY_SET_LABEL = 0x00
+    ENTRY_GET_LABEL = 0x01
+    ENTRY_SET_EVENT = 0x02
+    ENTRY_GET_EVENT = 0x03
+    ENTRY_SET_STATE = 0x04
+    ENTRY_GET_STATE = 0x05
     
-    @toolbox_handler(EvOptButtonSetEvent)
-    def OptButtonSetEvent(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.optbutton_set_event()
+    @toolbox_handler(SelectionEvent)
+    def menu_selected(self,event,id_block,poll_block):
+        if id_block.self.id != self.id:
+            return False
+            
+        window = toolbox.get_object(id_block.parent.id)
         self.menu_tick(id_block.self.component)
-    
-    @toolbox_handler(EvOptButtonGetEvent)
-    def OptButtonGetEvent(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.optbutton_get_event()
-        self.menu_tick(id_block.self.component)
-    
-    @toolbox_handler(EvOptButtonSetState)
-    def OptButtonSetState(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.optbutton_set_state()
-        self.menu_tick(id_block.self.component)
-    
-    @toolbox_handler(EvOptButtonGetState)
-    def OptButtonGetState(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.optbutton_get_state()
-        self.menu_tick(id_block.self.component)
+        
+        if id_block.self.component == OptionButtonMenu.ENTRY_SET_LABEL:
+            window.optbutton_set_label()
+        elif id_block.self.component == OptionButtonMenu.ENTRY_GET_LABEL:
+            window.optbutton_get_label()
+        elif id_block.self.component == OptionButtonMenu.ENTRY_SET_EVENT:
+            window.optbutton_set_event()
+        elif id_block.self.component == OptionButtonMenu.ENTRY_GET_EVENT:
+            window.optbutton_get_event()
+        elif id_block.self.component == OptionButtonMenu.ENTRY_SET_STATE:
+            window.optbutton_set_state()
+        elif id_block.self.component == OptionButtonMenu.ENTRY_GET_STATE:
+            window.optbutton_get_state()
+            
+        return True
+        
