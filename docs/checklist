@@ -27,6 +27,6 @@ Gadgets:
 	radiobutton: Done
 	scrolllist: Done
 	slider: Done
-	stringset
+	stringset: Done
 	textarea
 	writablefield: Done

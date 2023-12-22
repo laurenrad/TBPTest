@@ -59,14 +59,3 @@ EvActionButtonSetEvent      = 0x802
 EvActionButtonGetEvent      = 0x803
 EvActionButtonSetClickShow  = 0x804
 EvActionButtonGetClickShow  = 0x805
-
-# StringSet test events
-EvStringSetSetAvailable      = 0xD00
-EvStringSetSetSelectedText   = 0xD01
-EvStringSetGetSelectedText   = 0xD02
-EvStringSetSetSelectedIndex  = 0xD03
-EvStringSetGetSelectedIndex  = 0xD04
-EvStringSetSetAllowable      = 0xD05
-EvStringSetGetAlphaNum       = 0xD06
-EvStringSetGetPopUp          = 0xD07
-EvStringSetSetFont           = 0xD08

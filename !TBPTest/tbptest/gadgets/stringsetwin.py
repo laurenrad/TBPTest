@@ -21,13 +21,12 @@
 # SOFTWARE.
 
 from tbptest.reporter import Reporter
-from tbptest.tbox_const import *
 from tbptest.tbox_common import TestMenu
 
 
 import riscos_toolbox as toolbox
 from riscos_toolbox.events import toolbox_handler
-from riscos_toolbox.objects.menu import Menu
+from riscos_toolbox.objects.menu import Menu, SelectionEvent
 from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.writablefield import WritableField
@@ -96,7 +95,7 @@ class StringSetWindow(Window):
     # Event handlers for StringSet
     @toolbox_handler(StringSetValueChangedEvent)
     def _stringset_value_changed(self,event,id_block,poll_block):
-        self.g_output.value = "Value changed"
+        self.g_output.value = f"Value changed: {poll_block.new_string}"
         
     @toolbox_handler(StringSetAboutToBeShownEvent)
     def _stringset_about_to_be_shown(self,event,id_block,poll_block):
@@ -105,57 +104,42 @@ class StringSetWindow(Window):
 class StringSetMenu(Menu,TestMenu):
     template = "StrSetMenu"
     
-    # Event handlers
-    @toolbox_handler(EvStringSetSetAvailable)
-    def _stringset_set_available(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.stringset_set_available()
+    # Entry constants
+    ENTRY_SET_AVAILABLE = 0x00
+    ENTRY_SET_SEL_TEXT  = 0x01
+    ENTRY_GET_SEL_TEXT  = 0x08
+    ENTRY_SET_SEL_INDEX = 0x07
+    ENTRY_GET_SEL_INDEX = 0x02
+    ENTRY_SET_ALLOWABLE = 0x03
+    ENTRY_GET_ALPHANUM  = 0x04
+    ENTRY_GET_POPUP     = 0x05
+    ENTRY_SET_FONT      = 0x06
+    
+    @toolbox_handler(SelectionEvent)
+    def menu_selected(self,event,id_block,poll_block):
+        if id_block.self.id != self.id:
+            return False
+            
+        window = toolbox.get_object(id_block.parent.id)
         self.menu_tick(id_block.self.component)
         
-    @toolbox_handler(EvStringSetSetSelectedText)
-    def _stringset_set_selected_text(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.stringset_set_selected_text()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvStringSetGetSelectedText)
-    def _stringset_get_selected_text(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.stringset_get_selected_text()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvStringSetSetSelectedIndex)
-    def _stringset_set_selected_index(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.stringset_set_selected_index()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvStringSetGetSelectedIndex)
-    def _stringset_get_selected_index(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.stringset_get_selected_index()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvStringSetSetAllowable)
-    def _stringset_set_allowable(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.stringset_set_allowable()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvStringSetGetAlphaNum)
-    def _stringset_get_alphanum(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.stringset_get_alphanum()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvStringSetGetPopUp)
-    def _stringset_get_popup(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.stringset_get_popup()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvStringSetSetFont)
-    def _stringset_set_font(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.stringset_set_font()
-        self.menu_tick(id_block.self.component)
+        if id_block.self.component == StringSetMenu.ENTRY_SET_AVAILABLE:
+            window.stringset_set_available()
+        elif id_block.self.component == StringSetMenu.ENTRY_SET_SEL_TEXT:
+            window.stringset_set_selected_text()
+        elif id_block.self.component == StringSetMenu.ENTRY_GET_SEL_TEXT:
+            window.stringset_get_selected_text()
+        elif id_block.self.component == StringSetMenu.ENTRY_SET_SEL_INDEX:
+            window.stringset_set_selected_index()
+        elif id_block.self.component == StringSetMenu.ENTRY_GET_SEL_INDEX:
+            window.stringset_get_selected_index()
+        elif id_block.self.component == StringSetMenu.ENTRY_SET_ALLOWABLE:
+            window.stringset_set_allowable()
+        elif id_block.self.component == StringSetMenu.ENTRY_GET_ALPHANUM:
+            window.stringset_get_alphanum()
+        elif id_block.self.component == StringSetMenu.ENTRY_GET_POPUP:
+            window.stringset_get_popup()
+        elif id_block.self.component == StringSetMenu.ENTRY_SET_FONT:
+            window.stringset_set_font()
+            
+        return True
