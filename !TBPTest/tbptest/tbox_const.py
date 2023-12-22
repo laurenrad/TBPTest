@@ -97,8 +97,6 @@ EvActionButtonSetEvent      = 0x802
 EvActionButtonGetEvent      = 0x803
 EvActionButtonSetClickShow  = 0x804
 EvActionButtonGetClickShow  = 0x805
-# Action button events (Raised by Toolbox)
-EvActionButtonSelected      = 0x82881
 
 # Button test events
 EvButtonSetFlags            = 0x900

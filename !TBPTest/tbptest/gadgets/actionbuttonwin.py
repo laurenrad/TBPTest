@@ -27,7 +27,7 @@ import riscos_toolbox as toolbox
 
 from riscos_toolbox.objects.menu import Menu
 from riscos_toolbox.objects.window import Window
-from riscos_toolbox.gadgets.actionbutton import ActionButton
+from riscos_toolbox.gadgets.actionbutton import ActionButton, ActionButtonSelectedEvent
 from riscos_toolbox.gadgets.writablefield import WritableField
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.events import toolbox_handler
@@ -36,13 +36,6 @@ from riscos_toolbox.events import toolbox_handler
 G_ACTIONBUTTON = 0x00
 G_INPUT	       = 0x02
 G_OUTPUT       = 0x01
-G_SHOW_ID      = 0x07
-
-class ShowableWindow(Window):
-    template = "ShowableWin"
-    
-    def __init__(self, *args):
-        super().__init__(*args)
 
 class ActionButtonWindow(Window):
     template = "ActBttnWin"
@@ -53,10 +46,6 @@ class ActionButtonWindow(Window):
         self.g_actionbutton = ActionButton(self,G_ACTIONBUTTON)
         self.g_input = WritableField(self,G_INPUT)
         self.g_output = DisplayField(self,G_OUTPUT)
-        self.g_show_id = DisplayField(self,G_SHOW_ID)
-        self.showable_win = toolbox.create_object(ShowableWindow.template,ShowableWindow)
-        
-        self.g_show_id.value = repr(self.showable_win.id)
         
     # Methods for testing ActionButton
     def actionbutton_set_text(self):
@@ -72,7 +61,7 @@ class ActionButtonWindow(Window):
             self.g_output.value = "Int input required"
         
     def actionbutton_get_event(self):
-        self.g_output.value = repr(self.g_actionbutton.click_show)
+        self.g_output.value = repr(self.g_actionbutton.event)
         
     def actionbutton_set_click_show(self):
         try:
@@ -84,9 +73,21 @@ class ActionButtonWindow(Window):
         self.g_output.value = repr(self.g_actionbutton.click_show)
         
     # Event handlers for ActionButton
-    @toolbox_handler(EvActionButtonSelected)
+    @toolbox_handler(ActionButtonSelectedEvent)
     def ActionButtonSelected(self,event,id_block,poll_block):
-        self.g_output.value = "Action button selected."
+        msg = "Action button selected: "
+        if poll_block.adjust:
+            msg += "Adjust "
+        if poll_block.select:
+            msg += "Select "
+        if poll_block.default:
+            msg += "Default "
+        if poll_block.cancel:
+            msg += "Cancel "
+        if poll_block.local:
+            msg += "Local "
+            
+        self.g_output.value = msg + hex(poll_block.flags)
 
 class ActionButtonMenu(Menu,TestMenu):
     template = "ActBttnMenu"

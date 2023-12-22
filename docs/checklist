@@ -16,7 +16,7 @@ Objects:
 	scale: Skel
 	window: Done
 Gadgets:
-	actionbutton
+	actionbutton: Done
 	adjuster
 	button
 	displayfield
