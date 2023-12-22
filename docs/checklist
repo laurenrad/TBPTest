@@ -17,7 +17,7 @@ Objects:
 	window: Done
 Gadgets:
 	actionbutton: Done
-	adjuster
+	adjuster: Done
 	button
 	displayfield
 	draggable

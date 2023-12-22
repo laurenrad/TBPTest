@@ -28,13 +28,16 @@ from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.events import toolbox_handler
 from riscos_toolbox.gadgets.adjuster import Adjuster, AdjusterClickedEvent
+from riscos_toolbox.gadgets.optionbutton import OptionButton
 
 # Gadget Constants
-G_ADJ_LEFT  = 0x00
-G_ADJ_RIGHT = 0x01
-G_ADJ_UP    = 0x02
-G_ADJ_DOWN  = 0x03
-G_OUTPUT    = 0x05
+G_ADJ_LEFT   = 0x00
+G_ADJ_RIGHT  = 0x01
+G_ADJ_UP     = 0x02
+G_ADJ_DOWN   = 0x03
+G_OUTPUT     = 0x05
+G_RADIO_UP   = 0x08
+G_RADIO_DOWN = 0x09
     
 class AdjusterWindow(Window):
     template = "AdjusterWin"
@@ -50,9 +53,21 @@ class AdjusterWindow(Window):
         self.g_adj_up = Adjuster(self,G_ADJ_UP)
         self.g_adj_down = Adjuster(self,G_ADJ_DOWN)
         self.g_output = DisplayField(self,G_OUTPUT)
+        self.g_up = OptionButton(self,G_RADIO_UP)
+        self.g_down = OptionButton(self,G_RADIO_DOWN) 
     
     # Event handler for Adjuster
     @toolbox_handler(AdjusterClickedEvent)
     def AdjusterClicked(self,event,id_block,poll_block):
         s = f"Adjuster click. Direction = {poll_block.direction}"
         self.g_output.value = s
+        # The newer version has added a couple extra properties that will for now
+        # be represented with these OptionButtons
+        self.g_down.state = 0
+        self.g_up.state = 0
+        if poll_block.down:
+            self.g_down.state = 1
+
+        if poll_block.up:
+            self.g_up.state = 1
+
