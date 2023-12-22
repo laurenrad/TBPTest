@@ -60,16 +60,6 @@ EvActionButtonGetEvent      = 0x803
 EvActionButtonSetClickShow  = 0x804
 EvActionButtonGetClickShow  = 0x805
 
-# Button test events
-EvButtonSetFlags            = 0x900
-EvButtonGetFlags            = 0x901
-EvButtonSetValue            = 0x902
-EvButtonGetValue            = 0x903
-EvButtonSetValidation       = 0x904
-EvButtonGetValidation       = 0x905
-EvButtonSetFont             = 0x906
-EvButtonGetFont             = 0x907
-
 # Scroll List test events - these aren't to be implemented yet
 EvScrollListSetState         = 0xA00
 EvScrollListGetState         = 0xA01

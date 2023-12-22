@@ -24,11 +24,10 @@ import traceback
 import swi
 
 from tbptest.reporter import Reporter
-from tbptest.tbox_const import *
 from tbptest.tbox_common import TestMenu
 
 import riscos_toolbox as toolbox
-from riscos_toolbox.objects.menu import Menu
+from riscos_toolbox.objects.menu import Menu, SelectionEvent
 from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.button import Button
 from riscos_toolbox.gadgets.writablefield import WritableField
@@ -84,61 +83,42 @@ class ButtonWindow(Window):
         except ValueError as e:
             self.g_output.value = "Int input required"
         else:
-            #self.g_button.font = (name, width, height) # old property
             self.g_button.set_font(name,width,height)
             
-    def button_get_font(self):
-        font_handle = swi.swi('Toolbox_ObjectMiscOp','0iIi;i',self.id,967,self.g_button.id)
-        Reporter.print(f"Got back {font_handle} from GetFont")
-        
 class ButtonMenu(Menu,TestMenu):
     template = "ButtonMenu"
     
-    ## Button event handlers
-    @toolbox_handler(EvButtonSetFlags)
-    def ButtonSetFlags(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.button_set_flags()
-        self.menu_tick(id_block.self.component)
+    # Entry constants
+    ENTRY_SET_FLAGS      = 0x00
+    ENTRY_GET_FLAGS      = 0x01
+    ENTRY_SET_VALUE      = 0x02
+    ENTRY_GET_VALUE      = 0x03
+    ENTRY_SET_VALIDATION = 0x04
+    ENTRY_GET_VALIDATION = 0x05
+    ENTRY_SET_FONT       = 0x06
     
-    @toolbox_handler(EvButtonGetFlags)
-    def ButtonGetFlags(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.button_get_flags()
+    @toolbox_handler(SelectionEvent)
+    def menu_selected(self,event,id_block,poll_block):
+        if id_block.self.id != self.id:
+            return False
+        
+        window = toolbox.get_object(id_block.parent.id)
         self.menu_tick(id_block.self.component)
+        
+        if id_block.self.component == ButtonMenu.ENTRY_SET_FLAGS:
+            window.button_set_flags()
+        elif id_block.self.component == ButtonMenu.ENTRY_GET_FLAGS:
+            window.button_get_flags()      
+        elif id_block.self.component == ButtonMenu.ENTRY_SET_VALUE:
+            window.button_set_value()
+        elif id_block.self.component == ButtonMenu.ENTRY_GET_VALUE:
+            window.button_get_value()
+        elif id_block.self.component == ButtonMenu.ENTRY_SET_VALIDATION:  
+            window.button_set_validation()
+        elif id_block.self.component == ButtonMenu.ENTRY_GET_VALIDATION:
+            window.button_get_validation()
+        elif id_block.self.component == ButtonMenu.ENTRY_SET_FONT:
+            window.button_set_font()
+            
+        return True
 
-    @toolbox_handler(EvButtonSetValue)
-    def ButtonSetValue(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.button_set_value()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvButtonGetValue)
-    def ButtonGetValue(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.button_get_value()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvButtonSetValidation)
-    def ButtonSetValidation(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.button_set_validation()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvButtonGetValidation)
-    def ButtonGetValidation(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.button_get_validation()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvButtonSetFont)
-    def ButtonSetFont(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.button_set_font()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvButtonGetFont)
-    def ButtonGetFont(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.button_get_font()
-        self.menu_tick(id_block.self.component)

@@ -18,7 +18,7 @@ Objects:
 Gadgets:
 	actionbutton: Done
 	adjuster: Done
-	button
+	button: Done
 	displayfield: Done
 	draggable: Done
 	numberrange: Done
