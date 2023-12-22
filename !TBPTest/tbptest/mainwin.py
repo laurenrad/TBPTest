@@ -26,6 +26,7 @@ import swi
 from tbptest.reporter import Reporter
 from tbptest.tbox_const import *
 
+import riscos_toolbox as toolbox
 from riscos_toolbox.objects.window import Window
 from riscos_toolbox.events import toolbox_handler
 from riscos_toolbox.gadgets.displayfield import DisplayField
@@ -42,17 +43,47 @@ class TestMessage(UserMessage):
     _fields_ = UserMessage._fields_ + [ \
         ("message_data",ctypes.c_uint32) ]
 
+# The main purpose of this window currently is to create some test objects to hook up to other
+# things during testing and show their IDs.
 class MainWindow(Window):
     template = "MainWin"
     
+    # Gadget constants
+    G_DISPLAY_OBJ1       = 0x06
+    G_DISPLAY_OBJ2       = 0x08
+    G_DISPLAY_MENU1      = 0x0A
+    G_DISPLAY_MENU2      = 0x0C
+    G_DISPLAY_TASKNAME   = 0x12
+    G_DISPLAY_TASKHANDLE = 0x14
+    
     def __init__(self, *args):
         super().__init__(*args)
-        Reporter.print("Creating mainwin")
         
         # Set up gadgets
-        self.g_wimphandle = DisplayField(self, 0x01)
-        self.g_wimphandle.value = repr(self.wimp_handle)
+        self.g_disp_obj1 = DisplayField(self, MainWindow.G_DISPLAY_OBJ1)
+        self.g_disp_obj2 = DisplayField(self, MainWindow.G_DISPLAY_OBJ2)
+        self.g_disp_menu1 = DisplayField(self, MainWindow.G_DISPLAY_MENU1)
+        self.g_disp_menu2 = DisplayField(self, MainWindow.G_DISPLAY_MENU2)
+        self.g_disp_taskname = DisplayField(self, MainWindow.G_DISPLAY_TASKNAME)
+        self.g_disp_handle = DisplayField(self, MainWindow.G_DISPLAY_TASKHANDLE)
         
+        # Create test items
+        self.tst_obj1 = toolbox.create_object("TestWin1")
+        self.tst_obj2 = toolbox.create_object("TestWin2")
+        self.tst_menu1 = toolbox.create_object("TestMenu1")
+        self.tst_menu2 = toolbox.create_object("TestMenu2")
+        
+        self.g_disp_obj1.value = repr(self.tst_obj1.id)+" ("+hex(self.tst_obj1.id)+")"
+        self.g_disp_obj2.value = repr(self.tst_obj2.id)+" ("+hex(self.tst_obj2.id)+")"
+        self.g_disp_menu1.value = repr(self.tst_menu1.id)+" ("+hex(self.tst_menu1.id)+")"
+        self.g_disp_menu2.value = repr(self.tst_menu2.id)+" ("+hex(self.tst_menu2.id)+")"
+        
+        # Fill in any other info
+        self.g_disp_taskname.value = toolbox.task_name()
+        task_handle = swi.swi("Toolbox_GetSysInfo","I;...i",3)
+        self.g_disp_handle.value = repr(task_handle)
+        
+    # Currently unused but here for future rework
     @toolbox_handler(EvMainTestButton)
     def actionbutton_clicked(self, event, id_block, poll_block):
         Reporter.print("Main test button clicked")
