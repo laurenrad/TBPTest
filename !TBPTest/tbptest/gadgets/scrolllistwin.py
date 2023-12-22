@@ -21,12 +21,11 @@
 # SOFTWARE.
 
 from tbptest.reporter import Reporter
-from tbptest.tbox_const import *
 from tbptest.tbox_common import TestMenu
 
 import riscos_toolbox as toolbox
 from riscos_toolbox.events import toolbox_handler
-from riscos_toolbox.objects.menu import Menu
+from riscos_toolbox.objects.menu import Menu, SelectionEvent
 from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.writablefield import WritableField
@@ -179,105 +178,68 @@ class ScrollListWindow(Window):
 class ScrollListMenu(Menu,TestMenu):
     template = "ScrlLstMenu"
     
-    # Menu event handlers
-    @toolbox_handler(EvScrollListSetState)
-    def _scrolllist_set_state(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.scrolllist_set_state()
+    # Entry constants
+    ENTRY_POPULATE     = 0x10
+    ENTRY_SET_STATE    = 0x00
+    ENTRY_GET_STATE    = 0x01
+    ENTRY_ADD_ITEM     = 0x02
+    ENTRY_DELETE_ITEMS = 0x03
+    ENTRY_GET_SELECTED = 0x04
+    ENTRY_MAKE_VISIBLE = 0x05
+    ENTRY_SET_MULTISEL = 0x06
+    ENTRY_GET_MULTISEL = 0x07
+    # The remaining entries aren't implemented in riscos-toolbox yet but
+    # are being left in faded for future testing of these features.
+    ENTRY_SET_COLOUR   = 0x08
+    ENTRY_GET_COLOUR   = 0x09
+    ENTRY_COUNT_ITEMS  = 0x0A
+    ENTRY_GET_TEXT     = 0x0B
+    ENTRY_SET_TEXT     = 0x0C
+    ENTRY_SELECT_ITEM  = 0x0D
+    ENTRY_DESELECT     = 0x0E
+    ENTRY_SET_FONT     = 0x0F
+    
+    @toolbox_handler(SelectionEvent)
+    def menu_selected(self,event,id_block,poll_block):
+        if id_block.self.id != self.id:
+            return False
+            
+        window = toolbox.get_object(id_block.parent.id)
         self.menu_tick(id_block.self.component)
         
-    @toolbox_handler(EvScrollListGetState)
-    def _scrolllist_get_state(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.scrolllist_get_state()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvScrollListAddItem)
-    def _scrolllist_add_item(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.scrolllist_add_item()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvScrollListDeleteItems)
-    def _scrolllist_delete_items(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.scrolllist_delete_items()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvScrollListGetSelected)
-    def _scrolllist_get_selected(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.scrolllist_get_selected()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvScrollListMakeVisible)
-    def _scrolllist_make_visible(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.scrolllist_make_visible()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvScrollListSetMultisel)
-    def _scrolllist_set_multisel(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.scrolllist_set_multisel()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvScrollListGetMultisel)
-    def _scrolllist_get_multisel(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.scrolllist_get_multisel()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvScrollListSetColour)
-    def _scrolllist_set_colour(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.scrolllist_set_colour()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvScrollListGetColour)
-    def _scrolllist_get_colour(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.scrolllist_get_colour()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvScrollListCountItems)
-    def _scrolllist_count_items(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.scrolllist_count_items()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvScrollListGetItemText)
-    def _scrolllist_get_item_text(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.scrolllist_get_item_text()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvScrollListSetItemText)
-    def _scrolllist_set_item_text(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.scrolllist_set_item_text()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvScrollListSelectItem)
-    def _scrolllist_select_item(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.scrolllist_select_item()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvScrollListDeselectItem)
-    def _scrolllist_deselect_item(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.scrolllist_deselect_item()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvScrollListSetFont)
-    def _scrolllist_set_font(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.scrolllist_set_font()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvScrollListPopulate)
-    def _scrolllist_populate(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.scrolllist_populate()
-        self.menu_tick(id_block.self.component)
+        if id_block.self.component == ScrollListMenu.ENTRY_POPULATE:
+            window.scrolllist_populate()
+        elif id_block.self.component == ScrollListMenu.ENTRY_SET_STATE:
+            window.scrolllist_set_state()
+        elif id_block.self.component == ScrollListMenu.ENTRY_GET_STATE:
+            window.scrolllist_get_state()
+        elif id_block.self.component == ScrollListMenu.ENTRY_ADD_ITEM:
+            window.scrolllist_add_item()
+        elif id_block.self.component == ScrollListMenu.ENTRY_DELETE_ITEMS:
+            window.scrolllist_delete_items()
+        elif id_block.self.component == ScrollListMenu.ENTRY_GET_SELECTED:
+            window.scrolllist_get_selected()
+        elif id_block.self.component == ScrollListMenu.ENTRY_MAKE_VISIBLE:
+            window.scrolllist_make_visible()
+        elif id_block.self.component == ScrollListMenu.ENTRY_SET_MULTISEL:
+            window.scrolllist_set_multisel()
+        elif id_block.self.component == ScrollListMenu.ENTRY_GET_MULTISEL:
+            window.scrolllist_get_multisel()
+        elif id_block.self.component == ScrollListMenu.ENTRY_SET_COLOUR:
+            window.scrolllist_set_colour()
+        elif id_block.self.component == ScrollListMenu.ENTRY_GET_COLOUR:
+            window.scrolllist_get_colour()
+        elif id_block.self.component == ScrollListMenu.ENTRY_COUNT_ITEMS:
+            window.scrolllist_count_items()
+        elif id_block.self.component == ScrollListMenu.ENTRY_GET_TEXT:
+            window.scrolllist_get_item_text()
+        elif id_block.self.component == ScrollListMenu.ENTRY_SET_TEXT:
+            window.scrolllist_set_item_text()
+        elif id_block.self.component == ScrollListMenu.ENTRY_SELECT_ITEM:
+            window.scrolllist_select_item()
+        elif id_block.self.component == ScrollListMenu.ENTRY_DESELECT:
+            window.scrolllist_deselect_item()
+        elif id_block.self.component == ScrollListMenu.ENTRY_SET_FONT:
+            window.scrolllist_set_font()
+            
+        return True

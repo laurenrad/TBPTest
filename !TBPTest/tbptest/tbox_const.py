@@ -60,25 +60,6 @@ EvActionButtonGetEvent      = 0x803
 EvActionButtonSetClickShow  = 0x804
 EvActionButtonGetClickShow  = 0x805
 
-# Scroll List test events - these aren't to be implemented yet
-EvScrollListSetState         = 0xA00
-EvScrollListGetState         = 0xA01
-EvScrollListAddItem          = 0xA02
-EvScrollListDeleteItems      = 0xA03
-EvScrollListGetSelected      = 0xA04
-EvScrollListMakeVisible      = 0xA05
-EvScrollListSetMultisel      = 0xA06
-EvScrollListGetMultisel      = 0xA07
-EvScrollListSetColour        = 0xA08
-EvScrollListGetColour        = 0xA09
-EvScrollListCountItems       = 0xA0A
-EvScrollListGetItemText      = 0xA0B
-EvScrollListSetItemText      = 0xA0C
-EvScrollListSelectItem       = 0xA0D
-EvScrollListDeselectItem     = 0xA0E
-EvScrollListSetFont          = 0xA0F
-EvScrollListPopulate         = 0xA10
-
 # Slider test events
 EvSliderSetValue             = 0xB00
 EvSliderGetValue             = 0xB01

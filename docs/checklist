@@ -25,7 +25,7 @@ Gadgets:
 	optionbutton: Done
 	popup: Done
 	radiobutton
-	scrolllist
+	scrolllist: Done
 	slider
 	stringset
 	textarea
