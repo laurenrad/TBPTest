@@ -60,18 +60,6 @@ EvActionButtonGetEvent      = 0x803
 EvActionButtonSetClickShow  = 0x804
 EvActionButtonGetClickShow  = 0x805
 
-# Slider test events
-EvSliderSetValue             = 0xB00
-EvSliderGetValue             = 0xB01
-EvSliderSetLowerBound        = 0xB02
-EvSliderGetLowerBound        = 0xB03
-EvSliderSetUpperBound        = 0xB04
-EvSliderGetUpperBound        = 0xB05
-EvSliderSetStepSize          = 0xB06
-EvSliderGetStepSize          = 0xB07
-EvSliderSetColour            = 0xB08
-EvSliderGetColour            = 0xB09
-
 # StringSet test events
 EvStringSetSetAvailable      = 0xD00
 EvStringSetSetSelectedText   = 0xD01

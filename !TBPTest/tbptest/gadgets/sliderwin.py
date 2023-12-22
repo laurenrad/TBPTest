@@ -21,35 +21,33 @@
 # SOFTWARE.
 
 from tbptest.reporter import Reporter
-from tbptest.tbox_const import *
 from tbptest.tbox_common import TestMenu
-
 
 import riscos_toolbox as toolbox
 from riscos_toolbox.events import toolbox_handler
-from riscos_toolbox.objects.menu import Menu
+from riscos_toolbox.objects.menu import Menu, SelectionEvent
 from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.writablefield import WritableField
 from riscos_toolbox.gadgets.slider import Slider, SliderValueChangedEvent
-    
-# Gadget constants
-G_SLIDER = 0x00
-G_INPUT  = 0x01
-G_INPUT2 = 0x06
-G_OUTPUT = 0x02
 
 class SliderWindow(Window):
     template = "SliderWin"
+    
+    # Gadget constants
+    G_SLIDER         = 0x00
+    G_INPUT1         = 0x01
+    G_INPUT2         = 0x06
+    G_OUTPUT         = 0x02
     
     def __init__(self, *args):
         super().__init__(*args)
         
         # Set up gadgets
-        self.g_slider = Slider(self,G_SLIDER)
-        self.g_input = WritableField(self,G_INPUT)
-        self.g_input2 = WritableField(self,G_INPUT2)
-        self.g_output = DisplayField(self,G_OUTPUT)
+        self.g_slider = Slider(self,SliderWindow.G_SLIDER)
+        self.g_input = WritableField(self,SliderWindow.G_INPUT1)
+        self.g_input2 = WritableField(self,SliderWindow.G_INPUT2)
+        self.g_output = DisplayField(self,SliderWindow.G_OUTPUT)
         
     ## Methods for testing slider ops
     def slider_set_value(self):
@@ -100,7 +98,7 @@ class SliderWindow(Window):
     def slider_get_colour(self):
         fg, bg = self.g_slider.colour
         self.g_output.value = f"fg={fg}, bg={bg}"
-    
+        
     # Event handlers for Slider Events
     @toolbox_handler(SliderValueChangedEvent)
     def SliderValueChanged(self,event,id_block,poll_block):
@@ -109,63 +107,45 @@ class SliderWindow(Window):
 class SliderMenu(Menu,TestMenu):
     template = "SliderMenu"
     
-    ## Slider event handlers
-    @toolbox_handler(EvSliderSetValue)
-    def SliderSetValue(self,event,id_block,poll_block):
+    # Entry constants
+    ENTRY_SET_VALUE       = 0x00
+    ENTRY_GET_VALUE       = 0x01
+    ENTRY_SET_LOWER_BOUND = 0x02
+    ENTRY_GET_LOWER_BOUND = 0x03
+    ENTRY_SET_UPPER_BOUND = 0x04
+    ENTRY_GET_UPPER_BOUND = 0x05
+    ENTRY_SET_STEP_SIZE   = 0x06
+    ENTRY_GET_STEP_SIZE   = 0x07
+    ENTRY_SET_COLOUR      = 0x0A
+    ENTRY_GET_COLOUR      = 0x09
+    
+    @toolbox_handler(SelectionEvent)
+    def menu_selected(self,event,id_block,poll_block):
+        if id_block.self.id != self.id:
+            return False
+            
         window = toolbox.get_object(id_block.ancestor.id)
-        window.slider_set_value()
         self.menu_tick(id_block.self.component)
         
-    @toolbox_handler(EvSliderGetValue)
-    def SliderGetValue(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.slider_get_value()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvSliderSetLowerBound)
-    def SliderSetLowerBound(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.slider_set_lower_bound()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvSliderGetLowerBound)
-    def SliderGetLowerBound(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.slider_get_lower_bound()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvSliderSetUpperBound)
-    def SliderSetUpperBound(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.slider_set_upper_bound()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvSliderGetUpperBound)
-    def SliderGetUpperBound(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.slider_get_upper_bound()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvSliderSetStepSize)
-    def SliderSetStepSize(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.slider_set_step_size()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvSliderGetStepSize)
-    def SliderGetStepSize(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.slider_get_step_size()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvSliderSetColour)
-    def SliderSetColour(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.slider_set_colour()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvSliderGetColour)
-    def SliderGetColour(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.slider_get_colour()
-        self.menu_tick(id_block.self.component)
+        if id_block.self.component == SliderMenu.ENTRY_SET_VALUE:
+            window.slider_set_value()
+        elif id_block.self.component == SliderMenu.ENTRY_GET_VALUE:
+            window.slider_get_value()
+        elif id_block.self.component == SliderMenu.ENTRY_SET_LOWER_BOUND:
+            window.slider_set_lower_bound()
+        elif id_block.self.component == SliderMenu.ENTRY_GET_LOWER_BOUND:
+            window.slider_get_lower_bound()
+        elif id_block.self.component == SliderMenu.ENTRY_SET_UPPER_BOUND:
+            window.slider_set_upper_bound()
+        elif id_block.self.component == SliderMenu.ENTRY_GET_UPPER_BOUND:
+            window.slider_get_upper_bound()
+        elif id_block.self.component == SliderMenu.ENTRY_SET_STEP_SIZE:
+            window.slider_set_step_size()
+        elif id_block.self.component == SliderMenu.ENTRY_GET_STEP_SIZE:
+            window.slider_get_step_size()
+        elif id_block.self.component == SliderMenu.ENTRY_SET_COLOUR:
+            window.slider_set_colour()
+        elif id_block.self.component == SliderMenu.ENTRY_GET_COLOUR:
+            window.slider_get_colour()
+            
+        return True
