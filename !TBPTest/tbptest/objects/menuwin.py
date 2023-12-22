@@ -68,7 +68,6 @@ class MenuWindow(Window):
     
     def __init__(self, *args):
         super().__init__(*args)
-        Reporter.print("Creating menu window")
         
         # Set up gadgets
         self.g_inputint = NumberRange(self,MenuWindow.G_INPUT_INT)
