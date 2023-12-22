@@ -23,7 +23,7 @@ Gadgets:
 	draggable: Done
 	numberrange: Done
 	optionbutton: Done
-	popup
+	popup: Done
 	radiobutton
 	scrolllist
 	slider

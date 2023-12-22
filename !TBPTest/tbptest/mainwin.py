@@ -83,28 +83,3 @@ class MainWindow(Window):
         task_handle = swi.swi("Toolbox_GetSysInfo","I;...i",3)
         self.g_disp_handle.value = repr(task_handle)
         
-    # Currently unused but here for future rework
-    @toolbox_handler(EvMainTestButton)
-    def actionbutton_clicked(self, event, id_block, poll_block):
-        Reporter.print("Main test button clicked")
-        
-        #h = HelpReplyMessage()
-        #h.your_ref = 0
-        #h.code = HelpReplyMessage.event_id
-        #h.size = 256
-        #h.help_message = b"This is an example help message.\x00"
-        h = TestMessage()
-        h.your_ref = 0
-        h.code = TestMessage.event_id
-        h.msg_data = 420
-        h.size = ctypes.sizeof(h)
-        dst = ctypes.cast(ctypes.pointer(h),ctypes.POINTER(ctypes.c_byte))
-        #msgptr = ctypes.c_char_p(h.help_message)
-        #addr = ctypes.cast(msgptr,ctypes.c_void_p).value
-        #message = b"This is an example help message."
-        #h.help_message = ctypes.create_string_buffer(message,size=236)
-        Reporter.print(f"ctypes.addressof(h): {ctypes.addressof(h)}")
-        Reporter.print(f"ctypes.addressof(dst): {ctypes.addressof(dst)}")
-        Reporter.print(f"ctypes.sizeof(h): {ctypes.sizeof(h)}")
-        swi.swi('Wimp_SendMessage',"iii",17,ctypes.addressof(dst),0)      
-        #swi.swi('Wimp_SendMessage','iii',17,ctypes.byref(h),0)

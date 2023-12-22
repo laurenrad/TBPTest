@@ -21,32 +21,31 @@
 # SOFTWARE.
 
 from tbptest.reporter import Reporter
-from tbptest.tbox_const import *
 from tbptest.tbox_common import TestMenu
 
 import riscos_toolbox as toolbox
 from riscos_toolbox.events import toolbox_handler
-from riscos_toolbox.objects.menu import Menu
+from riscos_toolbox.objects.menu import Menu, SelectionEvent
 from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.writablefield import WritableField
 from riscos_toolbox.gadgets.popup import PopUp, PopUpAboutToBeShownEvent
 
-# Gadget constants
-G_POPUP  = 0x01
-G_INPUT  = 0x02
-G_OUTPUT = 0x04
-
 class PopUpWin(Window):
     template = "PopUpWin"
+    
+    # Gadget constants
+    G_POPUP  = 0x01
+    G_INPUT  = 0x02
+    G_OUTPUT = 0x04
     
     def __init__(self, *args):
         super().__init__(*args)
         
         # Set up gadgets
-        self.g_popup = PopUp(self,G_POPUP)
-        self.g_input = WritableField(self,G_INPUT)
-        self.g_output = DisplayField(self,G_OUTPUT)
+        self.g_popup = PopUp(self,PopUpWin.G_POPUP)
+        self.g_input = WritableField(self,PopUpWin.G_INPUT)
+        self.g_output = DisplayField(self,PopUpWin.G_OUTPUT)
         
     # Methods for testing PopUp
     def popup_set_menu(self):
@@ -66,15 +65,20 @@ class PopUpWin(Window):
 class PopUpMenu(Menu,TestMenu):
     template = "PopUpMenu"
     
-    # Event handlers
-    @toolbox_handler(EvPopUpSetMenu)
-    def _popup_set_menu(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.popup_set_menu()
+    # Entry constants
+    ENTRY_SET_MENU = 0x00
+    ENTRY_GET_MENU = 0x01
+    
+    @toolbox_handler(SelectionEvent)
+    def menu_selected(self,event,id_block,poll_block):
+        if id_block.self.id != self.id:
+            return False
+            
+        window = toolbox.get_object(id_block.parent.id)
         self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvPopUpGetMenu)
-    def _popup_get_menu(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.popup_get_menu()
-        self.menu_tick(id_block.self.component)
+        if id_block.self.component == PopUpMenu.ENTRY_SET_MENU:
+            window.popup_set_menu()
+        elif id_block.self.component == PopUpMenu.ENTRY_GET_MENU:
+            window.popup_get_menu()
+            
+        return True
