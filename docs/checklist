@@ -19,8 +19,8 @@ Gadgets:
 	actionbutton: Done
 	adjuster: Done
 	button
-	displayfield
-	draggable
+	displayfield: Done
+	draggable: Done
 	numberrange
 	optionbutton
 	popup
