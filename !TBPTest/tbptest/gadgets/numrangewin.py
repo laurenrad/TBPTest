@@ -21,12 +21,11 @@
 # SOFTWARE.
 
 from tbptest.reporter import Reporter
-from tbptest.tbox_const import *
 from tbptest.tbox_common import TestMenu
 
 import riscos_toolbox as toolbox
 from riscos_toolbox.events import toolbox_handler
-from riscos_toolbox.objects.menu import Menu
+from riscos_toolbox.objects.menu import Menu, SelectionEvent
 from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.numberrange import NumberRange, NumberRangeValueChangedEvent
@@ -98,87 +97,57 @@ class NumberRangeWindow(Window):
 class NumberRangeMenu(Menu,TestMenu):
     template = "NumRngeMenu"
     
-    # Event Handlers
-    @toolbox_handler(EvNumRangeSetValue)
-    def _numrange_set_value(self,event,id_block,poll_block):
+    # Entry constants
+    ENTRY_SET_VALUE     = 0x00
+    ENTRY_GET_VALUE     = 0x01
+    ENTRY_SET_LOWER     = 0x02
+    ENTRY_GET_LOWER     = 0x03
+    ENTRY_SET_UPPER     = 0x04
+    ENTRY_GET_UPPER     = 0x05
+    ENTRY_SET_STEP      = 0x06
+    ENTRY_GET_STEP      = 0x07
+    ENTRY_SET_PRECISION = 0x08
+    ENTRY_GET_PRECISION = 0x09
+    ENTRY_GET_NUMERIC   = 0x0A
+    ENTRY_GET_L_ADJ     = 0x0B
+    ENTRY_GET_R_ADJ     = 0x0C
+    ENTRY_GET_SLIDER    = 0x0D
+    
+    @toolbox_handler(SelectionEvent)
+    def menu_selected(self,event,id_block,poll_block):
+        if id_block.self.id != self.id:
+            return False
+            
         window = toolbox.get_object(id_block.ancestor.id)
-        window.numrange_set_value()
         self.menu_tick(id_block.self.component)
         
-    @toolbox_handler(EvNumRangeGetValue)
-    def _numrange_get_value(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.numrange_get_value()
-        self.menu_tick(id_block.self.component)
-
-    @toolbox_handler(EvNumRangeSetLowerBound)
-    def NumRangeSetLowerBound(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.numrange_set_lower_bound()
-        self.menu_tick(id_block.self.component)
-
-    @toolbox_handler(EvNumRangeGetLowerBound)
-    def NumRangeGetLowerBound(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.numrange_get_lower_bound()
-        self.menu_tick(id_block.self.component)
+        if id_block.self.component == NumberRangeMenu.ENTRY_SET_VALUE:
+            window.numrange_set_value()
+        elif id_block.self.component == NumberRangeMenu.ENTRY_GET_VALUE:
+            window.numrange_get_value()
+        elif id_block.self.component == NumberRangeMenu.ENTRY_SET_LOWER:
+            window.numrange_set_lower_bound()
+        elif id_block.self.component == NumberRangeMenu.ENTRY_GET_LOWER:
+            window.numrange_get_lower_bound()
+        elif id_block.self.component == NumberRangeMenu.ENTRY_SET_UPPER:
+            window.numrange_set_upper_bound()
+        elif id_block.self.component == NumberRangeMenu.ENTRY_GET_UPPER:
+            window.numrange_get_upper_bound()
+        elif id_block.self.component == NumberRangeMenu.ENTRY_SET_STEP:
+            window.numrange_set_step_size()
+        elif id_block.self.component == NumberRangeMenu.ENTRY_GET_STEP:
+            window.numrange_get_step_size()
+        elif id_block.self.component == NumberRangeMenu.ENTRY_SET_PRECISION:
+            window.numrange_set_precision()
+        elif id_block.self.component == NumberRangeMenu.ENTRY_GET_PRECISION:
+            window.numrange_get_precision()
+        elif id_block.self.component == NumberRangeMenu.ENTRY_GET_NUMERIC:
+            window.numrange_get_numeric()
+        elif id_block.self.component == NumberRangeMenu.ENTRY_GET_L_ADJ:
+            window.numrange_get_left_adj()
+        elif id_block.self.component == NumberRangeMenu.ENTRY_GET_R_ADJ:
+            window.numrange_get_right_adj()
+        elif id_block.self.component == NumberRangeMenu.ENTRY_GET_SLIDER:
+            window.numrange_get_slider()
         
-    @toolbox_handler(EvNumRangeSetUpperBound)
-    def NumRangeSetUpperBound(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.numrange_set_upper_bound()
-        self.menu_tick(id_block.self.component)
-    
-    @toolbox_handler(EvNumRangeGetUpperBound)
-    def NumRangeGetUpperBound(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.numrange_get_upper_bound()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvNumRangeSetStepSize)
-    def NumRangeSetStepSize(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.numrange_set_step_size()
-        self.menu_tick(id_block.self.component)
-    
-    @toolbox_handler(EvNumRangeGetStepSize)
-    def NumRangeGetStepSize(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.numrange_get_step_size()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvNumRangeSetPrecision)
-    def NumRangeSetPrecision(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.numrange_set_precision()
-        self.menu_tick(id_block.self.component)
-    
-    @toolbox_handler(EvNumRangeGetPrecision)
-    def NumRangeGetPrecision(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.numrange_get_precision()
-        self.menu_tick(id_block.self.component)
-        
-    @toolbox_handler(EvNumRangeGetNumeric)
-    def NumRangeGetNumeric(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.numrange_get_numeric()
-        self.menu_tick(id_block.self.component)
-    
-    @toolbox_handler(EvNumRangeGetLeftAdj)
-    def NumRangeGetValue(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.numrange_get_left_adj()
-        self.menu_tick(id_block.self.component)
-    
-    @toolbox_handler(EvNumRangeGetRightAdj)
-    def NumRangeGetRightAdj(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.numrange_get_right_adj()
-        self.menu_tick(id_block.self.component)
-    
-    @toolbox_handler(EvNumRangeGetSlider)
-    def NumRangeGetSlider(self,event,id_block,poll_block):
-        window = toolbox.get_object(id_block.ancestor.id)
-        window.numrange_get_slider()
-        self.menu_tick(id_block.self.component)
+        return True

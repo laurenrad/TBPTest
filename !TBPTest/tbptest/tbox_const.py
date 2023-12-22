@@ -50,24 +50,6 @@ EvDraggableGetState    = 0x305
 EvDraggableDragStarted = 0x82887 # Raised by the Toolbox
 EvDraggableDragEnded   = 0x82888 # Raised by the toolbox
 
-# Number range test events
-EvNumRangeSetValue          = 0x400
-EvNumRangeGetValue          = 0x401
-EvNumRangeSetLowerBound     = 0x402
-EvNumRangeGetLowerBound     = 0x403
-EvNumRangeSetUpperBound     = 0x404
-EvNumRangeGetUpperBound     = 0x405
-EvNumRangeSetStepSize       = 0x406
-EvNumRangeGetStepSize       = 0x407
-EvNumRangeSetPrecision      = 0x408
-EvNumRangeGetPrecision      = 0x409
-EvNumRangeGetNumeric        = 0x40A
-EvNumRangeGetLeftAdj        = 0x40B
-EvNumRangeGetRightAdj       = 0x40C
-EvNumRangeGetSlider         = 0x40D
-# Number range events (Raised by Toolbox)
-EvNumRngeValueChanged       = 0x8288D
-
 ## Here are the events for the gadgets which already existed before I worked on it
 
 # Action button test events

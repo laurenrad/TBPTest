@@ -21,7 +21,7 @@ Gadgets:
 	button
 	displayfield: Done
 	draggable: Done
-	numberrange
+	numberrange: Done
 	optionbutton: Done
 	popup
 	radiobutton
