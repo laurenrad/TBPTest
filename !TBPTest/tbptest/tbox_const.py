@@ -80,10 +80,6 @@ EvOptButtonStateChanged     = 0x82882
 
 ## Here are the events for the gadgets which already existed before I worked on it
 
-# Display field test events
-EvDisplayFieldSetValue      = 0x600
-EvDisplayFieldGetValue      = 0x601
-
 # Writable field test events
 EvWritableFieldSetText      = 0x700
 EvWritableFieldGetText      = 0x701
