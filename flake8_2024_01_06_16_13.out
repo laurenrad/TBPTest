@@ -1,0 +1,656 @@
+!TBPTest/tbptest/__init__.py:1:14: W292 no newline at end of file
+!TBPTest/tbptest/__init__.py:1:14: W292 no newline at end of file
+!TBPTest/tbptest/__init__.py:1:14: W292 no newline at end of file
+!TBPTest/tbptest/gadgets/__init__.py:1:14: W292 no newline at end of file
+!TBPTest/tbptest/gadgets/__init__.py:1:14: W292 no newline at end of file
+!TBPTest/tbptest/gadgets/__init__.py:1:14: W292 no newline at end of file
+!TBPTest/tbptest/gadgets/actionbuttonwin.py:23:1: F401 'tbptest.reporter.Reporter' imported but unused
+!TBPTest/tbptest/gadgets/actionbuttonwin.py:24:1: F403 'from tbptest.tbox_const import *' used; unable to detect undefined names
+!TBPTest/tbptest/gadgets/actionbuttonwin.py:37:8: E223 tab before operator
+!TBPTest/tbptest/gadgets/actionbuttonwin.py:38:9: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/actionbuttonwin.py:40:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/actionbuttonwin.py:60:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/actionbuttonwin.py:69:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/actionbuttonwin.py:92:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/actionbuttonwin.py:95:5: E266 too many leading '#' for block comment
+!TBPTest/tbptest/gadgets/actionbuttonwin.py:96:22: F405 'EvActionButtonSetText' may be undefined, or defined from star imports: tbptest.tbox_const
+!TBPTest/tbptest/gadgets/actionbuttonwin.py:102:22: F405 'EvActionButtonGetText' may be undefined, or defined from star imports: tbptest.tbox_const
+!TBPTest/tbptest/gadgets/actionbuttonwin.py:108:22: F405 'EvActionButtonSetEvent' may be undefined, or defined from star imports: tbptest.tbox_const
+!TBPTest/tbptest/gadgets/actionbuttonwin.py:114:22: F405 'EvActionButtonGetEvent' may be undefined, or defined from star imports: tbptest.tbox_const
+!TBPTest/tbptest/gadgets/actionbuttonwin.py:120:22: F405 'EvActionButtonSetClickShow' may be undefined, or defined from star imports: tbptest.tbox_const
+!TBPTest/tbptest/gadgets/actionbuttonwin.py:126:22: F405 'EvActionButtonGetClickShow' may be undefined, or defined from star imports: tbptest.tbox_const
+!TBPTest/tbptest/gadgets/adjusterwin.py:23:1: F401 'tbptest.reporter.Reporter' imported but unused
+!TBPTest/tbptest/gadgets/adjusterwin.py:25:1: F401 'riscos_toolbox as toolbox' imported but unused
+!TBPTest/tbptest/gadgets/adjusterwin.py:26:1: F401 'riscos_toolbox.objects.menu.Menu' imported but unused
+!TBPTest/tbptest/gadgets/adjusterwin.py:34:11: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/adjusterwin.py:35:12: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/adjusterwin.py:36:9: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/adjusterwin.py:37:11: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/adjusterwin.py:38:9: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/adjusterwin.py:39:11: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/adjusterwin.py:42:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/adjusterwin.py:57:54: W291 trailing whitespace
+!TBPTest/tbptest/gadgets/adjusterwin.py:73:1: W391 blank line at end of file
+!TBPTest/tbptest/gadgets/buttonwin.py:23:1: F401 'traceback' imported but unused
+!TBPTest/tbptest/gadgets/buttonwin.py:24:1: F401 'swi' imported but unused
+!TBPTest/tbptest/gadgets/buttonwin.py:26:1: F401 'tbptest.reporter.Reporter' imported but unused
+!TBPTest/tbptest/gadgets/buttonwin.py:39:8: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/buttonwin.py:44:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/buttonwin.py:60:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/buttonwin.py:83:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/buttonwin.py:88:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/buttonwin.py:92:20: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/buttonwin.py:93:20: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/buttonwin.py:94:20: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/buttonwin.py:95:20: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/buttonwin.py:98:19: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/buttonwin.py:111:38: W291 trailing whitespace
+!TBPTest/tbptest/gadgets/buttonwin.py:116:73: W291 trailing whitespace
+!TBPTest/tbptest/gadgets/buttonwin.py:124:1: W391 blank line at end of file
+!TBPTest/tbptest/gadgets/displayfieldwin.py:23:1: F401 'tbptest.reporter.Reporter' imported but unused
+!TBPTest/tbptest/gadgets/displayfieldwin.py:24:1: F403 'from tbptest.tbox_const import *' used; unable to detect undefined names
+!TBPTest/tbptest/gadgets/displayfieldwin.py:24:1: F401 'tbptest.tbox_const.*' imported but unused
+!TBPTest/tbptest/gadgets/displayfieldwin.py:36:9: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/displayfieldwin.py:37:9: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/displayfieldwin.py:38:9: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/displayfieldwin.py:40:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/displayfieldwin.py:67:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/displayfieldwin.py:73:19: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/displayfieldwin.py:90:9: W292 no newline at end of file
+!TBPTest/tbptest/gadgets/draggablewin.py:24:1: F403 'from tbptest.tbox_const import *' used; unable to detect undefined names
+!TBPTest/tbptest/gadgets/draggablewin.py:38:8: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/draggablewin.py:39:9: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/draggablewin.py:41:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/draggablewin.py:52:5: E266 too many leading '#' for block comment
+!TBPTest/tbptest/gadgets/draggablewin.py:74:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/draggablewin.py:77:5: E266 too many leading '#' for block comment
+!TBPTest/tbptest/gadgets/draggablewin.py:77:32: W291 trailing whitespace
+!TBPTest/tbptest/gadgets/draggablewin.py:87:24: F541 f-string is missing placeholders
+!TBPTest/tbptest/gadgets/draggablewin.py:92:100: E501 line too long (152 > 99 characters)
+!TBPTest/tbptest/gadgets/draggablewin.py:94:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/draggablewin.py:97:5: E266 too many leading '#' for block comment
+!TBPTest/tbptest/gadgets/draggablewin.py:100:22: F405 'EvDraggableGetText' may be undefined, or defined from star imports: tbptest.tbox_const
+!TBPTest/tbptest/gadgets/draggablewin.py:107:22: F405 'EvDraggableSetText' may be undefined, or defined from star imports: tbptest.tbox_const
+!TBPTest/tbptest/gadgets/draggablewin.py:114:22: F405 'EvDraggableGetSprite' may be undefined, or defined from star imports: tbptest.tbox_const
+!TBPTest/tbptest/gadgets/draggablewin.py:121:22: F405 'EvDraggableSetSprite' may be undefined, or defined from star imports: tbptest.tbox_const
+!TBPTest/tbptest/gadgets/draggablewin.py:128:22: F405 'EvDraggableGetState' may be undefined, or defined from star imports: tbptest.tbox_const
+!TBPTest/tbptest/gadgets/draggablewin.py:135:22: F405 'EvDraggableSetState' may be undefined, or defined from star imports: tbptest.tbox_const
+!TBPTest/tbptest/gadgets/numrangewin.py:23:1: F401 'tbptest.reporter.Reporter' imported but unused
+!TBPTest/tbptest/gadgets/numrangewin.py:38:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/numrangewin.py:97:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/numrangewin.py:101:20: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/numrangewin.py:102:20: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/numrangewin.py:103:20: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/numrangewin.py:104:20: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/numrangewin.py:105:20: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/numrangewin.py:106:20: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/numrangewin.py:107:19: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/numrangewin.py:108:19: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/numrangewin.py:111:22: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/numrangewin.py:112:20: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/numrangewin.py:113:20: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/numrangewin.py:114:21: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/optionbuttonwin.py:23:1: F401 'tbptest.reporter.Reporter' imported but unused
+!TBPTest/tbptest/gadgets/optionbuttonwin.py:35:9: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/optionbuttonwin.py:36:8: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/optionbuttonwin.py:38:9: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/optionbuttonwin.py:40:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/optionbuttonwin.py:51:5: E266 too many leading '#' for block comment
+!TBPTest/tbptest/gadgets/optionbuttonwin.py:59:80: W291 trailing whitespace
+!TBPTest/tbptest/gadgets/optionbuttonwin.py:63:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/optionbuttonwin.py:75:5: E266 too many leading '#' for block comment
+!TBPTest/tbptest/gadgets/optionbuttonwin.py:120:9: W292 no newline at end of file
+!TBPTest/tbptest/gadgets/popupwin.py:23:1: F401 'tbptest.reporter.Reporter' imported but unused
+!TBPTest/tbptest/gadgets/popupwin.py:34:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/popupwin.py:38:12: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/popupwin.py:39:12: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/popupwin.py:54:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/popupwin.py:65:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/radiobuttonwin.py:23:1: F401 'tbptest.reporter.Reporter' imported but unused
+!TBPTest/tbptest/gadgets/radiobuttonwin.py:35:10: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/radiobuttonwin.py:36:10: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/radiobuttonwin.py:37:8: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/radiobuttonwin.py:38:14: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/radiobuttonwin.py:40:9: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/radiobuttonwin.py:42:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/radiobuttonwin.py:51:21: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/radiobuttonwin.py:54:22: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/radiobuttonwin.py:66:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/radiobuttonwin.py:75:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/radiobuttonwin.py:86:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/radiobuttonwin.py:113:19: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/radiobuttonwin.py:138:20: W291 trailing whitespace
+!TBPTest/tbptest/gadgets/scrolllistwin.py:23:1: F401 'tbptest.reporter.Reporter' imported but unused
+!TBPTest/tbptest/gadgets/scrolllistwin.py:36:9: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/scrolllistwin.py:37:9: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/scrolllistwin.py:38:9: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/scrolllistwin.py:39:9: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/scrolllistwin.py:41:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/scrolllistwin.py:58:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/scrolllistwin.py:68:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/scrolllistwin.py:77:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/scrolllistwin.py:85:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/scrolllistwin.py:92:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/scrolllistwin.py:98:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/scrolllistwin.py:108:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/scrolllistwin.py:121:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/scrolllistwin.py:129:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/scrolllistwin.py:140:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/scrolllistwin.py:149:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/scrolllistwin.py:160:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/scrolllistwin.py:166:18: E201 whitespace after '('
+!TBPTest/tbptest/gadgets/scrolllistwin.py:168:77: E202 whitespace before ')'
+!TBPTest/tbptest/gadgets/scrolllistwin.py:175:10: E225 missing whitespace around operator
+!TBPTest/tbptest/gadgets/scrolllistwin.py:178:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/scrolllistwin.py:182:19: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/scrolllistwin.py:183:20: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/scrolllistwin.py:184:20: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/scrolllistwin.py:185:19: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/scrolllistwin.py:193:21: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/scrolllistwin.py:194:21: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/scrolllistwin.py:195:22: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/scrolllistwin.py:196:19: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/scrolllistwin.py:197:19: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/scrolllistwin.py:198:22: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/scrolllistwin.py:199:19: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/scrolllistwin.py:200:19: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/sliderwin.py:23:1: F401 'tbptest.reporter.Reporter' imported but unused
+!TBPTest/tbptest/gadgets/sliderwin.py:34:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/sliderwin.py:38:13: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/sliderwin.py:39:13: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/sliderwin.py:40:13: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/sliderwin.py:41:13: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/sliderwin.py:52:5: E266 too many leading '#' for block comment
+!TBPTest/tbptest/gadgets/sliderwin.py:56:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/sliderwin.py:65:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/sliderwin.py:74:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/sliderwin.py:83:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/sliderwin.py:93:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/sliderwin.py:107:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/sliderwin.py:111:20: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/sliderwin.py:112:20: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/sliderwin.py:117:24: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/sliderwin.py:118:24: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/sliderwin.py:119:21: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/sliderwin.py:120:21: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/stringsetwin.py:23:1: F401 'tbptest.reporter.Reporter' imported but unused
+!TBPTest/tbptest/gadgets/stringsetwin.py:37:1: E265 block comment should start with '# '
+!TBPTest/tbptest/gadgets/stringsetwin.py:39:8: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/stringsetwin.py:40:10: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/stringsetwin.py:41:10: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/stringsetwin.py:42:9: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/stringsetwin.py:44:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/stringsetwin.py:70:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/stringsetwin.py:90:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/stringsetwin.py:104:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/stringsetwin.py:109:23: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/stringsetwin.py:110:23: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/stringsetwin.py:114:23: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/stringsetwin.py:115:20: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/stringsetwin.py:116:19: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/textareawin.py:23:1: F401 'swi' imported but unused
+!TBPTest/tbptest/gadgets/textareawin.py:25:1: F401 'tbptest.reporter.Reporter' imported but unused
+!TBPTest/tbptest/gadgets/textareawin.py:26:1: F403 'from tbptest.tbox_const import *' used; unable to detect undefined names
+!TBPTest/tbptest/gadgets/textareawin.py:27:1: F403 'from tbptest.tbox_common import *' used; unable to detect undefined names
+!TBPTest/tbptest/gadgets/textareawin.py:39:18: E261 at least two spaces before inline comment
+!TBPTest/tbptest/gadgets/textareawin.py:40:9: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/textareawin.py:40:18: E261 at least two spaces before inline comment
+!TBPTest/tbptest/gadgets/textareawin.py:41:9: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/textareawin.py:41:18: E261 at least two spaces before inline comment
+!TBPTest/tbptest/gadgets/textareawin.py:42:9: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/textareawin.py:42:18: E261 at least two spaces before inline comment
+!TBPTest/tbptest/gadgets/textareawin.py:43:10: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/textareawin.py:43:18: E261 at least two spaces before inline comment
+!TBPTest/tbptest/gadgets/textareawin.py:44:10: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/textareawin.py:44:18: E261 at least two spaces before inline comment
+!TBPTest/tbptest/gadgets/textareawin.py:46:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/textareawin.py:67:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/textareawin.py:79:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/textareawin.py:89:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/textareawin.py:104:33: W291 trailing whitespace
+!TBPTest/tbptest/gadgets/textareawin.py:110:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/textareawin.py:113:60: W291 trailing whitespace
+!TBPTest/tbptest/gadgets/textareawin.py:120:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/textareawin.py:129:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/textareawin.py:141:9: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/gadgets/textareawin.py:147:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/textareawin.py:147:25: F405 'TestMenu' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+!TBPTest/tbptest/gadgets/textareawin.py:151:22: F405 'EvTextAreaGetState' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+!TBPTest/tbptest/gadgets/textareawin.py:153:58: W291 trailing whitespace
+!TBPTest/tbptest/gadgets/textareawin.py:154:36: W291 trailing whitespace
+!TBPTest/tbptest/gadgets/textareawin.py:157:22: F405 'EvTextAreaSetState' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+!TBPTest/tbptest/gadgets/textareawin.py:164:5: E303 too many blank lines (2)
+!TBPTest/tbptest/gadgets/textareawin.py:164:22: F405 'EvTextAreaSetText' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+!TBPTest/tbptest/gadgets/textareawin.py:170:22: F405 'EvTextAreaGetText' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+!TBPTest/tbptest/gadgets/textareawin.py:176:22: F405 'EvTextAreaInsertText' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+!TBPTest/tbptest/gadgets/textareawin.py:182:22: F405 'EvTextAreaReplaceText' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+!TBPTest/tbptest/gadgets/textareawin.py:188:22: F405 'EvTextAreaGetSelection' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+!TBPTest/tbptest/gadgets/textareawin.py:194:22: F405 'EvTextAreaSetSelection' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+!TBPTest/tbptest/gadgets/textareawin.py:200:22: F405 'EvTextAreaGetSelectionPoints' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+!TBPTest/tbptest/gadgets/textareawin.py:206:22: F405 'EvTextAreaSetSelectionPoints' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+!TBPTest/tbptest/gadgets/textareawin.py:212:22: F405 'EvTextAreaSetFont' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+!TBPTest/tbptest/gadgets/textareawin.py:218:22: F405 'EvTextAreaSetColour' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+!TBPTest/tbptest/gadgets/textareawin.py:224:22: F405 'EvTextAreaGetColour' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+!TBPTest/tbptest/gadgets/textareawin.py:230:22: F405 'EvTextAreaSetCursorPos' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+!TBPTest/tbptest/gadgets/textareawin.py:236:22: F405 'EvTextAreaGetCursorPos' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+!TBPTest/tbptest/gadgets/writablewin.py:33:1: F401 'riscos_toolbox.events.wimp_handler' imported but unused
+!TBPTest/tbptest/gadgets/writablewin.py:33:1: F401 'riscos_toolbox.events.message_handler' imported but unused
+!TBPTest/tbptest/gadgets/writablewin.py:35:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/writablewin.py:40:10: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/writablewin.py:41:10: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/writablewin.py:42:10: E221 multiple spaces before operator
+!TBPTest/tbptest/gadgets/writablewin.py:60:1: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:63:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:66:1: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:69:1: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:72:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:73:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:74:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:75:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:76:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:77:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:78:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:85:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/gadgets/writablewin.py:97:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:98:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:99:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:100:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:101:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:102:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:103:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:104:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:105:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:106:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:107:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:108:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:109:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:110:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:111:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:112:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:113:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:114:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:115:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:116:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/gadgets/writablewin.py:117:2: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/mainwin.py:26:1: F401 'tbptest.reporter.Reporter' imported but unused
+!TBPTest/tbptest/mainwin.py:27:1: F403 'from tbptest.tbox_const import *' used; unable to detect undefined names
+!TBPTest/tbptest/mainwin.py:27:1: F401 'tbptest.tbox_const.*' imported but unused
+!TBPTest/tbptest/mainwin.py:31:1: F401 'riscos_toolbox.events.toolbox_handler' imported but unused
+!TBPTest/tbptest/mainwin.py:35:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/mainwin.py:37:41: E502 the backslash is redundant between brackets
+!TBPTest/tbptest/mainwin.py:41:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/mainwin.py:43:41: E502 the backslash is redundant between brackets
+!TBPTest/tbptest/mainwin.py:44:41: E202 whitespace before ']'
+!TBPTest/tbptest/mainwin.py:48:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/mainwin.py:52:19: E221 multiple spaces before operator
+!TBPTest/tbptest/mainwin.py:53:19: E221 multiple spaces before operator
+!TBPTest/tbptest/mainwin.py:54:20: E221 multiple spaces before operator
+!TBPTest/tbptest/mainwin.py:55:20: E221 multiple spaces before operator
+!TBPTest/tbptest/mainwin.py:56:23: E221 multiple spaces before operator
+!TBPTest/tbptest/mainwin.py:85:9: W292 no newline at end of file
+!TBPTest/tbptest/objects/colourwin.py:27:1: F401 'riscos_toolbox.objects.colourdbox.ColourDbox' imported but unused
+!TBPTest/tbptest/objects/colourwin.py:30:1: F401 'riscos_toolbox.objects.colourmenu.ColourMenu' imported but unused
+!TBPTest/tbptest/objects/colourwin.py:31:100: E501 line too long (100 > 99 characters)
+!TBPTest/tbptest/objects/colourwin.py:32:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButton' imported but unused
+!TBPTest/tbptest/objects/colourwin.py:33:1: F401 'riscos_toolbox.gadgets.actionbutton.ActionButton' imported but unused
+!TBPTest/tbptest/objects/colourwin.py:40:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/objects/colourwin.py:45:24: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/colourwin.py:46:24: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/colourwin.py:47:23: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/colourwin.py:48:22: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/colourwin.py:49:24: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/colourwin.py:50:22: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/colourwin.py:51:23: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/colourwin.py:52:11: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/colourwin.py:53:10: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/colourwin.py:54:10: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/colourwin.py:55:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/colourwin.py:56:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/colourwin.py:57:13: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/colourwin.py:58:15: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/colourwin.py:82:12: F821 undefined name 'id_block'
+!TBPTest/tbptest/objects/colourwin.py:110:17: W292 no newline at end of file
+!TBPTest/tbptest/objects/dcswin.py:23:1: F401 'tbptest.reporter.Reporter' imported but unused
+!TBPTest/tbptest/objects/dcswin.py:25:1: F401 'riscos_toolbox as toolbox' imported but unused
+!TBPTest/tbptest/objects/dcswin.py:28:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/objects/dcswin.py:32:32: W292 no newline at end of file
+!TBPTest/tbptest/objects/fileinfowin.py:29:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButton' imported but unused
+!TBPTest/tbptest/objects/fileinfowin.py:36:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/objects/fileinfowin.py:40:18: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fileinfowin.py:45:17: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fileinfowin.py:46:18: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fileinfowin.py:47:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fileinfowin.py:48:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fileinfowin.py:49:10: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fileinfowin.py:50:10: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fileinfowin.py:51:13: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fileinfowin.py:52:15: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fileinfowin.py:53:11: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fileinfowin.py:62:57: E261 at least two spaces before inline comment
+!TBPTest/tbptest/objects/fileinfowin.py:151:72: W292 no newline at end of file
+!TBPTest/tbptest/objects/fontwin.py:26:1: F401 'riscos_toolbox.objects.fontmenu.FontMenu' imported but unused
+!TBPTest/tbptest/objects/fontwin.py:27:1: F401 'riscos_toolbox.objects.fontdbox.FontDbox' imported but unused
+!TBPTest/tbptest/objects/fontwin.py:33:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButton' imported but unused
+!TBPTest/tbptest/objects/fontwin.py:40:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/objects/fontwin.py:44:15: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fontwin.py:45:13: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fontwin.py:46:23: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fontwin.py:47:22: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fontwin.py:48:22: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fontwin.py:51:23: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fontwin.py:52:22: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fontwin.py:53:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fontwin.py:54:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fontwin.py:55:10: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fontwin.py:56:10: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/fontwin.py:66:58: E261 at least two spaces before inline comment
+!TBPTest/tbptest/objects/fontwin.py:86:49: W291 trailing whitespace
+!TBPTest/tbptest/objects/fontwin.py:99:100: E501 line too long (103 > 99 characters)
+!TBPTest/tbptest/objects/fontwin.py:176:5: W292 no newline at end of file
+!TBPTest/tbptest/objects/iconbarwin.py:27:1: F401 'riscos_toolbox.objects.iconbar.Iconbar' imported but unused
+!TBPTest/tbptest/objects/iconbarwin.py:28:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButton' imported but unused
+!TBPTest/tbptest/objects/iconbarwin.py:30:1: F401 'riscos_toolbox.gadgets.numberrange.NumberRange' imported but unused
+!TBPTest/tbptest/objects/iconbarwin.py:36:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/objects/iconbarwin.py:40:11: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/iconbarwin.py:41:10: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/iconbarwin.py:42:10: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/iconbarwin.py:43:15: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/iconbarwin.py:44:13: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/iconbarwin.py:45:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/iconbarwin.py:47:20: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/iconbarwin.py:48:22: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/iconbarwin.py:49:22: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/iconbarwin.py:50:20: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/iconbarwin.py:51:20: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/iconbarwin.py:52:21: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/iconbarwin.py:53:17: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/iconbarwin.py:54:19: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:23:1: F401 'swi' imported but unused
+!TBPTest/tbptest/objects/menuwin.py:26:1: F403 'from tbptest.tbox_const import *' used; unable to detect undefined names
+!TBPTest/tbptest/objects/menuwin.py:26:1: F401 'tbptest.tbox_const.*' imported but unused
+!TBPTest/tbptest/objects/menuwin.py:31:1: F401 'riscos_toolbox.gadgets.actionbutton.ActionButton' imported but unused
+!TBPTest/tbptest/objects/menuwin.py:33:1: F401 'riscos_toolbox.gadgets.displayfield.DisplayField' imported but unused
+!TBPTest/tbptest/objects/menuwin.py:39:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/objects/menuwin.py:42:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/objects/menuwin.py:46:18: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:46:32: E261 at least two spaces before inline comment
+!TBPTest/tbptest/objects/menuwin.py:47:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:47:32: E261 at least two spaces before inline comment
+!TBPTest/tbptest/objects/menuwin.py:48:17: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:49:17: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:50:23: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:53:23: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:54:23: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:55:21: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:56:21: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:57:23: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:58:19: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:59:18: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:60:18: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:61:22: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:62:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:62:32: E261 at least two spaces before inline comment
+!TBPTest/tbptest/objects/menuwin.py:63:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:63:32: E261 at least two spaces before inline comment
+!TBPTest/tbptest/objects/menuwin.py:64:14: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:64:32: E261 at least two spaces before inline comment
+!TBPTest/tbptest/objects/menuwin.py:65:14: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:65:32: E261 at least two spaces before inline comment
+!TBPTest/tbptest/objects/menuwin.py:66:15: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:66:32: E261 at least two spaces before inline comment
+!TBPTest/tbptest/objects/menuwin.py:67:17: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/menuwin.py:67:32: E261 at least two spaces before inline comment
+!TBPTest/tbptest/objects/menuwin.py:97:5: E303 too many blank lines (2)
+!TBPTest/tbptest/objects/menuwin.py:97:69: W291 trailing whitespace
+!TBPTest/tbptest/objects/menuwin.py:98:32: W291 trailing whitespace
+!TBPTest/tbptest/objects/menuwin.py:99:5: E301 expected 1 blank line, found 0
+!TBPTest/tbptest/objects/menuwin.py:102:25: E261 at least two spaces before inline comment
+!TBPTest/tbptest/objects/menuwin.py:106:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/menuwin.py:109:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/menuwin.py:112:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/menuwin.py:115:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/menuwin.py:118:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/menuwin.py:121:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/menuwin.py:124:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/menuwin.py:127:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/menuwin.py:130:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/menuwin.py:133:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/menuwin.py:136:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/menuwin.py:139:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/menuwin.py:142:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/menuwin.py:145:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/menuwin.py:156:69: W291 trailing whitespace
+!TBPTest/tbptest/objects/menuwin.py:194:14: W292 no newline at end of file
+!TBPTest/tbptest/objects/objtestwin.py:27:1: F401 'swi' imported but unused
+!TBPTest/tbptest/objects/objtestwin.py:33:1: F401 'tbptest.reporter.Reporter' imported but unused
+!TBPTest/tbptest/objects/objtestwin.py:36:1: F401 'riscos_toolbox.objects.fileinfo.FileInfo' imported but unused
+!TBPTest/tbptest/objects/objtestwin.py:36:1: F401 'riscos_toolbox.objects.fileinfo.AboutToBeShownEvent' imported but unused
+!TBPTest/tbptest/objects/objtestwin.py:36:1: F401 'riscos_toolbox.objects.fileinfo.DialogueCompletedEvent' imported but unused
+!TBPTest/tbptest/objects/objtestwin.py:39:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButton' imported but unused
+!TBPTest/tbptest/objects/objtestwin.py:41:1: F401 'riscos_toolbox.gadgets.actionbutton.ActionButton' imported but unused
+!TBPTest/tbptest/objects/objtestwin.py:47:90: W291 trailing whitespace
+!TBPTest/tbptest/objects/objtestwin.py:49:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/objects/objtestwin.py:52:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/objects/objtestwin.py:55:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/objects/objtestwin.py:61:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/objects/objtestwin.py:80:24: E261 at least two spaces before inline comment
+!TBPTest/tbptest/objects/objtestwin.py:86:31: E261 at least two spaces before inline comment
+!TBPTest/tbptest/objects/objtestwin.py:103:9: W292 no newline at end of file
+!TBPTest/tbptest/objects/proginfowin.py:27:1: F401 'riscos_toolbox.objects.proginfo.ProgInfo' imported but unused
+!TBPTest/tbptest/objects/proginfowin.py:30:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButton' imported but unused
+!TBPTest/tbptest/objects/proginfowin.py:31:1: F401 'riscos_toolbox.gadgets.actionbutton.ActionButton' imported but unused
+!TBPTest/tbptest/objects/proginfowin.py:38:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/objects/proginfowin.py:42:19: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/proginfowin.py:43:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/proginfowin.py:45:18: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/proginfowin.py:46:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/proginfowin.py:47:19: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/proginfowin.py:48:11: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/proginfowin.py:49:10: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/proginfowin.py:50:10: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/proginfowin.py:51:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/proginfowin.py:52:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/proginfowin.py:53:13: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/proginfowin.py:54:15: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/proginfowin.py:64:59: E261 at least two spaces before inline comment
+!TBPTest/tbptest/objects/proginfowin.py:138:53: W292 no newline at end of file
+!TBPTest/tbptest/objects/quitwin.py:27:1: F401 'riscos_toolbox.objects.quit.Quit' imported but unused
+!TBPTest/tbptest/objects/quitwin.py:29:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButton' imported but unused
+!TBPTest/tbptest/objects/quitwin.py:30:1: F401 'riscos_toolbox.gadgets.actionbutton.ActionButton' imported but unused
+!TBPTest/tbptest/objects/quitwin.py:37:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/objects/quitwin.py:41:19: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/quitwin.py:43:18: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/quitwin.py:44:11: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/quitwin.py:45:10: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/quitwin.py:46:10: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/quitwin.py:47:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/quitwin.py:48:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/quitwin.py:49:13: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/quitwin.py:50:15: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/quitwin.py:135:9: W292 no newline at end of file
+!TBPTest/tbptest/objects/saveaswin.py:28:1: F401 'riscos_toolbox.objects.saveas.SaveAs' imported but unused
+!TBPTest/tbptest/objects/saveaswin.py:33:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButton' imported but unused
+!TBPTest/tbptest/objects/saveaswin.py:34:1: F401 'riscos_toolbox.gadgets.actionbutton.ActionButton' imported but unused
+!TBPTest/tbptest/objects/saveaswin.py:40:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/objects/saveaswin.py:44:15: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/saveaswin.py:45:13: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/saveaswin.py:46:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/saveaswin.py:47:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/saveaswin.py:48:11: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/saveaswin.py:49:10: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/saveaswin.py:50:10: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/saveaswin.py:51:19: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/saveaswin.py:52:18: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/saveaswin.py:53:21: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/saveaswin.py:54:21: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/saveaswin.py:55:21: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/saveaswin.py:56:26: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/saveaswin.py:57:22: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/saveaswin.py:58:26: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/saveaswin.py:59:27: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/saveaswin.py:116:65: W291 trailing whitespace
+!TBPTest/tbptest/objects/scalewin.py:23:1: F401 'tbptest.reporter.Reporter' imported but unused
+!TBPTest/tbptest/objects/scalewin.py:27:1: F401 'riscos_toolbox.objects.scale.Scale' imported but unused
+!TBPTest/tbptest/objects/scalewin.py:27:1: F401 'riscos_toolbox.objects.scale.ScaleAboutToBeShownEvent' imported but unused
+!TBPTest/tbptest/objects/scalewin.py:28:1: F401 'riscos_toolbox.objects.scale.ScaleDialogueCompletedEvent' imported but unused
+!TBPTest/tbptest/objects/scalewin.py:28:1: F401 'riscos_toolbox.objects.scale.ScaleApplyFactorEvent' imported but unused
+!TBPTest/tbptest/objects/scalewin.py:29:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButton' imported but unused
+!TBPTest/tbptest/objects/scalewin.py:29:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButtonStateChangedEvent' imported but unused
+!TBPTest/tbptest/objects/scalewin.py:30:1: F401 'riscos_toolbox.gadgets.actionbutton.ActionButton' imported but unused
+!TBPTest/tbptest/objects/scalewin.py:30:1: F401 'riscos_toolbox.gadgets.actionbutton.ActionButtonSelectedEvent' imported but unused
+!TBPTest/tbptest/objects/scalewin.py:31:1: F401 'riscos_toolbox.gadgets.numberrange.NumberRange' imported but unused
+!TBPTest/tbptest/objects/scalewin.py:32:1: F401 'riscos_toolbox.gadgets.displayfield.DisplayField' imported but unused
+!TBPTest/tbptest/objects/scalewin.py:33:1: F401 'riscos_toolbox.gadgets.writablefield.WritableField' imported but unused
+!TBPTest/tbptest/objects/scalewin.py:34:1: F401 'riscos_toolbox.gadgets.textarea.TextArea' imported but unused
+!TBPTest/tbptest/objects/scalewin.py:35:1: F401 'riscos_toolbox.events.toolbox_handler' imported but unused
+!TBPTest/tbptest/objects/scalewin.py:37:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/objects/scalewin.py:41:19: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/scalewin.py:42:18: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/scalewin.py:43:19: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/scalewin.py:44:18: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/scalewin.py:45:11: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/scalewin.py:46:10: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/scalewin.py:47:10: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/scalewin.py:48:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/scalewin.py:49:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/scalewin.py:50:13: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/scalewin.py:51:15: E223 tab before operator
+!TBPTest/tbptest/objects/scalewin.py:54:5: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/objects/scalewin.py:55:5: E101 indentation contains mixed spaces and tabs
+!TBPTest/tbptest/objects/scalewin.py:55:49: W292 no newline at end of file
+!TBPTest/tbptest/objects/winwin.py:28:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButton' imported but unused
+!TBPTest/tbptest/objects/winwin.py:29:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButtonDefinition' imported but unused
+!TBPTest/tbptest/objects/winwin.py:30:1: F401 'riscos_toolbox.gadgets.actionbutton.ActionButton' imported but unused
+!TBPTest/tbptest/objects/winwin.py:37:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/objects/winwin.py:42:17: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:43:20: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:44:20: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:45:18: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:46:18: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:47:19: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:48:21: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:49:11: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:50:10: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:51:10: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:52:17: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:53:20: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:54:17: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:55:17: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:56:17: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:57:17: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:58:16: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:59:13: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:60:15: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:61:15: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:62:15: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:63:15: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:64:15: E221 multiple spaces before operator
+!TBPTest/tbptest/objects/winwin.py:105:25: W291 trailing whitespace
+!TBPTest/tbptest/objects/winwin.py:134:38: E127 continuation line over-indented for visual indent
+!TBPTest/tbptest/objects/winwin.py:141:17: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/winwin.py:142:17: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/winwin.py:143:79: W291 trailing whitespace
+!TBPTest/tbptest/objects/winwin.py:154:17: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/objects/winwin.py:176:100: E501 line too long (100 > 99 characters)
+!TBPTest/tbptest/objects/winwin.py:179:51: E261 at least two spaces before inline comment
+!TBPTest/tbptest/objects/winwin.py:182:53: E261 at least two spaces before inline comment
+!TBPTest/tbptest/objects/winwin.py:185:53: E261 at least two spaces before inline comment
+!TBPTest/tbptest/objects/winwin.py:188:53: E261 at least two spaces before inline comment
+!TBPTest/tbptest/objects/winwin.py:191:53: E261 at least two spaces before inline comment
+!TBPTest/tbptest/objects/winwin.py:194:79: W291 trailing whitespace
+!TBPTest/tbptest/objects/winwin.py:195:17: F841 local variable 'e' is assigned to but never used
+!TBPTest/tbptest/objects/winwin.py:196:82: W291 trailing whitespace
+!TBPTest/tbptest/objects/winwin.py:203:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/winwin.py:204:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/winwin.py:205:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/winwin.py:206:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/winwin.py:207:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/winwin.py:208:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/winwin.py:209:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/winwin.py:210:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/winwin.py:211:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/winwin.py:212:13: E265 block comment should start with '# '
+!TBPTest/tbptest/objects/winwin.py:229:64: W291 trailing whitespace
+!TBPTest/tbptest/reporter.py:29:100: E501 line too long (741 > 99 characters)
+!TBPTest/tbptest/reporter.py:35:7: E261 at least two spaces before inline comment
+!TBPTest/tbptest/reporter.py:37:10: E261 at least two spaces before inline comment
+!TBPTest/tbptest/reporter.py:39:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/reporter.py:42:2: E303 too many blank lines (2)
+!TBPTest/tbptest/reporter.py:124:13: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+!TBPTest/tbptest/reporter.py:135:13: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+!TBPTest/tbptest/reporter.py:162:13: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+!TBPTest/tbptest/reporter.py:170:2: E303 too many blank lines (2)
+!TBPTest/tbptest/reporter.py:172:2: E301 expected 1 blank line, found 0
+!TBPTest/tbptest/reporter.py:174:13: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+!TBPTest/tbptest/reporter.py:185:13: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+!TBPTest/tbptest/reporter.py:196:13: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+!TBPTest/tbptest/reporter.py:207:13: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+!TBPTest/tbptest/reporter.py:218:13: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+!TBPTest/tbptest/reporter.py:230:13: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+!TBPTest/tbptest/reporter.py:257:13: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+!TBPTest/tbptest/reporter.py:268:13: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+!TBPTest/tbptest/reporter.py:279:13: E712 comparison to True should be 'if cond is True:' or 'if cond:'
+!TBPTest/tbptest/reporter.py:288:2: F821 undefined name 'regs'
+!TBPTest/tbptest/reporter.py:289:2: F821 undefined name 'text0'
+!TBPTest/tbptest/tbox_common.py:23:1: F401 'swi' imported but unused
+!TBPTest/tbptest/tbox_common.py:26:1: E302 expected 2 blank lines, found 1
+!TBPTest/tbptest/tbox_common.py:28:13: E261 at least two spaces before inline comment
+!TBPTest/tbptest/tbox_common.py:29:9: E265 block comment should start with '# '
+!TBPTest/tbptest/tbox_common.py:29:69: W292 no newline at end of file
+!TBPTest/tbptest/tbox_common.py:29:69: W292 no newline at end of file
+!TBPTest/tbptest/tbox_common.py:29:69: W292 no newline at end of file
+!TBPTest/tbptest/tbox_const.py:27:19: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:28:19: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:29:18: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:30:18: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:31:21: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:32:22: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:33:23: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:34:23: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:36:37: W291 trailing whitespace
+!TBPTest/tbptest/tbox_const.py:37:18: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:38:20: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:39:20: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:40:23: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:41:23: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:44:21: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:45:21: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:46:19: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:47:19: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:48:20: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:49:20: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:50:33: E261 at least two spaces before inline comment
+!TBPTest/tbptest/tbox_const.py:51:21: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:51:33: E261 at least two spaces before inline comment
+!TBPTest/tbptest/tbox_const.py:53:1: E266 too many leading '#' for block comment
+!TBPTest/tbptest/tbox_const.py:56:22: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:57:22: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:58:23: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:59:23: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:60:27: E221 multiple spaces before operator
+!TBPTest/tbptest/tbox_const.py:61:27: E221 multiple spaces before operator
+34    E101 indentation contains mixed spaces and tabs
+1     E127 continuation line over-indented for visual indent
+1     E201 whitespace after '('
+2     E202 whitespace before ')'
+257   E221 multiple spaces before operator
+2     E223 tab before operator
+1     E225 missing whitespace around operator
+30    E261 at least two spaces before inline comment
+28    E265 block comment should start with '# '
+8     E266 too many leading '#' for block comment
+2     E301 expected 1 blank line, found 0
+46    E302 expected 2 blank lines, found 1
+4     E303 too many blank lines (2)
+5     E501 line too long (152 > 99 characters)
+2     E502 the backslash is redundant between brackets
+12    E712 comparison to True should be 'if cond is True:' or 'if cond:'
+74    F401 'tbptest.reporter.Reporter' imported but unused
+7     F403 'from tbptest.tbox_const import *' used; unable to detect undefined names
+28    F405 'EvActionButtonSetText' may be undefined, or defined from star imports: tbptest.tbox_const
+1     F541 f-string is missing placeholders
+3     F821 undefined name 'id_block'
+38    F841 local variable 'e' is assigned to but never used
+22    W291 trailing whitespace
+21    W292 no newline at end of file
+2     W391 blank line at end of file
