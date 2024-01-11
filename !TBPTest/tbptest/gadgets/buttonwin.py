@@ -20,10 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import traceback
-import swi
-
-from tbptest.reporter import Reporter
+from tbptest.reporter import Reporter # noqa
 from tbptest.tbox_common import TestMenu
 
 import riscos_toolbox as toolbox
@@ -41,6 +38,7 @@ G_INPUT2 = 0x07
 G_INPUT3 = 0x09
 G_OUTPUT = 0x05
 
+
 class ButtonWindow(Window):
     template = "ButtonWin"
     
@@ -57,7 +55,7 @@ class ButtonWindow(Window):
     def button_set_flags(self):
         try:
             self.g_button.icon_flags = int(self.g_input.value)
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Int input required"
         
     def button_get_flags(self):
@@ -80,10 +78,11 @@ class ButtonWindow(Window):
         try:
             width = int(self.g_input2.value)
             height = int(self.g_input3.value)
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Int input required"
         else:
             self.g_button.set_font(name,width,height)
+
             
 class ButtonMenu(Menu,TestMenu):
     template = "ButtonMenu"
@@ -121,4 +120,3 @@ class ButtonMenu(Menu,TestMenu):
             window.button_set_font()
             
         return True
-

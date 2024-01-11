@@ -20,8 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tbptest.reporter import Reporter
-from tbptest.tbox_const import *
+from tbptest.reporter import Reporter # noqa
 from tbptest.tbox_common import TestMenu
 
 import riscos_toolbox as toolbox
@@ -36,6 +35,7 @@ G_DISPLAYFIELD = 0x00
 G_INPUT1       = 0x04
 G_INPUT2       = 0x07
 G_OUTPUT       = 0x05
+
 
 class DisplayFieldWindow(Window):
     template = "DspFieldWin"
@@ -63,6 +63,7 @@ class DisplayFieldWindow(Window):
         except ValueError:
             self.g_output.value = "Input1=name, Input2=size"
         self.g_displayfield.set_font(name=name,size=size)
+
         
 class DisplayFieldMenu(Menu,TestMenu):
     template = "DispFldMenu"
@@ -87,4 +88,5 @@ class DisplayFieldMenu(Menu,TestMenu):
             window.displayfield_set_font()
             
         return True
+
         

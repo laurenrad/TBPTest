@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tbptest.reporter import Reporter
+from tbptest.reporter import Reporter # noqa
 from tbptest.tbox_common import TestMenu
 
 import riscos_toolbox as toolbox
@@ -34,6 +34,7 @@ from riscos_toolbox.gadgets.numberrange import NumberRange, NumberRangeValueChan
 G_NUMRANGE = 0x00
 G_INPUT = 0x02
 G_OUTPUT = 0x03
+
 
 class NumberRangeWindow(Window):
     template = "NumRngeWin"
@@ -90,9 +91,11 @@ class NumberRangeWindow(Window):
         self.g_output.value = repr(self.g_numrange.slider)
         
     # Event handlers for NumberRange
+    
     @toolbox_handler(NumberRangeValueChangedEvent)
     def _numrange_value_changed(self,event,id_block,poll_block):
         self.g_output.value = f"Number range value changed: {poll_block.new_value}"
+
     
 class NumberRangeMenu(Menu,TestMenu):
     template = "NumRngeMenu"

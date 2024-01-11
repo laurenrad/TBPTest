@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tbptest.reporter import Reporter
+from tbptest.reporter import Reporter # noqa
 from tbptest.tbox_common import TestMenu
 
 import riscos_toolbox as toolbox
@@ -38,6 +38,7 @@ G_INPUT        = 0x04
 G_INPUT_WIDTH  = 0x08
 G_INPUT_HEIGHT = 0x07
 G_OUTPUT       = 0x03
+
 
 class RadioButtonWindow(Window):
     template = "RadioWin"
@@ -63,7 +64,7 @@ class RadioButtonWindow(Window):
     def radiobutton_set_event(self):
         try:
             self.g_radio_a.event = int(self.g_input.value)
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Err: int input expected"
             
     def radiobutton_get_event(self):
@@ -72,7 +73,7 @@ class RadioButtonWindow(Window):
     def radiobutton_set_state(self):
         try:
             self.g_radio_a.state = int(self.g_input.value)
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Err: int input expected"
             
     def radiobutton_get_state(self):
@@ -83,7 +84,7 @@ class RadioButtonWindow(Window):
         try:
             w = int(self.g_input_w.value)
             h = int(self.g_input_h.value)
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Err: int input expected"
         else:
             self.g_radio_a.set_font(font_name,w,h)

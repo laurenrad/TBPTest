@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tbptest.reporter import Reporter
+from tbptest.reporter import Reporter # noqa
 from tbptest.tbox_const import *
 from tbptest.tbox_common import TestMenu
 
@@ -38,6 +38,7 @@ G_DRAGGABLE = 0x00
 G_INPUT     = 0x04
 G_OUTPUT    = 0x05
 
+
 class DraggableWindow(Window):
     template = "DrggableWin"
 
@@ -49,12 +50,14 @@ class DraggableWindow(Window):
         self.g_input = WritableField(self,G_INPUT)
         self.g_output = DisplayField(self,G_OUTPUT)
     
-    ## Methods for testing draggable ops
+    # Methods for testing draggable ops
 
     def draggable_get_text(self):
+        # Get text from draggable and output to display field
         self.g_output.value = "Draggable text: " + self.g_draggable.text
 
     def draggable_set_text(self):
+        # Set draggable text from input field
         self.g_draggable.text = self.g_input.value
     
     def draggable_get_sprite(self):
@@ -63,77 +66,76 @@ class DraggableWindow(Window):
     def draggable_set_sprite(self):
         self.g_draggable.sprite = self.g_input.value
                 
-    # Output draggable state to display field
     def draggable_get_state(self):
         self.g_output.value = "Draggable state: " + repr(self.g_draggable.state)
     
-    # Set draggable state to whatever is in input field
     def draggable_set_state(self):
         try:
             self.g_draggable.state = int(self.g_input.value)
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Int value expected"
     
-    ## Draggable Event handlers 
+    # Draggable Event handlers 
 
-    # Draggable Drag Started Event
     @toolbox_handler(DraggableDragStartedEvent)
     def DraggableDragStarted(self,event,id_block,poll_block):
         self.g_output.value = "Drag started"
     
-    # Draggable Drag Ended Event
     @toolbox_handler(DraggableDragEndedEvent)
     def DraggableDragEnded(self,event,id_block,poll_block):
-        Reporter.print(f"Drag ended.")
+        Reporter.print("Drag ended.")
         Reporter.print(f"Window handle: {poll_block.window_handle}")
         Reporter.print(f"Icon handle: {poll_block.icon_handle}")
         Reporter.print(f"Window id: {poll_block.window_id}")
         Reporter.print(f"Component id: {poll_block.component_id}")
-        self.g_output.value = f"Drag ended: window={hex(poll_block.window_handle)} icon={hex(poll_block.icon_handle)} x={poll_block.x} y={poll_block.y}"
+        self.g_output.value = f"Drag ended: window={hex(poll_block.window_handle)} " \
+                               "icon={hex(poll_block.icon_handle)} x={poll_block.x} " \
+                               "y={poll_block.y}"
+
 
 class DrgableMenu(Menu,TestMenu):
     template = "DrgableMenu"
 
-    ## Draggable Event handlers
+    # Draggable Event handlers
     
-    # Draggable Get Text
     @toolbox_handler(EvDraggableGetText)
     def DraggableGetText(self,event,id_block,poll_block):
+        # Draggable Get Text
         window = toolbox.get_object(id_block.ancestor.id)
         window.draggable_get_text()
         self.menu_tick(id_block.self.component)
     
-    # Draggable Set Text
     @toolbox_handler(EvDraggableSetText)
     def DraggableSetText(self,event,id_block,poll_block):
+        # Draggable Set Text
         window = toolbox.get_object(id_block.ancestor.id)
         window.draggable_set_text()
         self.menu_tick(id_block.self.component)
     
-    # Draggable Get Sprite
     @toolbox_handler(EvDraggableGetSprite)
     def DraggableGetSprite(self,event,id_block,poll_block):
+        # Draggable Get Sprite
         window = toolbox.get_object(id_block.ancestor.id)
         window.draggable_get_sprite()
         self.menu_tick(id_block.self.component)
     
-    # Draggable Set Sprite
     @toolbox_handler(EvDraggableSetSprite)
     def DraggableSetSprite(self,event,id_block,poll_block):
+        # Draggable Set Sprite
         window = toolbox.get_object(id_block.ancestor.id)
         window.draggable_set_sprite()
         self.menu_tick(id_block.self.component)
     
-    # Draggable Get State
     @toolbox_handler(EvDraggableGetState)
     def DraggableGetState(self,event,id_block,poll_block):
+        # Draggable Get State
         window = toolbox.get_object(id_block.ancestor.id)
         window.draggable_get_state()
         self.menu_tick(id_block.self.component)
     
-    # Draggable Set State
     @toolbox_handler(EvDraggableSetState)
     def DraggableSetState(self,event,id_block,poll_block):
+        # Draggable Set State
         window = toolbox.get_object(id_block.ancestor.id)
         window.draggable_set_state()
         self.menu_tick(id_block.self.component)

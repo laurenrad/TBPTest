@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tbptest.reporter import Reporter
+from tbptest.reporter import Reporter # noqa
 from tbptest.tbox_common import TestMenu
 
 import riscos_toolbox as toolbox
@@ -37,6 +37,7 @@ G_INPUT    = 0x04
 G_INPUTOPT = 0x03
 G_OUTPUT   = 0x05
 
+
 class OptionButtonWindow(Window):
     template = "OptButtnWin"
 
@@ -48,7 +49,8 @@ class OptionButtonWindow(Window):
         self.g_input = WritableField(self,G_INPUT)
         self.g_output = DisplayField(self,G_OUTPUT)
 
-    ## Methods for testing OptionButton
+    # Methods for testing OptionButton
+    
     def optbutton_set_label(self):
         self.g_option.label = self.g_input.value
     
@@ -60,7 +62,7 @@ class OptionButtonWindow(Window):
         # NumberRange since it isn't in upstream riscos_toolbox yet
         try:
             self.g_option.event = int(self.g_input.value)
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Expected int input"
     
     def optbutton_get_event(self):
@@ -72,7 +74,8 @@ class OptionButtonWindow(Window):
     def optbutton_get_state(self):
         self.g_output.value = repr(self.g_option.state)
     
-    ## Event handlers for OptionButton
+    # Event handlers for OptionButton
+    
     @toolbox_handler(OptionButtonStateChangedEvent)
     def optbutton_state_changed(self,event,id_block,poll_block):
         msg = "Option state changed: "+repr(poll_block.new_state)
@@ -117,4 +120,5 @@ class OptionButtonMenu(Menu,TestMenu):
             window.optbutton_get_state()
             
         return True
+
         

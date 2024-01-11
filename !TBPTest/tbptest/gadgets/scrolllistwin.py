@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tbptest.reporter import Reporter
+from tbptest.reporter import Reporter # noqa
 from tbptest.tbox_common import TestMenu
 
 import riscos_toolbox as toolbox
@@ -37,6 +37,7 @@ G_INPUT1     = 0x03
 G_INPUT2     = 0x05
 G_INPUT3     = 0x0B
 G_OUTPUT     = 0x08
+
 
 class ScrollListWindow(Window):
     template = "ScrlLstWin"
@@ -55,7 +56,7 @@ class ScrollListWindow(Window):
     def scrolllist_set_state(self):
         try:
             self.g_scrolllist.state = int(self.g_input1.value)
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Err: expected int in Input 1"
             
     def scrolllist_get_state(self):
@@ -65,7 +66,7 @@ class ScrollListWindow(Window):
         try:
             text = self.g_input1.value
             index = int(self.g_input2.value)
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Err: Expected str in Input 1, int in Input 2"
         else:
             self.g_scrolllist.add_item(text,index)
@@ -74,7 +75,7 @@ class ScrollListWindow(Window):
         try:
             start = int(self.g_input1.value)
             end = int(self.g_input2.value)
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Err: Expected int in Input 1, int in Input 2"
         else:
             self.g_scrolllist.delete_items(start,end)
@@ -82,20 +83,20 @@ class ScrollListWindow(Window):
     def scrolllist_get_selected(self):
         try:
             offset = int(self.g_input1.value)
-        except ValueError as e:
+        except ValueError:
             offset = -1
         self.g_output.value = repr(self.g_scrolllist.get_selected(offset))
         
     def scrolllist_make_visible(self):
         try:
             self.g_scrolllist.make_visible(int(self.g_input1.value))
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Err: Expected int in Input 1"
             
     def scrolllist_set_multisel(self):
         try:
             self.g_scrolllist.multisel = int(self.g_input1.value)
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Err: Expected int in Input 1"
             
     def scrolllist_get_multisel(self):
@@ -105,7 +106,7 @@ class ScrollListWindow(Window):
         try:
             fg = int(self.g_input1.value)
             bg = int(self.g_input2.value)
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Err: Expected int in Input 1+2"
         else:
             self.g_scrolllist.colour = (fg,bg)
@@ -118,7 +119,7 @@ class ScrollListWindow(Window):
         text = self.g_input2.value
         try:
             index = int(self.g_input1.value)
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Err: Expected int in Input 1"
         else:
             self.g_scrolllist.set_item_text(index,text)
@@ -126,7 +127,7 @@ class ScrollListWindow(Window):
     def scrolllist_get_item_text(self):
         try:
             index = int(self.g_input1.value)
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Err: Expected int in Input 1"
         else:
             self.g_output.value = self.g_scrolllist.get_item_text(index)
@@ -137,7 +138,7 @@ class ScrollListWindow(Window):
             all = int(self.g_input2.value)
             send_event = int(self.g_input3.value)
             self.g_scrolllist.select_item(index,all,send_event)
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Err: Expected ints"
             
     def scrolllist_deselect_item(self):
@@ -146,7 +147,7 @@ class ScrollListWindow(Window):
             all = int(self.g_input2.value)
             send_event = int(self.g_input3.value)
             self.g_scrolllist.deselect_item(index,all,send_event)
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Err: Expected ints"
         
     def scrolllist_count_items(self):
@@ -157,15 +158,15 @@ class ScrollListWindow(Window):
         try:
             width = int(self.g_input2.value)
             height = int(self.g_input3.value)
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Err: Expected in in Input 2 and 3"
         else:
             self.g_scrolllist.set_font(name,width,height)
             
     def scrolllist_populate(self):
-        items = ( 'Nashville', 'Seattle', 'El Paso', 'Los Angeles', 'Portland',
-                  'New York', 'Chicago', 'Atlanta', 'San Francisco', 'San Diego',
-                  'Boston', 'Washington D.C.', 'Dallas', 'Houston', 'Denver' )
+        items = ('Nashville', 'Seattle', 'El Paso', 'Los Angeles', 'Portland',
+                 'New York', 'Chicago', 'Atlanta', 'San Francisco', 'San Diego',
+                 'Boston', 'Washington D.C.', 'Dallas', 'Houston', 'Denver')
         for item in items:
             self.g_scrolllist.add_item(item,-1)
     

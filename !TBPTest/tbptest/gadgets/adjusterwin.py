@@ -20,10 +20,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tbptest.reporter import Reporter
+from tbptest.reporter import Reporter # noqa
 
-import riscos_toolbox as toolbox
-from riscos_toolbox.objects.menu import Menu
+import riscos_toolbox as toolbox # noqa
 from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.events import toolbox_handler
@@ -38,6 +37,7 @@ G_ADJ_DOWN   = 0x03
 G_OUTPUT     = 0x05
 G_RADIO_UP   = 0x08
 G_RADIO_DOWN = 0x09
+
     
 class AdjusterWindow(Window):
     template = "AdjusterWin"
@@ -54,8 +54,8 @@ class AdjusterWindow(Window):
         self.g_adj_down = Adjuster(self,G_ADJ_DOWN)
         self.g_output = DisplayField(self,G_OUTPUT)
         self.g_up = OptionButton(self,G_RADIO_UP)
-        self.g_down = OptionButton(self,G_RADIO_DOWN) 
-    
+        self.g_down = OptionButton(self,G_RADIO_DOWN)
+            
     # Event handler for Adjuster
     @toolbox_handler(AdjusterClickedEvent)
     def AdjusterClicked(self,event,id_block,poll_block):
@@ -70,4 +70,3 @@ class AdjusterWindow(Window):
 
         if poll_block.up:
             self.g_up.state = 1
-

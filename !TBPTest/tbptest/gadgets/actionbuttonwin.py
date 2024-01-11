@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tbptest.reporter import Reporter
+from tbptest.reporter import Reprter # noqa
 from tbptest.tbox_const import *
 from tbptest.tbox_common import TestMenu
 import riscos_toolbox as toolbox
@@ -36,6 +36,7 @@ from riscos_toolbox.events import toolbox_handler
 G_ACTIONBUTTON = 0x00
 G_INPUT	       = 0x02
 G_OUTPUT       = 0x01
+
 
 class ActionButtonWindow(Window):
     template = "ActBttnWin"
@@ -57,7 +58,7 @@ class ActionButtonWindow(Window):
     def actionbutton_set_event(self):
         try:
             self.g_actionbutton.event = int(self.g_input.value)
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Int input required"
         
     def actionbutton_get_event(self):
@@ -66,7 +67,7 @@ class ActionButtonWindow(Window):
     def actionbutton_set_click_show(self):
         try:
             self.g_actionbutton.click_show = int(self.g_input.value)
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Int input required"
         
     def actionbutton_get_click_show(self):
@@ -89,10 +90,11 @@ class ActionButtonWindow(Window):
             
         self.g_output.value = msg + hex(poll_block.flags)
 
+
 class ActionButtonMenu(Menu,TestMenu):
     template = "ActBttnMenu"
     
-    ## ActionButton event handlers
+    # ActionButton event handlers
     @toolbox_handler(EvActionButtonSetText)
     def ActionButtonSetText(self,event,id_block,poll_block):
         window = toolbox.get_object(id_block.ancestor.id)

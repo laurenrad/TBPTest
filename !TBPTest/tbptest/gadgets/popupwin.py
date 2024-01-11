@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tbptest.reporter import Reporter
+from tbptest.reporter import Reporter # noqa
 from tbptest.tbox_common import TestMenu
 
 import riscos_toolbox as toolbox
@@ -30,6 +30,7 @@ from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.writablefield import WritableField
 from riscos_toolbox.gadgets.popup import PopUp, PopUpAboutToBeShownEvent
+
 
 class PopUpWin(Window):
     template = "PopUpWin"
@@ -51,7 +52,7 @@ class PopUpWin(Window):
     def popup_set_menu(self):
         try:
             self.g_popup.menu = int(self.g_input.value)
-        except ValueError as e:
+        except ValueError:
             self.g_output.value = "Err: int input expected"
     
     def popup_get_menu(self):
@@ -61,6 +62,7 @@ class PopUpWin(Window):
     @toolbox_handler(PopUpAboutToBeShownEvent)
     def _popup_about_to_be_shown(self,event,id_block,poll_block):
         self.g_output.value = f"AboutToBeShown: {poll_block.menu_id}"
+
     
 class PopUpMenu(Menu,TestMenu):
     template = "PopUpMenu"
