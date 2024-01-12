@@ -20,9 +20,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tbptest.reporter import Reporter
+from tbptest.reporter import Reporter # noqa
 
-import riscos_toolbox as toolbox
+import riscos_toolbox as toolbox # noqa
 from riscos_toolbox.objects.window import Window
 from riscos_toolbox.objects.scale import Scale, ScaleAboutToBeShownEvent
 from riscos_toolbox.objects.scale import ScaleDialogueCompletedEvent, ScaleApplyFactorEvent
@@ -34,22 +34,23 @@ from riscos_toolbox.gadgets.writablefield import WritableField
 from riscos_toolbox.gadgets.textarea import TextArea
 from riscos_toolbox.events import toolbox_handler
 
+
 class ScaleWindow(Window):
     template = "ScaleWin"
-    
+
     # Gadget constants
-    G_RADIO_WIN_ID  = 0x11
-    G_RADIO_VALUE   = 0x12
-    G_RADIO_BOUNDS  = 0x13
-    G_RADIO_TITLE   = 0x14
-    G_SHOW          = 0x00
-    G_GET           = 0x0C
-    G_SET           = 0x0D
-    G_INPUT_INT     = 0x0B
-    G_INPUT_STR     = 0x0A
-    G_RESULT        = 0x09
-    G_TEXTAREA	    = 0x08
-    
+    G_RADIO_WIN_ID = 0x11
+    G_RADIO_VALUE = 0x12
+    G_RADIO_BOUNDS = 0x13
+    G_RADIO_TITLE = 0x14
+    G_SHOW = 0x00
+    G_GET = 0x0C
+    G_SET = 0x0D
+    G_INPUT_INT = 0x0B
+    G_INPUT_STR = 0x0A
+    G_RESULT = 0x09
+    G_TEXTAREA = 0x08
+
     def __init__(self, *args):
-    	super().__init__(*args)
-    	self.scale = toolbox.create_object("Scale")
+        super().__init__(*args)
+        self.scale = toolbox.create_object("Scale")

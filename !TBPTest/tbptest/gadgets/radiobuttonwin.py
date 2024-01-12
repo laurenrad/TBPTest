@@ -30,55 +30,55 @@ from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.writablefield import WritableField
 from riscos_toolbox.gadgets.radiobutton import RadioButton, RadioButtonStateChangedEvent
-    
+
 # Gadget Constants
-G_RADIO_A      = 0x00
-G_RADIO_B      = 0x01
-G_INPUT        = 0x04
-G_INPUT_WIDTH  = 0x08
+G_RADIO_A = 0x00
+G_RADIO_B = 0x01
+G_INPUT = 0x04
+G_INPUT_WIDTH = 0x08
 G_INPUT_HEIGHT = 0x07
-G_OUTPUT       = 0x03
+G_OUTPUT = 0x03
 
 
 class RadioButtonWindow(Window):
     template = "RadioWin"
-    
+
     def __init__(self, *args):
         super().__init__(*args)
-        
+
         # Set up gadgets
-        self.g_radio_a = RadioButton(self,G_RADIO_A)
-        self.g_radio_b = RadioButton(self,G_RADIO_B)
-        self.g_input   = WritableField(self,G_INPUT)
-        self.g_input_w = WritableField(self,G_INPUT_WIDTH)
-        self.g_input_h = WritableField(self,G_INPUT_HEIGHT)
-        self.g_output  = DisplayField(self,G_OUTPUT)
-        
+        self.g_radio_a = RadioButton(self, G_RADIO_A)
+        self.g_radio_b = RadioButton(self, G_RADIO_B)
+        self.g_input = WritableField(self, G_INPUT)
+        self.g_input_w = WritableField(self, G_INPUT_WIDTH)
+        self.g_input_h = WritableField(self, G_INPUT_HEIGHT)
+        self.g_output = DisplayField(self, G_OUTPUT)
+
     # Methods for testing RadioButton ops
     def radiobutton_set_label(self):
         self.g_radio_a.label = self.g_input.value
-        
+
     def radiobutton_get_label(self):
         self.g_output.value = self.g_radio_a.label
-        
+
     def radiobutton_set_event(self):
         try:
             self.g_radio_a.event = int(self.g_input.value)
         except ValueError:
             self.g_output.value = "Err: int input expected"
-            
+
     def radiobutton_get_event(self):
         self.g_output.value = repr(self.g_radio_a.event)
-        
+
     def radiobutton_set_state(self):
         try:
             self.g_radio_a.state = int(self.g_input.value)
         except ValueError:
             self.g_output.value = "Err: int input expected"
-            
+
     def radiobutton_get_state(self):
         self.g_output.value = repr(self.g_radio_a.state)
-        
+
     def radiobutton_set_font(self):
         font_name = self.g_input.value
         try:
@@ -87,23 +87,23 @@ class RadioButtonWindow(Window):
         except ValueError:
             self.g_output.value = "Err: int input expected"
         else:
-            self.g_radio_a.set_font(font_name,w,h)
-            
+            self.g_radio_a.set_font(font_name, w, h)
+
     # RadioButton event handlers
     @toolbox_handler(RadioButtonStateChangedEvent)
-    def StateChanged(self,event,id_block,poll_block):
+    def StateChanged(self, event, id_block, poll_block):
         msg = f"State changed: {poll_block.state} {poll_block.old_on_button}"
         if poll_block.adjust:
             msg += " Adjust"
         if poll_block.select:
             msg += " Select"
-            
+
         self.g_output.value = msg
-    
-    
-class RadioButtonMenu(Menu,TestMenu):
+
+
+class RadioButtonMenu(Menu, TestMenu):
     template = "RadioMenu"
-    
+
     # Entry constants
     ENTRY_SET_LABEL = 0x00
     ENTRY_GET_LABEL = 0x01
@@ -112,15 +112,15 @@ class RadioButtonMenu(Menu,TestMenu):
     ENTRY_SET_STATE = 0x04
     ENTRY_GET_STATE = 0x05
     ENTRY_SET_FONT  = 0x06
-    
+
     @toolbox_handler(SelectionEvent)
-    def menu_selected(self,event,id_block,poll_block):
+    def menu_selected(self, event, id_block, poll_block):
         if id_block.self.id != self.id:
             return False
-            
+
         window = toolbox.get_object(id_block.parent.id)
         self.menu_tick(id_block.self.component)
-        
+
         if id_block.self.component == RadioButtonMenu.ENTRY_SET_LABEL:
             window.radiobutton_set_label()
         elif id_block.self.component == RadioButtonMenu.ENTRY_GET_LABEL:
@@ -136,4 +136,4 @@ class RadioButtonMenu(Menu,TestMenu):
         elif id_block.self.component == RadioButtonMenu.ENTRY_SET_FONT:
             window.radiobutton_set_font()
 
-        return True 
+        return True

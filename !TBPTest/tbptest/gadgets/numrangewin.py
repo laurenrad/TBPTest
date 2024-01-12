@@ -29,7 +29,7 @@ from riscos_toolbox.objects.menu import Menu, SelectionEvent
 from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.numberrange import NumberRange, NumberRangeValueChangedEvent
-    
+
 # Gadget Constants
 G_NUMRANGE = 0x00
 G_INPUT = 0x02
@@ -38,92 +38,92 @@ G_OUTPUT = 0x03
 
 class NumberRangeWindow(Window):
     template = "NumRngeWin"
-    
+
     def __init__(self, *args):
         super().__init__(*args)
-        
+
         # Set up gadgets
-        self.g_numrange = NumberRange(self,G_NUMRANGE)
-        self.g_input = NumberRange(self,G_INPUT)
-        self.g_output = DisplayField(self,G_OUTPUT)
-    
+        self.g_numrange = NumberRange(self, G_NUMRANGE)
+        self.g_input = NumberRange(self, G_INPUT)
+        self.g_output = DisplayField(self, G_OUTPUT)
+
     # Test ops for numberrange
     def numrange_set_value(self):
         self.g_numrange.value = self.g_input.value
-        
+
     def numrange_get_value(self):
         self.g_output.value = repr(self.g_numrange.value)
-        
+
     def numrange_set_lower_bound(self):
         self.g_numrange.lower_bound = self.g_input.value
-        
+
     def numrange_get_lower_bound(self):
         self.g_output.value = repr(self.g_numrange.lower_bound)
-        
+
     def numrange_set_upper_bound(self):
         self.g_numrange.upper_bound = self.g_input.value
-        
+
     def numrange_get_upper_bound(self):
         self.g_output.value = repr(self.g_numrange.upper_bound)
-        
+
     def numrange_set_step_size(self):
         self.g_numrange.step_size = self.g_input.value
-        
+
     def numrange_get_step_size(self):
         self.g_output.value = repr(self.g_numrange.step_size)
-        
+
     def numrange_set_precision(self):
         self.g_numrange.precision = self.g_input.value
-        
+
     def numrange_get_precision(self):
         self.g_output.value = repr(self.g_numrange.precision)
-        
+
     def numrange_get_numeric(self):
         self.g_output.value = repr(self.g_numrange.numerical_field)
-    
+
     def numrange_get_left_adj(self):
         self.g_output.value = repr(self.g_numrange.left_adjuster)
-    
+
     def numrange_get_right_adj(self):
         self.g_output.value = repr(self.g_numrange.right_adjuster)
-    
+
     def numrange_get_slider(self):
         self.g_output.value = repr(self.g_numrange.slider)
-        
+
     # Event handlers for NumberRange
-    
+
     @toolbox_handler(NumberRangeValueChangedEvent)
-    def _numrange_value_changed(self,event,id_block,poll_block):
+    def _numrange_value_changed(self, event, id_block, poll_block):
         self.g_output.value = f"Number range value changed: {poll_block.new_value}"
 
-    
-class NumberRangeMenu(Menu,TestMenu):
+
+class NumberRangeMenu(Menu, TestMenu):
     template = "NumRngeMenu"
-    
+
     # Entry constants
-    ENTRY_SET_VALUE     = 0x00
-    ENTRY_GET_VALUE     = 0x01
-    ENTRY_SET_LOWER     = 0x02
-    ENTRY_GET_LOWER     = 0x03
-    ENTRY_SET_UPPER     = 0x04
-    ENTRY_GET_UPPER     = 0x05
-    ENTRY_SET_STEP      = 0x06
-    ENTRY_GET_STEP      = 0x07
+    ENTRY_SET_VALUE = 0x00
+    ENTRY_GET_VALUE = 0x01
+    ENTRY_SET_LOWER = 0x02
+    ENTRY_GET_LOWER = 0x03
+    ENTRY_SET_UPPER = 0x04
+    ENTRY_GET_UPPER = 0x05
+    ENTRY_SET_STEP = 0x06
+    ENTRY_GET_STEP = 0x07
     ENTRY_SET_PRECISION = 0x08
     ENTRY_GET_PRECISION = 0x09
-    ENTRY_GET_NUMERIC   = 0x0A
-    ENTRY_GET_L_ADJ     = 0x0B
-    ENTRY_GET_R_ADJ     = 0x0C
-    ENTRY_GET_SLIDER    = 0x0D
-    
+    ENTRY_GET_NUMERIC = 0x0A
+    ENTRY_GET_L_ADJ = 0x0B
+    ENTRY_GET_R_ADJ = 0x0C
+    ENTRY_GET_SLIDER = 0x0D
+
     @toolbox_handler(SelectionEvent)
-    def menu_selected(self,event,id_block,poll_block):
+    def menu_selected(self, event, id_block, poll_block):
         if id_block.self.id != self.id:
             return False
-            
+
         window = toolbox.get_object(id_block.ancestor.id)
         self.menu_tick(id_block.self.component)
-        
+
         if id_block.self.component == NumberRangeMenu.ENTRY_SET_VALUE:
             window.numrange_set_value()
         elif id_block.self.component == NumberRangeMenu.ENTRY_GET_VALUE:
@@ -152,5 +152,5 @@ class NumberRangeMenu(Menu,TestMenu):
             window.numrange_get_right_adj()
         elif id_block.self.component == NumberRangeMenu.ENTRY_GET_SLIDER:
             window.numrange_get_slider()
-        
+
         return True

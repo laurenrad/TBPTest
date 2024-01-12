@@ -24,16 +24,13 @@
 # from. The library probably isn't in a state to do that sort of thing yet so they'll
 # probably be a little more handmade for now.
 
-import swi
-
 from enum import Enum
 from typing import NamedTuple
 from typing import Callable
 
-from tbptest.reporter import Reporter
+from tbptest.reporter import Reporter #  noqa
 
-import riscos_toolbox as toolbox
-from riscos_toolbox.objects.fileinfo import FileInfo, AboutToBeShownEvent, DialogueCompletedEvent
+import riscos_toolbox as toolbox #  noqa
 from riscos_toolbox.objects.window import Window
 from riscos_toolbox.gadgets.textarea import TextArea
 from riscos_toolbox.gadgets.radiobutton import RadioButton, RadioButtonStateChangedEvent
@@ -44,23 +41,27 @@ from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.writablefield import WritableField
 from riscos_toolbox.events import toolbox_handler
 
-# Window.add_gadget appears to be bugged for now, just implement something in here to add 
-# radio buttons.
+
 def add_property():
+    # Window.add_gadget appears to be bugged for now, just implement something in here to add
+    # radio buttons.
     pass
+
 
 class GadgetIDs(NamedTuple):
     pass
-    
+
+
 class Property(NamedTuple):
     description: str
     test_get: Callable[..., None]
     test_set: Callable[..., None]
     text: bool = True
 
+
 class ObjTestWindow(Window):
     template = "ObjTestWin"
-    
+
     # Constants for common gadgets' component IDs
     class Gadgets(Enum):
         INT_INPUT = 0x20
@@ -69,35 +70,34 @@ class ObjTestWindow(Window):
         SET = 0x23
         RESULT = 0x24
         EVENTS = 0x25
-    
+
     def __init__(self, *args):
         super().__init__(*args)
-        self.event_display = TextArea(self,ObjTestWindow.Gadgets.EVENTS)
-        self.result_display = DisplayField(self,ObjTestWindow.Gadgets.RESULT)
-        self.input_int = NumberRange(self,ObjTestWindow.Gadgets.INT_INPUT)
-        self.input_str = WritableField(self,ObjTestWindow.Gadgets.STR_INPUT)
+        self.event_display = TextArea(self, ObjTestWindow.Gadgets.EVENTS)
+        self.result_display = DisplayField(self, ObjTestWindow.Gadgets.RESULT)
+        self.input_int = NumberRange(self, ObjTestWindow.Gadgets.INT_INPUT)
+        self.input_str = WritableField(self, ObjTestWindow.Gadgets.STR_INPUT)
         self.current_test = None
-        self.props = [] # properties
-        
-    def setup(self,obj_template):
+        self.props = []  # properties
+
+    def setup(self, obj_template):
         self.obj = toolbox.create_object(obj_template)
         for prop in self.props:
-            r = RadioButtonDefinition(0,prop.description,100,0xFF)
-            self.add_gadget(r) # Create radio buttons ...
-        
+            r = RadioButtonDefinition(0, prop.description, 100, 0xFF)
+            self.add_gadget(r)  # Create radio buttons ...
+
     @toolbox_handler(RadioButtonStateChangedEvent)
-    def radiobutton_changed(self,event,id_block,poll_block):
+    def radiobutton_changed(self, event, id_block, poll_block):
         if id_block.self.id != self.id:
             return False
-            
+
         self.current_test = id_block.self.component
-        
+
         return True
-        
+
     @toolbox_handler(ActionButtonSelectedEvent)
-    def actionbutton_selected(self,event,id_block,poll_block):
+    def actionbutton_selected(self, event, id_block, poll_block):
         if id_block.self.id != self.id:
             return False
-            
+
         return True
-        

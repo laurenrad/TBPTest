@@ -1,0 +1,98 @@
+./!TBPTest/tbptest/__init__.py:1:1: W391 blank line at end of file
+./!TBPTest/tbptest/gadgets/__init__.py:1:1: W391 blank line at end of file
+./!TBPTest/tbptest/gadgets/actionbuttonwin.py:24:1: F403 'from tbptest.tbox_const import *' used; unable to detect undefined names
+./!TBPTest/tbptest/gadgets/actionbuttonwin.py:98:22: F405 'EvActionButtonSetText' may be undefined, or defined from star imports: tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/actionbuttonwin.py:104:22: F405 'EvActionButtonGetText' may be undefined, or defined from star imports: tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/actionbuttonwin.py:110:22: F405 'EvActionButtonSetEvent' may be undefined, or defined from star imports: tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/actionbuttonwin.py:116:22: F405 'EvActionButtonGetEvent' may be undefined, or defined from star imports: tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/actionbuttonwin.py:122:22: F405 'EvActionButtonSetClickShow' may be undefined, or defined from star imports: tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/actionbuttonwin.py:128:22: F405 'EvActionButtonGetClickShow' may be undefined, or defined from star imports: tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/draggablewin.py:24:1: F403 'from tbptest.tbox_const import *' used; unable to detect undefined names
+./!TBPTest/tbptest/gadgets/draggablewin.py:101:22: F405 'EvDraggableGetText' may be undefined, or defined from star imports: tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/draggablewin.py:108:22: F405 'EvDraggableSetText' may be undefined, or defined from star imports: tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/draggablewin.py:115:22: F405 'EvDraggableGetSprite' may be undefined, or defined from star imports: tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/draggablewin.py:122:22: F405 'EvDraggableSetSprite' may be undefined, or defined from star imports: tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/draggablewin.py:129:22: F405 'EvDraggableGetState' may be undefined, or defined from star imports: tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/draggablewin.py:136:22: F405 'EvDraggableSetState' may be undefined, or defined from star imports: tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/radiobuttonwin.py:114:19: E221 multiple spaces before operator
+./!TBPTest/tbptest/gadgets/textareawin.py:24:1: F403 'from tbptest.tbox_const import *' used; unable to detect undefined names
+./!TBPTest/tbptest/gadgets/textareawin.py:25:1: F403 'from tbptest.tbox_common import *' used; unable to detect undefined names
+./!TBPTest/tbptest/gadgets/textareawin.py:146:26: F405 'TestMenu' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/textareawin.py:150:22: F405 'EvTextAreaGetState' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/textareawin.py:156:22: F405 'EvTextAreaSetState' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/textareawin.py:162:22: F405 'EvTextAreaSetText' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/textareawin.py:168:22: F405 'EvTextAreaGetText' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/textareawin.py:174:22: F405 'EvTextAreaInsertText' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/textareawin.py:180:22: F405 'EvTextAreaReplaceText' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/textareawin.py:186:22: F405 'EvTextAreaGetSelection' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/textareawin.py:192:22: F405 'EvTextAreaSetSelection' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/textareawin.py:198:22: F405 'EvTextAreaGetSelectionPoints' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/textareawin.py:204:22: F405 'EvTextAreaSetSelectionPoints' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/textareawin.py:210:22: F405 'EvTextAreaSetFont' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/textareawin.py:216:22: F405 'EvTextAreaSetColour' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/textareawin.py:222:22: F405 'EvTextAreaGetColour' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/textareawin.py:228:22: F405 'EvTextAreaSetCursorPos' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+./!TBPTest/tbptest/gadgets/textareawin.py:234:22: F405 'EvTextAreaGetCursorPos' may be undefined, or defined from star imports: tbptest.tbox_common, tbptest.tbox_const
+./!TBPTest/tbptest/objects/colourwin.py:27:1: F401 'riscos_toolbox.objects.colourdbox.ColourDbox' imported but unused
+./!TBPTest/tbptest/objects/colourwin.py:30:1: F401 'riscos_toolbox.objects.colourmenu.ColourMenu' imported but unused
+./!TBPTest/tbptest/objects/colourwin.py:33:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButton' imported but unused
+./!TBPTest/tbptest/objects/colourwin.py:34:1: F401 'riscos_toolbox.gadgets.actionbutton.ActionButton' imported but unused
+./!TBPTest/tbptest/objects/fileinfowin.py:29:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButton' imported but unused
+./!TBPTest/tbptest/objects/fontwin.py:26:1: F401 'riscos_toolbox.objects.fontmenu.FontMenu' imported but unused
+./!TBPTest/tbptest/objects/fontwin.py:27:1: F401 'riscos_toolbox.objects.fontdbox.FontDbox' imported but unused
+./!TBPTest/tbptest/objects/fontwin.py:33:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButton' imported but unused
+./!TBPTest/tbptest/objects/iconbarwin.py:27:1: F401 'riscos_toolbox.objects.iconbar.Iconbar' imported but unused
+./!TBPTest/tbptest/objects/iconbarwin.py:28:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButton' imported but unused
+./!TBPTest/tbptest/objects/iconbarwin.py:30:1: F401 'riscos_toolbox.gadgets.numberrange.NumberRange' imported but unused
+./!TBPTest/tbptest/objects/menuwin.py:28:1: F401 'riscos_toolbox.gadgets.actionbutton.ActionButton' imported but unused
+./!TBPTest/tbptest/objects/menuwin.py:30:1: F401 'riscos_toolbox.gadgets.displayfield.DisplayField' imported but unused
+./!TBPTest/tbptest/objects/menuwin.py:100:25: E261 at least two spaces before inline comment
+./!TBPTest/tbptest/objects/menuwin.py:100:26: E262 inline comment should start with '# '
+./!TBPTest/tbptest/objects/objtestwin.py:31:1: F401 'tbptest.reporter.Reporter' imported but unused
+./!TBPTest/tbptest/objects/objtestwin.py:31:38: E261 at least two spaces before inline comment
+./!TBPTest/tbptest/objects/objtestwin.py:31:39: E262 inline comment should start with '# '
+./!TBPTest/tbptest/objects/objtestwin.py:33:33: E261 at least two spaces before inline comment
+./!TBPTest/tbptest/objects/objtestwin.py:33:34: E262 inline comment should start with '# '
+./!TBPTest/tbptest/objects/objtestwin.py:36:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButton' imported but unused
+./!TBPTest/tbptest/objects/objtestwin.py:38:1: F401 'riscos_toolbox.gadgets.actionbutton.ActionButton' imported but unused
+./!TBPTest/tbptest/objects/proginfowin.py:27:1: F401 'riscos_toolbox.objects.proginfo.ProgInfo' imported but unused
+./!TBPTest/tbptest/objects/proginfowin.py:30:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButton' imported but unused
+./!TBPTest/tbptest/objects/proginfowin.py:31:1: F401 'riscos_toolbox.gadgets.actionbutton.ActionButton' imported but unused
+./!TBPTest/tbptest/objects/quitwin.py:27:1: F401 'riscos_toolbox.objects.quit.Quit' imported but unused
+./!TBPTest/tbptest/objects/quitwin.py:29:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButton' imported but unused
+./!TBPTest/tbptest/objects/quitwin.py:30:1: F401 'riscos_toolbox.gadgets.actionbutton.ActionButton' imported but unused
+./!TBPTest/tbptest/objects/saveaswin.py:28:1: F401 'riscos_toolbox.objects.saveas.SaveAs' imported but unused
+./!TBPTest/tbptest/objects/saveaswin.py:33:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButton' imported but unused
+./!TBPTest/tbptest/objects/saveaswin.py:34:1: F401 'riscos_toolbox.gadgets.actionbutton.ActionButton' imported but unused
+./!TBPTest/tbptest/objects/scalewin.py:27:1: F401 'riscos_toolbox.objects.scale.Scale' imported but unused
+./!TBPTest/tbptest/objects/scalewin.py:27:1: F401 'riscos_toolbox.objects.scale.ScaleAboutToBeShownEvent' imported but unused
+./!TBPTest/tbptest/objects/scalewin.py:28:1: F401 'riscos_toolbox.objects.scale.ScaleDialogueCompletedEvent' imported but unused
+./!TBPTest/tbptest/objects/scalewin.py:28:1: F401 'riscos_toolbox.objects.scale.ScaleApplyFactorEvent' imported but unused
+./!TBPTest/tbptest/objects/scalewin.py:29:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButton' imported but unused
+./!TBPTest/tbptest/objects/scalewin.py:29:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButtonStateChangedEvent' imported but unused
+./!TBPTest/tbptest/objects/scalewin.py:30:1: F401 'riscos_toolbox.gadgets.actionbutton.ActionButton' imported but unused
+./!TBPTest/tbptest/objects/scalewin.py:30:1: F401 'riscos_toolbox.gadgets.actionbutton.ActionButtonSelectedEvent' imported but unused
+./!TBPTest/tbptest/objects/scalewin.py:31:1: F401 'riscos_toolbox.gadgets.numberrange.NumberRange' imported but unused
+./!TBPTest/tbptest/objects/scalewin.py:32:1: F401 'riscos_toolbox.gadgets.displayfield.DisplayField' imported but unused
+./!TBPTest/tbptest/objects/scalewin.py:33:1: F401 'riscos_toolbox.gadgets.writablefield.WritableField' imported but unused
+./!TBPTest/tbptest/objects/scalewin.py:34:1: F401 'riscos_toolbox.gadgets.textarea.TextArea' imported but unused
+./!TBPTest/tbptest/objects/scalewin.py:35:1: F401 'riscos_toolbox.events.toolbox_handler' imported but unused
+./!TBPTest/tbptest/objects/winwin.py:28:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButton' imported but unused
+./!TBPTest/tbptest/objects/winwin.py:29:1: F401 'riscos_toolbox.gadgets.radiobutton.RadioButtonDefinition' imported but unused
+./!TBPTest/tbptest/objects/winwin.py:179:83: W291 trailing whitespace
+./!TBPTest/tbptest/reporter.py:75:34: E231 missing whitespace after ','
+./!TBPTest/tbptest/reporter.py:258:1: W293 blank line contains whitespace
+./!TBPTest/tbptest/tbox_common.py:26:1: E302 expected 2 blank lines, found 1
+./!TBPTest/tbptest/tbox_const.py:50:33: E261 at least two spaces before inline comment
+./!TBPTest/tbptest/tbox_const.py:51:31: E261 at least two spaces before inline comment
+1     E221 multiple spaces before operator
+1     E231 missing whitespace after ','
+5     E261 at least two spaces before inline comment
+3     E262 inline comment should start with '# '
+1     E302 expected 2 blank lines, found 1
+40    F401 'riscos_toolbox.objects.colourdbox.ColourDbox' imported but unused
+4     F403 'from tbptest.tbox_const import *' used; unable to detect undefined names
+28    F405 'EvActionButtonSetText' may be undefined, or defined from star imports: tbptest.tbox_const
+1     W291 trailing whitespace
+1     W293 blank line contains whitespace
+2     W391 blank line at end of file

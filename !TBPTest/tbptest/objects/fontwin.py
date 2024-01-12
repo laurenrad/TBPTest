@@ -20,9 +20,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tbptest.reporter import Reporter
+from tbptest.reporter import Reporter # noqa
 
-import riscos_toolbox as toolbox
+import riscos_toolbox as toolbox # noqa
 from riscos_toolbox.objects.fontmenu import FontMenu
 from riscos_toolbox.objects.fontdbox import FontDbox, FontDboxAboutToBeShownEvent
 from riscos_toolbox.objects.fontdbox import FontDboxApplyFontEvent, FontDboxDialogueCompletedEvent
@@ -37,78 +37,80 @@ from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.writablefield import WritableField
 from riscos_toolbox.events import toolbox_handler
 
+
 class FontWindow(Window):
     template = "FontWin"
-    
+
     # Gadget constants
-    G_TEXTAREA          = 0x01
-    G_RESULT            = 0x11
-    G_RADIO_DBOX_WINID  = 0x05
-    G_RADIO_DBOX_FONT   = 0x06
-    G_RADIO_DBOX_SIZE   = 0x07
+    G_TEXTAREA = 0x01
+    G_RESULT = 0x11
+    G_RADIO_DBOX_WINID = 0x05
+    G_RADIO_DBOX_FONT = 0x06
+    G_RADIO_DBOX_SIZE = 0x07
     G_RADIO_DBOX_ASPECT = 0x13
     G_RADIO_DBOX_TRYSTR = 0x08
-    G_RADIO_DBOX_TITLE  = 0x09
-    G_RADIO_MENU_FONT   = 0x0B
-    G_INT_INPUT         = 0x0C
-    G_STR_INPUT         = 0x02
-    G_GET               = 0x0E
-    G_SET               = 0x0F
-    
+    G_RADIO_DBOX_TITLE = 0x09
+    G_RADIO_MENU_FONT = 0x0B
+    G_INT_INPUT = 0x0C
+    G_STR_INPUT = 0x02
+    G_GET = 0x0E
+    G_SET = 0x0F
+
     def __init__(self, *args):
         super().__init__(*args)
         self.font_menu = toolbox.create_object("FontMenu")
         self.font_dbox = toolbox.create_object("FontDbox")
-        self.output_text = TextArea(self,FontWindow.G_TEXTAREA)
-        self.output_display = DisplayField(self,FontWindow.G_RESULT)
-        self.input_int = NumberRange(self,FontWindow.G_INT_INPUT)
-        self.input_str = WritableField(self,FontWindow.G_STR_INPUT)
-        self.current_test = FontWindow.G_RADIO_DBOX_WINID # Currently selected test - set default
-        self.get_btn = ActionButton(self,FontWindow.G_GET)
-        self.set_btn = ActionButton(self,FontWindow.G_SET)
-        
+        self.output_text = TextArea(self, FontWindow.G_TEXTAREA)
+        self.output_display = DisplayField(self, FontWindow.G_RESULT)
+        self.input_int = NumberRange(self, FontWindow.G_INT_INPUT)
+        self.input_str = WritableField(self, FontWindow.G_STR_INPUT)
+        self.current_test = FontWindow.G_RADIO_DBOX_WINID  # Currently selected test - set default
+        self.get_btn = ActionButton(self, FontWindow.G_GET)
+        self.set_btn = ActionButton(self, FontWindow.G_SET)
+
         # Some elements will fade and unfade depending on test, so set up defaults
         self.set_btn.faded = True
         self.get_btn.faded = False
-        
+
     # As of the current lib version, this event class implements all fields.
     @toolbox_handler(FontMenuSelectionEvent)
-    def font_selected(self,event,id_block,poll_block):
-        self.output_text.insert(-1,"Event: Font selected from menu | ")
-        self.output_text.insert(-1,f"Font id: {poll_block.font_id} | ")
-        self.output_text.set_font(poll_block.font_id,200,200)
-    
+    def font_selected(self, event, id_block, poll_block):
+        self.output_text.insert(-1, "Event: Font selected from menu | ")
+        self.output_text.insert(-1, f"Font id: {poll_block.font_id} | ")
+        self.output_text.set_font(poll_block.font_id, 200, 200)
+
     # As of the current lib version, this event class does not implement the fields.
     @toolbox_handler(FontMenuAboutToBeShownEvent)
-    def font_menu_shown(self,event,id_block,poll_block):
-        self.output_text.insert(-1,"Event: Font menu about to be shown | ")
+    def font_menu_shown(self, event, id_block, poll_block):
+        self.output_text.insert(-1, "Event: Font menu about to be shown | ")
 
-    # This event doesn't have any fields anyway.        
+    # This event doesn't have any fields anyway.
     @toolbox_handler(FontMenuHasBeenHiddenEvent)
-    def font_menu_hidden(self,event,id_block,poll_block):
-        self.output_text.insert(-1,"Event: Font menu has been hidden | ")
-    
+    def font_menu_hidden(self, event, id_block, poll_block):
+        self.output_text.insert(-1, "Event: Font menu has been hidden | ")
+
     # As of the current lib version, this event class does not implement fields.
     @toolbox_handler(FontDboxAboutToBeShownEvent)
-    def font_dbox_shown(self,event,id_block,poll_block):
-        self.output_text.insert(-1,"Event: Font dbox about to be shown | ")
-            
+    def font_dbox_shown(self, event, id_block, poll_block):
+        self.output_text.insert(-1, "Event: Font dbox about to be shown | ")
+
     @toolbox_handler(FontDboxApplyFontEvent)
-    def font_dbox_applied(self,event,id_block,poll_block):
-        self.output_text.insert(-1,"Event: Font dbox apply | ")
-        Reporter.print(f"height={poll_block.height} aspect={poll_block.aspect} font={poll_block.font}")
-       
+    def font_dbox_applied(self, event, id_block, poll_block):
+        self.output_text.insert(-1, "Event: Font dbox apply | ")
+        Reporter.print(f"height={poll_block.height} aspect={poll_block.aspect}"
+                       f"font={poll_block.font}")
+
     @toolbox_handler(FontDboxDialogueCompletedEvent)
-    def font_dbox_completed(self,event,id_block,poll_block):
-        self.output_text.insert(-1,"Event: Font dbox completed | ")
-        
+    def font_dbox_completed(self, event, id_block, poll_block):
+        self.output_text.insert(-1, "Event: Font dbox completed | ")
+
     @toolbox_handler(RadioButtonStateChangedEvent)
-    def radiobutton_changed(self,event,id_block,poll_block):
+    def radiobutton_changed(self, event, id_block, poll_block):
         if id_block.self.id != self.id:
             return False
-            
+
         self.current_test = id_block.self.component
-        
+
         # Fade and unfade some elements depending on what is selected
         if self.current_test == FontWindow.G_RADIO_DBOX_WINID:
             self.set_btn.faded = True
@@ -116,14 +118,14 @@ class FontWindow(Window):
         else:
             self.set_btn.faded = False
             self.get_btn.faded = False
-        
+
         return True
-        
+
     @toolbox_handler(ActionButtonSelectedEvent)
-    def actionbutton_selected(self,event,id_block,poll_block):
+    def actionbutton_selected(self, event, id_block, poll_block):
         if id_block.self.id != self.id:
             return False
-            
+
         if id_block.self.component == FontWindow.G_GET:
             if self.current_test == FontWindow.G_RADIO_DBOX_WINID:
                 self.output_display.value = "DBox Win ID: "+repr(self.font_dbox.window_id)
@@ -171,6 +173,5 @@ class FontWindow(Window):
                 Reporter.print("test: unknown set")
         else:
             return False
-            
+
         return True
-    

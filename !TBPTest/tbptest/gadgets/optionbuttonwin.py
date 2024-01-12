@@ -30,12 +30,12 @@ from riscos_toolbox.gadgets.writablefield import WritableField
 from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.events import toolbox_handler
 from riscos_toolbox.gadgets.optionbutton import OptionButton, OptionButtonStateChangedEvent
-    
+
 # Gadget Constants
-G_OPTION   = 0x00
-G_INPUT    = 0x04
+G_OPTION = 0x00
+G_INPUT = 0x04
 G_INPUTOPT = 0x03
-G_OUTPUT   = 0x05
+G_OUTPUT = 0x05
 
 
 class OptionButtonWindow(Window):
@@ -44,52 +44,52 @@ class OptionButtonWindow(Window):
     def __init__(self, *args):
         super().__init__(*args)
 
-        self.g_option = OptionButton(self,G_OPTION)
-        self.g_inputopt = OptionButton(self,G_INPUTOPT)
-        self.g_input = WritableField(self,G_INPUT)
-        self.g_output = DisplayField(self,G_OUTPUT)
+        self.g_option = OptionButton(self, G_OPTION)
+        self.g_inputopt = OptionButton(self, G_INPUTOPT)
+        self.g_input = WritableField(self, G_INPUT)
+        self.g_output = DisplayField(self, G_OUTPUT)
 
     # Methods for testing OptionButton
-    
+
     def optbutton_set_label(self):
         self.g_option.label = self.g_input.value
-    
+
     def optbutton_get_label(self):
         self.g_output.value = self.g_option.label
-    
+
     def optbutton_set_event(self):
-        # As in various other places, this is because I don't want to depend on 
+        # As in various other places, this is because I don't want to depend on
         # NumberRange since it isn't in upstream riscos_toolbox yet
         try:
             self.g_option.event = int(self.g_input.value)
         except ValueError:
             self.g_output.value = "Expected int input"
-    
+
     def optbutton_get_event(self):
         self.g_output.value = repr(self.g_option.event)
-    
+
     def optbutton_set_state(self):
         self.g_option.state = self.g_inputopt.state
-    
+
     def optbutton_get_state(self):
         self.g_output.value = repr(self.g_option.state)
-    
+
     # Event handlers for OptionButton
-    
+
     @toolbox_handler(OptionButtonStateChangedEvent)
-    def optbutton_state_changed(self,event,id_block,poll_block):
+    def optbutton_state_changed(self, event, id_block, poll_block):
         msg = "Option state changed: "+repr(poll_block.new_state)
         if poll_block.on:
             msg += " on"
         if poll_block.off:
             msg += " off"
-            
-        self.g_output.value = msg
-            
 
-class OptionButtonMenu(Menu,TestMenu):
+        self.g_output.value = msg
+
+
+class OptionButtonMenu(Menu, TestMenu):
     template = "OptBttnMenu"
-    
+
     # Constants for menu entries
     ENTRY_SET_LABEL = 0x00
     ENTRY_GET_LABEL = 0x01
@@ -97,15 +97,15 @@ class OptionButtonMenu(Menu,TestMenu):
     ENTRY_GET_EVENT = 0x03
     ENTRY_SET_STATE = 0x04
     ENTRY_GET_STATE = 0x05
-    
+
     @toolbox_handler(SelectionEvent)
-    def menu_selected(self,event,id_block,poll_block):
+    def menu_selected(self, event, id_block, poll_block):
         if id_block.self.id != self.id:
             return False
-            
+
         window = toolbox.get_object(id_block.parent.id)
         self.menu_tick(id_block.self.component)
-        
+
         if id_block.self.component == OptionButtonMenu.ENTRY_SET_LABEL:
             window.optbutton_set_label()
         elif id_block.self.component == OptionButtonMenu.ENTRY_GET_LABEL:
@@ -118,7 +118,5 @@ class OptionButtonMenu(Menu,TestMenu):
             window.optbutton_set_state()
         elif id_block.self.component == OptionButtonMenu.ENTRY_GET_STATE:
             window.optbutton_get_state()
-            
-        return True
 
-        
+        return True

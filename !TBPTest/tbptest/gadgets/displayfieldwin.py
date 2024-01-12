@@ -32,52 +32,52 @@ from riscos_toolbox.events import toolbox_handler
 
 # Gadget Constants
 G_DISPLAYFIELD = 0x00
-G_INPUT1       = 0x04
-G_INPUT2       = 0x07
-G_OUTPUT       = 0x05
+G_INPUT1 = 0x04
+G_INPUT2 = 0x07
+G_OUTPUT = 0x05
 
 
 class DisplayFieldWindow(Window):
     template = "DspFieldWin"
-    
+
     def __init__(self, *args):
         super().__init__(*args)
-        
-        self.g_displayfield = DisplayField(self,G_DISPLAYFIELD)
-        self.g_input1 = WritableField(self,G_INPUT1)
-        self.g_input2 = WritableField(self,G_INPUT2)
-        self.g_output = DisplayField(self,G_OUTPUT)
-        
+
+        self.g_displayfield = DisplayField(self, G_DISPLAYFIELD)
+        self.g_input1 = WritableField(self, G_INPUT1)
+        self.g_input2 = WritableField(self, G_INPUT2)
+        self.g_output = DisplayField(self, G_OUTPUT)
+
     # Methods for testing DisplayField
-    
+
     def displayfield_set_value(self):
         self.g_displayfield.value = self.g_input1.value
-        
+
     def displayfield_get_value(self):
         self.g_output.value = self.g_displayfield.value
-        
+
     def displayfield_set_font(self):
         try:
             name = self.g_input1.value
             size = int(self.g_input2.value)
         except ValueError:
             self.g_output.value = "Input1=name, Input2=size"
-        self.g_displayfield.set_font(name=name,size=size)
+        self.g_displayfield.set_font(name=name, size=size)
 
-        
-class DisplayFieldMenu(Menu,TestMenu):
+
+class DisplayFieldMenu(Menu, TestMenu):
     template = "DispFldMenu"
-    
+
     # Component constants for menu entries
     ENTRY_SET_VALUE = 0x00
     ENTRY_GET_VALUE = 0x01
-    ENTRY_SET_FONT  = 0x02
-    
+    ENTRY_SET_FONT = 0x02
+
     @toolbox_handler(SelectionEvent)
-    def menu_selected(self,event,id_block,poll_block):
+    def menu_selected(self, event, id_block, poll_block):
         if id_block.self.id != self.id:
             return False
-            
+
         window = toolbox.get_object(id_block.parent.id)
         self.menu_tick(id_block.self.component)
         if id_block.self.component == DisplayFieldMenu.ENTRY_SET_VALUE:
@@ -86,7 +86,5 @@ class DisplayFieldMenu(Menu,TestMenu):
             window.displayfield_get_value()
         elif id_block.self.component == DisplayFieldMenu.ENTRY_SET_FONT:
             window.displayfield_set_font()
-            
-        return True
 
-        
+        return True

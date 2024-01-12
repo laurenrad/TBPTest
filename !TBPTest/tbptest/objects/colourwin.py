@@ -28,7 +28,8 @@ from riscos_toolbox.objects.colourdbox import ColourDbox, ColourDboxAboutToBeSho
 from riscos_toolbox.objects.colourdbox import ColourDboxDialogueCompletedEvent
 from riscos_toolbox.objects.colourdbox import ColourDboxColourSelectedEvent
 from riscos_toolbox.objects.colourmenu import ColourMenu, ColourMenuAboutToBeShownEvent
-from riscos_toolbox.objects.colourmenu import ColourMenuHasBeenHiddenEvent, ColourMenuSelectionEvent
+from riscos_toolbox.objects.colourmenu import ColourMenuHasBeenHiddenEvent
+from riscos_toolbox.objects.colourmenu import ColourMenuSelectionEvent
 from riscos_toolbox.gadgets.radiobutton import RadioButton, RadioButtonStateChangedEvent
 from riscos_toolbox.gadgets.actionbutton import ActionButton, ActionButtonSelectedEvent
 from riscos_toolbox.gadgets.numberrange import NumberRange
@@ -37,74 +38,74 @@ from riscos_toolbox.gadgets.writablefield import WritableField
 from riscos_toolbox.gadgets.textarea import TextArea
 from riscos_toolbox.events import toolbox_handler
 
+
 class ColourWindow(Window):
     template = "ColourWin"
-    
+
     # Gadget constants
     G_RADIO_DBOX_WIMPHANDLE = 0x11
-    G_RADIO_DBOX_HANDLE     = 0x12
-    G_RADIO_DBOX_COLOUR     = 0x13
-    G_RADIO_DBOX_MODEL      = 0x14
-    G_RADIO_DBOX_NONE       = 0x15
-    G_RADIO_MENU_COLOUR     = 0x17
-    G_RADIO_MENU_NONE       = 0x18
-    G_RADIO_MENU_TITLE      = 0x19
-    G_SHOW                  = 0x00
-    G_GET                   = 0x0C
-    G_SET                   = 0x0D
-    G_INPUT_INT             = 0x0B
-    G_INPUT_STR             = 0x0A
-    G_RESULT                = 0x09
-    G_TEXTAREA              = 0x08
-    
+    G_RADIO_DBOX_HANDLE = 0x12
+    G_RADIO_DBOX_COLOUR = 0x13
+    G_RADIO_DBOX_MODEL = 0x14
+    G_RADIO_DBOX_NONE = 0x15
+    G_RADIO_MENU_COLOUR = 0x17
+    G_RADIO_MENU_NONE = 0x18
+    G_RADIO_MENU_TITLE = 0x19
+    G_SHOW = 0x00
+    G_GET = 0x0C
+    G_SET = 0x0D
+    G_INPUT_INT = 0x0B
+    G_INPUT_STR = 0x0A
+    G_RESULT = 0x09
+    G_TEXTAREA = 0x08
+
     def __init__(self, *args):
         super().__init__(*args)
         self.colour_menu = toolbox.create_object("ColourMenu")
         self.colour_dbox = toolbox.create_object("ColourDbox")
-        self.result = DisplayField(self,ColourWindow.G_RESULT)
-        self.textarea = TextArea(self,ColourWindow.G_TEXTAREA)
-        self.input_int = NumberRange(self,ColourWindow.G_INPUT_INT)
-        self.input_str = WritableField(self,ColourWindow.G_INPUT_STR)
-        
+        self.result = DisplayField(self, ColourWindow.G_RESULT)
+        self.textarea = TextArea(self, ColourWindow.G_TEXTAREA)
+        self.input_int = NumberRange(self, ColourWindow.G_INPUT_INT)
+        self.input_str = WritableField(self, ColourWindow.G_INPUT_STR)
+
         self.selected_test = ColourWindow.G_RADIO_DBOX_WIMPHANDLE
-        
+
     @toolbox_handler(RadioButtonStateChangedEvent)
-    def test_selected(self,event,id_block,poll_block):
+    def test_selected(self, event, id_block, poll_block):
         if id_block.self.id != self.id:
             return False
-        
+
         self.selected_test = id_block.self.component
-        
+
         return True
-        
+
     @toolbox_handler(ActionButtonSelectedEvent)
-    def actionbutton_selected(self,event,id_bloc,poll_block):
+    def actionbutton_selected(self, event, id_block, poll_block):
         if id_block.self.id != self.id:
             return False
-            
+
         return True
-        
+
     @toolbox_handler(ColourDboxAboutToBeShownEvent)
-    def colour_dbox_shown(self,event,id_block,poll_block):
+    def colour_dbox_shown(self, event, id_block, poll_block):
         Reporter.print("ColourDboxAboutToBeShownEvent")
-        
+
     @toolbox_handler(ColourDboxDialogueCompletedEvent)
-    def colour_dbox_completed(self,event,id_block,poll_block):
+    def colour_dbox_completed(self, event, id_block, poll_block):
         Reporter.print("ColourDboxDialogueCompletedEvent")
-        
+
     @toolbox_handler(ColourDboxColourSelectedEvent)
-    def colour_dbox_selected(self,event,id_block,poll_block):
+    def colour_dbox_selected(self, event, id_block, poll_block):
         Reporter.print("ColourDboxColourSelectedEvent")
-        
+
     @toolbox_handler(ColourMenuAboutToBeShownEvent)
-    def colour_menu_shown(self,event,id_block,poll_block):
+    def colour_menu_shown(self, event, id_block, poll_block):
         Reporter.print("ColourMenuAboutToBeShownEvent")
-    
+
     @toolbox_handler(ColourMenuHasBeenHiddenEvent)
-    def colour_menu_hidden(self,event,id_block,poll_block):
+    def colour_menu_hidden(self, event, id_block, poll_block):
         Reporter.print("ColourMenuHasBeenHiddenEvent")
-        
+
     @toolbox_handler(ColourMenuSelectionEvent)
-    def colour_menu_selected(self,event,id_block,poll_block):
+    def colour_menu_selected(self, event, id_block, poll_block):
         Reporter.print("ColourMenuSelectionEvent")
-                

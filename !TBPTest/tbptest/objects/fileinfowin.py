@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tbptest.reporter import Reporter
+from tbptest.reporter import Reporter # noqa
 
 import riscos_toolbox as toolbox
 from riscos_toolbox.objects.fileinfo import FileInfo, AboutToBeShownEvent, DialogueCompletedEvent
@@ -33,46 +33,47 @@ from riscos_toolbox.gadgets.displayfield import DisplayField
 from riscos_toolbox.gadgets.writablefield import WritableField
 from riscos_toolbox.events import toolbox_handler
 
+
 class FileInfoWindow(Window):
     template = "FileInfoWin"
-    
+
     # Gadget Constants
-    G_RADIO_WINID    = 0x03
+    G_RADIO_WINID = 0x03
     G_RADIO_MODIFIED = 0x04
     G_RADIO_FILETYPE = 0x05
     G_RADIO_FILENAME = 0x06
     G_RADIO_FILESIZE = 0x07
-    G_RADIO_DATE     = 0x08
-    G_RADIO_TITLE    = 0x09
-    G_INT_INPUT      = 0x0C
-    G_STR_INPUT      = 0x02
-    G_GET            = 0x0E
-    G_SET            = 0x0F
-    G_RESULT         = 0x11
-    G_TEXTAREA       = 0x01
-    G_HIDE           = 0x14
-    
+    G_RADIO_DATE = 0x08
+    G_RADIO_TITLE = 0x09
+    G_INT_INPUT = 0x0C
+    G_STR_INPUT = 0x02
+    G_GET = 0x0E
+    G_SET = 0x0F
+    G_RESULT = 0x11
+    G_TEXTAREA = 0x01
+    G_HIDE = 0x14
+
     def __init__(self, *args):
         super().__init__(*args)
-        self.fileinfo = toolbox.create_object("FileInfo",FileInfo)
-        self.output_text = TextArea(self,FileInfoWindow.G_TEXTAREA)
-        self.output_display = DisplayField(self,FileInfoWindow.G_RESULT)
-        self.input_int = NumberRange(self,FileInfoWindow.G_INT_INPUT)
-        self.input_str = WritableField(self,FileInfoWindow.G_STR_INPUT)
-        self.current_test = FileInfoWindow.G_RADIO_WINID # currently selected test - set default
-        self.get_btn = ActionButton(self,FileInfoWindow.G_GET)
-        self.set_btn = ActionButton(self,FileInfoWindow.G_SET)
-        
+        self.fileinfo = toolbox.create_object("FileInfo", FileInfo)
+        self.output_text = TextArea(self, FileInfoWindow.G_TEXTAREA)
+        self.output_display = DisplayField(self, FileInfoWindow.G_RESULT)
+        self.input_int = NumberRange(self, FileInfoWindow.G_INT_INPUT)
+        self.input_str = WritableField(self, FileInfoWindow.G_STR_INPUT)
+        self.get_btn = ActionButton(self, FileInfoWindow.G_GET)
+        self.set_btn = ActionButton(self, FileInfoWindow.G_SET)
+
+        self.current_test = FileInfoWindow.G_RADIO_WINID  # currently selected test - set default
         self.get_btn.faded = False
         self.set_btn.faded = True
-        
+
     @toolbox_handler(RadioButtonStateChangedEvent)
-    def radiobutton_changed(self,event,id_block,poll_block):
+    def radiobutton_changed(self, event, id_block, poll_block):
         if id_block.self.id != self.id:
             return False
-            
+
         self.current_test = id_block.self.component
-        
+
         # Fade and unfade some elements depending on what is selected
         if self.current_test == FileInfoWindow.G_RADIO_WINID:
             self.set_btn.faded = True
@@ -80,14 +81,14 @@ class FileInfoWindow(Window):
         else:
             self.set_btn.faded = False
             self.get_btn.faded = False
-            
+
         return True
-        
+
     @toolbox_handler(ActionButtonSelectedEvent)
-    def actionbutton_selected(self,event,id_block,poll_block):
+    def actionbutton_selected(self, event, id_block, poll_block):
         if id_block.self.id != self.id:
             return False
-            
+
         if id_block.self.component == FileInfoWindow.G_GET:
             if self.current_test == FileInfoWindow.G_RADIO_WINID:
                 Reporter.print("test: fileinfo: get winid")
@@ -137,15 +138,15 @@ class FileInfoWindow(Window):
             self.fileinfo.hide()
         else:
             return False
-            
+
         return True
-    
+
     @toolbox_handler(AboutToBeShownEvent)
-    def fileinfo_onshow(self,event,id_block,poll_block):
+    def fileinfo_onshow(self, event, id_block, poll_block):
         Reporter.print("FileInfo: about to show")
-        self.output_text.insert(-1,"FileInfo AboutToBeShownEvent |")
-        
+        self.output_text.insert(-1, "FileInfo AboutToBeShownEvent |")
+
     @toolbox_handler(DialogueCompletedEvent)
-    def fileinfo_completed(self,event,id_block,poll_block):
+    def fileinfo_completed(self, event, id_block, poll_block):
         Reporter.print("FileInfo: completed")
-        self.output_text.insert(-1,"FileInfo DialogueCompletedEvent |")
+        self.output_text.insert(-1, "FileInfo DialogueCompletedEvent |")

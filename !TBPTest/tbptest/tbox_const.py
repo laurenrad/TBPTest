@@ -24,38 +24,38 @@
 # The rationale behind having a central module for this is so they don't clash.
 
 # Constants - Events
-EvTextAreaGetState           = 0x200
-EvTextAreaSetState           = 0x201
-EvTextAreaSetText            = 0x202
-EvTextAreaGetText            = 0x203
-EvTextAreaInsertText         = 0x204
-EvTextAreaReplaceText        = 0x205
-EvTextAreaGetSelection       = 0x206
-EvTextAreaSetSelection       = 0x207
+EvTextAreaGetState = 0x200
+EvTextAreaSetState = 0x201
+EvTextAreaSetText = 0x202
+EvTextAreaGetText = 0x203
+EvTextAreaInsertText = 0x204
+EvTextAreaReplaceText = 0x205
+EvTextAreaGetSelection = 0x206
+EvTextAreaSetSelection = 0x207
 EvTextAreaGetSelectionPoints = 0x208
-EvTextAreaSetSelectionPoints = 0x209 
-EvTextAreaSetFont            = 0x20A
-EvTextAreaSetColour          = 0x20B
-EvTextAreaGetColour          = 0x20C
-EvTextAreaSetCursorPos       = 0x20D
-EvTextAreaGetCursorPos       = 0x20E
+EvTextAreaSetSelectionPoints = 0x209
+EvTextAreaSetFont = 0x20A
+EvTextAreaSetColour = 0x20B
+EvTextAreaGetColour = 0x20C
+EvTextAreaSetCursorPos = 0x20D
+EvTextAreaGetCursorPos = 0x20E
 
 # Event Constants
-EvDraggableSetSprite   = 0x300
-EvDraggableGetSprite   = 0x301
-EvDraggableSetText     = 0x302
-EvDraggableGetText     = 0x303
-EvDraggableSetState    = 0x304
-EvDraggableGetState    = 0x305
+EvDraggableSetSprite = 0x300
+EvDraggableGetSprite = 0x301
+EvDraggableSetText = 0x302
+EvDraggableGetText = 0x303
+EvDraggableSetState = 0x304
+EvDraggableGetState = 0x305
 EvDraggableDragStarted = 0x82887 # Raised by the Toolbox
-EvDraggableDragEnded   = 0x82888 # Raised by the toolbox
+EvDraggableDragEnded = 0x82888 # Raised by the toolbox
 
-## Here are the events for the gadgets which already existed before I worked on it
+# Here are the events for the gadgets which already existed before I worked on it
 
 # Action button test events
-EvActionButtonSetText       = 0x800
-EvActionButtonGetText       = 0x801
-EvActionButtonSetEvent      = 0x802
-EvActionButtonGetEvent      = 0x803
-EvActionButtonSetClickShow  = 0x804
-EvActionButtonGetClickShow  = 0x805
+EvActionButtonSetText = 0x800
+EvActionButtonGetText = 0x801
+EvActionButtonSetEvent = 0x802
+EvActionButtonGetEvent = 0x803
+EvActionButtonSetClickShow = 0x804
+EvActionButtonGetClickShow = 0x805

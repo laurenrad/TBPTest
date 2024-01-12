@@ -20,13 +20,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tbptest.reporter import Reporter
+from tbptest.reporter import Reporter # noqa
 
-import riscos_toolbox as toolbox
+import riscos_toolbox as toolbox # noqa
 from riscos_toolbox.objects.window import Window
+
 
 class DCSWindow(Window):
     template = "DCSWin"
-    
+
     def __init__(self, *args):
         super().__init__(*args)

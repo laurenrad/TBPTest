@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from tbptest.reporter import Reprter # noqa
+from tbptest.reporter import Reporter # noqa
 from tbptest.tbox_const import *
 from tbptest.tbox_common import TestMenu
 import riscos_toolbox as toolbox
@@ -34,48 +34,48 @@ from riscos_toolbox.events import toolbox_handler
 
 # Gadget Constants
 G_ACTIONBUTTON = 0x00
-G_INPUT	       = 0x02
-G_OUTPUT       = 0x01
+G_INPUT = 0x02
+G_OUTPUT = 0x01
 
 
 class ActionButtonWindow(Window):
     template = "ActBttnWin"
-    
+
     def __init__(self, *args):
         super().__init__(*args)
-        
-        self.g_actionbutton = ActionButton(self,G_ACTIONBUTTON)
-        self.g_input = WritableField(self,G_INPUT)
-        self.g_output = DisplayField(self,G_OUTPUT)
-        
+
+        self.g_actionbutton = ActionButton(self, G_ACTIONBUTTON)
+        self.g_input = WritableField(self, G_INPUT)
+        self.g_output = DisplayField(self, G_OUTPUT)
+
     # Methods for testing ActionButton
     def actionbutton_set_text(self):
         self.g_actionbutton.text = self.g_input.value
-        
+
     def actionbutton_get_text(self):
         self.g_output.value = self.g_actionbutton.text
-        
+
     def actionbutton_set_event(self):
         try:
             self.g_actionbutton.event = int(self.g_input.value)
         except ValueError:
             self.g_output.value = "Int input required"
-        
+
     def actionbutton_get_event(self):
         self.g_output.value = repr(self.g_actionbutton.event)
-        
+
     def actionbutton_set_click_show(self):
         try:
             self.g_actionbutton.click_show = int(self.g_input.value)
         except ValueError:
             self.g_output.value = "Int input required"
-        
+
     def actionbutton_get_click_show(self):
         self.g_output.value = repr(self.g_actionbutton.click_show)
-        
+
     # Event handlers for ActionButton
     @toolbox_handler(ActionButtonSelectedEvent)
-    def ActionButtonSelected(self,event,id_block,poll_block):
+    def ActionButtonSelected(self, event, id_block, poll_block):
         msg = "Action button selected: "
         if poll_block.adjust:
             msg += "Adjust "
@@ -87,46 +87,46 @@ class ActionButtonWindow(Window):
             msg += "Cancel "
         if poll_block.local:
             msg += "Local "
-            
+
         self.g_output.value = msg + hex(poll_block.flags)
 
 
-class ActionButtonMenu(Menu,TestMenu):
+class ActionButtonMenu(Menu, TestMenu):
     template = "ActBttnMenu"
-    
+
     # ActionButton event handlers
     @toolbox_handler(EvActionButtonSetText)
-    def ActionButtonSetText(self,event,id_block,poll_block):
+    def ActionButtonSetText(self, event, id_block, poll_block):
         window = toolbox.get_object(id_block.ancestor.id)
         window.actionbutton_set_text()
         self.menu_tick(id_block.self.component)
-    
+
     @toolbox_handler(EvActionButtonGetText)
-    def ActionButtonGetText(self,event,id_block,poll_block):
+    def ActionButtonGetText(self, event, id_block, poll_block):
         window = toolbox.get_object(id_block.ancestor.id)
         window.actionbutton_get_text()
         self.menu_tick(id_block.self.component)
-    
+
     @toolbox_handler(EvActionButtonSetEvent)
-    def ActionButtonSetEvent(self,event,id_block,poll_block):
+    def ActionButtonSetEvent(self, event, id_block, poll_block):
         window = toolbox.get_object(id_block.ancestor.id)
         window.actionbutton_set_event()
         self.menu_tick(id_block.self.component)
-    
+
     @toolbox_handler(EvActionButtonGetEvent)
-    def ActionButtonGetEvent(self,event,id_block,poll_block):
+    def ActionButtonGetEvent(self, event, id_block, poll_block):
         window = toolbox.get_object(id_block.ancestor.id)
         window.actionbutton_get_event()
         self.menu_tick(id_block.self.component)
-        
+
     @toolbox_handler(EvActionButtonSetClickShow)
-    def ActionButtonSetClickShow(self,event,id_block,poll_block):
+    def ActionButtonSetClickShow(self, event, id_block, poll_block):
         window = toolbox.get_object(id_block.ancestor.id)
         window.actionbutton_set_click_show()
         self.menu_tick(id_block.self.component)
-        
+
     @toolbox_handler(EvActionButtonGetClickShow)
-    def ActionButtonGetClickShow(self,event,id_block,poll_block):
+    def ActionButtonGetClickShow(self, event, id_block, poll_block):
         window = toolbox.get_object(id_block.ancestor.id)
         window.actionbutton_get_click_show()
         self.menu_tick(id_block.self.component)
