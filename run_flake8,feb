@@ -1,0 +1,2 @@
+| flake8 assumes the current dir is '.', so specify @ to make this work
+flake8 @
